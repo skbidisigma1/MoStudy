@@ -1275,8 +1275,13 @@ button, a, input[type="button"], input[type="submit"] {
   background-color: rgba(255, 107, 107, 0.1) !important;
 }
 
-/* Ensure Tailwind's `.hidden` cannot be overridden by ID selectors (mobile CSS) */
-.hidden {
+/* Ensure app panels still respect `.hidden` even when an ID selector sets display (mobile CSS). */
+#start-screen.hidden,
+#quiz-interface.hidden,
+#review-screen.hidden,
+#results-screen.hidden,
+#test-details-container.hidden,
+#catalog-grid.hidden {
   display: none !important;
 }
 

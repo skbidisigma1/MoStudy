@@ -1,6 +1,15 @@
 // --- CATALOG ---
 const catalog = [
     {
+        id: "fbla-intl-business-2025-2026",
+        title: "International Business",
+        description: "FBLA Objective Test • Global Trade & Cross-Cultural Business",
+        timeLimitSeconds: 3000,
+        file: "data/international-business.json",
+        color: "bg-orange-600",
+        icon: "🌍"
+    },
+    {
         id: "fbla-cps-2025-2026",
         title: "Computer Problem Solving",
         description: "FBLA Objective Test • 2025-2026 Guidelines",
@@ -80,15 +89,6 @@ const catalog = [
         file: "data/data-science-ai.json",
         color: "bg-rose-600",
         icon: "🤖"
-    },
-    {
-        id: "fbla-intl-business-2025-2026",
-        title: "International Business",
-        description: "FBLA Objective Test • Global Trade & Cross-Cultural Business",
-        timeLimitSeconds: 3000,
-        file: "data/international-business.json",
-        color: "bg-orange-600",
-        icon: "🌍"
     }
 ];
 
@@ -130,6 +130,11 @@ const categoryBadge = document.getElementById('category-badge');
 const flagBtn = document.getElementById('flag-btn');
 const prevBtn = document.getElementById('prev-btn');
 const nextBtn = document.getElementById('next-btn');
+
+// Results screen search/filter
+const searchInput = document.getElementById('search-input');
+const statusFilter = document.getElementById('status-filter');
+const categoryFilter = document.getElementById('category-filter');
 
 const jsonUpload = document.getElementById('json-upload');
 const catalogGrid = document.getElementById('catalog-grid');
@@ -222,11 +227,6 @@ function setupEventListeners() {
             }
         });
     }
-
-    // Search/Filter Listeners
-    const searchInput = document.getElementById('search-input');
-    const statusFilter = document.getElementById('status-filter');
-    const categoryFilter = document.getElementById('category-filter');
 
     if (searchInput) searchInput.addEventListener('input', filterResults);
     if (statusFilter) statusFilter.addEventListener('change', filterResults);
@@ -787,7 +787,8 @@ async function generateAIReview() {
         correct_answer: q.options[q.correct],
         student_answer: userAnswers[i] !== null ? q.options[userAnswers[i]] : "(Skipped)",
         topic: q.category,
-        is_correct: userAnswers[i] === q.correct
+        is_correct: userAnswers[i] === q.correct,
+        flagged: !!flaggedQuestions[i]
     }));
 
     // Decide chunk size: prefer 20, but keep total requests <= 11 (1 overall + up to 10 chunks)
@@ -832,7 +833,8 @@ Return ONLY this schema:
     {"question_id": <number>, "is_correct": <boolean>, "feedback": "<1-2 sentences>"}
   ]
 }
-Provide feedback for EVERY question provided, including correct ones.`
+Provide feedback for EVERY question provided, including correct ones.
+If a question has "flagged": true, treat it as the student marking it as tricky/important and tailor feedback to be extra actionable.`
     };
 
     const overallInput = {
@@ -854,6 +856,7 @@ Provide feedback for EVERY question provided, including correct ones.`
             .map((q) => ({
                 question_id: q.question_id,
                 topic: q.topic,
+                flagged: q.flagged,
                 question: q.question,
                 correct_answer: q.correct_answer,
                 student_answer: q.student_answer
@@ -1231,9 +1234,9 @@ function renderDetailedReview() {
 }
 
 function filterResults() {
-    const searchText = searchInput.value.toLowerCase();
-    const statusValue = statusFilter.value;
-    const categoryValue = categoryFilter.value;
+    const searchText = (searchInput?.value || "").toLowerCase();
+    const statusValue = statusFilter?.value || "all";
+    const categoryValue = categoryFilter?.value || "all";
 
     const cards = document.querySelectorAll('#detailed-review > div');
 
@@ -1260,6 +1263,15 @@ function filterResults() {
         }
     });
 }
+
+// Ensure inline onclick handlers work even if script loading changes.
+window.startQuiz = startQuiz;
+window.prevQuestion = prevQuestion;
+window.nextQuestion = nextQuestion;
+window.toggleFlag = toggleFlag;
+window.showReviewScreen = showReviewScreen;
+window.returnToQuiz = returnToQuiz;
+window.finishQuiz = finishQuiz;
 
 function returnHome() {
     // Reset state
