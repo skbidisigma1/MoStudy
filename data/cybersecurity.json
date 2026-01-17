@@ -1,68 +1,1658 @@
 {
-  "id": "fbla-cyber-2025-2026",
-  "title": "Cybersecurity",
-  "description": "FBLA Objective Test covering network security, cryptography, malware, and defense strategies.",
-  "timeLimitSeconds": 3000,
+  "id": "fbla-cyber-2025-2026-v2",
+  "title": "Cybersecurity Comprehensive Exam",
+  "description": "Updated 150-question objective test aligned with 2025-2026 FBLA National Standards.",
+  "timeLimitSeconds": 4500,
   "questions": [
-    {"category": "Network Security", "text": "Which device is primarily responsible for filtering incoming and outgoing network traffic?", "options": ["Switch", "Hub", "Firewall", "Repeater"], "correct": 2},
-    {"category": "Network Security", "text": "What does IDS stand for in security?", "options": ["Intruder Detection Service", "Intrusion Detection System", "Internet Data Security", "Integrated Defense Standard"], "correct": 1},
-    {"category": "Network Security", "text": "Which protocol is used to secure communication over the Internet?", "options": ["HTTP", "FTP", "TLS/SSL", "Telnet"], "correct": 2},
-    {"category": "Network Security", "text": "What is a 'DMZ' in network security?", "options": ["Demilitarized Zone", "Data Management Zone", "Digital Monitoring Zone", "Direct Media Zone"], "correct": 0},
-    {"category": "Network Security", "text": "Which attack involves sending a huge amount of traffic to a server to crash it?", "options": ["Phishing", "DDoS", "SQL Injection", "Man-in-the-Middle"], "correct": 1},
-    {"category": "Endpoint Security", "text": "Which software protects a computer from malicious software?", "options": ["Firewall", "Antivirus/Antimalware", "VPN", "Proxy"], "correct": 1},
-    {"category": "Endpoint Security", "text": "What is the principle of 'Least Privilege'?", "options": ["Giving users all permissions", "Giving users only necessary permissions", "Blocking all users", "Admin access for everyone"], "correct": 1},
-    {"category": "Endpoint Security", "text": "What is 'Patch Management'?", "options": ["Fixing cables", "Updating software to fix vulnerabilities", "Managing passwords", "Monitoring logs"], "correct": 1},
-    {"category": "Cryptography", "text": "Which term refers to transforming readable data into unreadable format?", "options": ["Decryption", "Hashing", "Encryption", "Compiling"], "correct": 2},
-    {"category": "Cryptography", "text": "What is a characteristic of 'Symmetric Encryption'?", "options": ["Uses two keys", "Uses the same key for encryption and decryption", "Cannot be broken", "Slower than asymmetric"], "correct": 1},
-    {"category": "Cryptography", "text": "What is 'Hashing' used for?", "options": ["Encrypting large files", "Verifying data integrity", "Hiding IP addresses", "Establishing VPNs"], "correct": 1},
-    {"category": "Cryptography", "text": "Which algorithm is a common hash function?", "options": ["AES", "RSA", "SHA-256", "DES"], "correct": 2},
-    {"category": "Threats & Attacks", "text": "What is a 'Phishing' attack?", "options": ["Scanning ports", "Deceptive emails to steal info", "Physical theft", "Writing a virus"], "correct": 1},
-    {"category": "Threats & Attacks", "text": "What is 'Ransomware'?", "options": ["Free software", "Malware that locks data and demands payment", "Spying software", "Adware"], "correct": 1},
-    {"category": "Threats & Attacks", "text": "What is a 'Man-in-the-Middle' attack?", "options": ["Server failure", "Intercepting communication between two parties", "Password guessing", "Hardware failure"], "correct": 1},
-    {"category": "Threats & Attacks", "text": "What is 'Social Engineering'?", "options": ["Coding social apps", "Manipulating people to divulge confidential info", "Building secure networks", "Social media marketing"], "correct": 1},
-    {"category": "Threats & Attacks", "text": "What is 'SQL Injection'?", "options": ["Inserting malicious SQL code into a query", "Injecting virus into hardware", "Overloading a database", "Stealing passwords via email"], "correct": 0},
-    {"category": "Security Admin", "text": "What is 'Multi-Factor Authentication' (MFA)?", "options": ["Using a long password", "Requiring two or more verification methods", "Changing passwords often", "Using a fingerprint only"], "correct": 1},
-    {"category": "Security Admin", "text": "What acts as a decoy to detect hackers?", "options": ["Firewall", "Honeypot", "Proxy", "Gateway"], "correct": 1},
-    {"category": "Security Admin", "text": "Which CIA triad component ensures data is accessible when needed?", "options": ["Confidentiality", "Integrity", "Availability", "Authentication"], "correct": 2},
-    {"category": "Forensics", "text": "What is the first rule of digital forensics?", "options": ["Analyze quickly", "Preserve the evidence", "Reboot the machine", "Delete temp files"], "correct": 1},
-    {"category": "Forensics", "text": "What is 'Chain of Custody'?", "options": ["Linking servers", "Documentation of evidence handling", "Password chain", "Network topology"], "correct": 1},
-    {"category": "Access Control", "text": "What involves identifying who a user is?", "options": ["Authorization", "Authentication", "Accounting", "Auditing"], "correct": 1},
-    {"category": "Access Control", "text": "What involves determining what a user can do?", "options": ["Authorization", "Authentication", "Identification", "Accounting"], "correct": 0},
-    {"category": "Wireless Security", "text": "Which Wi-Fi security standard is the strongest among these?", "options": ["WEP", "WPA", "WPA2", "WPA3"], "correct": 3},
-    {"category": "Wireless Security", "text": "What is 'War Driving'?", "options": ["Driving a tank", "Searching for Wi-Fi networks while moving", "Hacking cars", "Racing simulation"], "correct": 1},
-    {"category": "Compliance", "text": "Which regulation protects health information in the US?", "options": ["GDPR", "HIPAA", "SOX", "PCI-DSS"], "correct": 1},
-    {"category": "Compliance", "text": "Which regulation protects credit card data?", "options": ["ISO 27001", "PCI-DSS", "FERPA", "FISMA"], "correct": 1},
-    {"category": "Malware", "text": "What is a 'Trojan Horse'?", "options": ["Replicating worm", "Malware disguised as legitimate software", "Browser cookie", "Boot sector virus"], "correct": 1},
-    {"category": "Malware", "text": "What differentiates a 'Worm' from a 'Virus'?", "options": ["Worms self-replicate without a host", "Viruses are harmless", "Worms only affect email", "Viruses are hardware"], "correct": 0},
-    {"category": "Network Security", "text": "What is a VPN used for?", "options": ["Virus Protection", "Virtual Private Network for secure tunneling", "Video Processing", "Virtual Public Network"], "correct": 1},
-    {"category": "Network Security", "text": "Who are the 'Blue Team'?", "options": ["Attackers", "Defenders", "Management", "Auditors"], "correct": 1},
-    {"category": "Network Security", "text": "Who are the 'Red Team'?", "options": ["Attackers/Pentesters", "Defenders", "Developers", "Users"], "correct": 0},
-    {"category": "Tools", "text": "Which tool is commonly used for network scanning?", "options": ["Photoshop", "Nmap", "Word", "Excel"], "correct": 1},
-    {"category": "Tools", "text": "Which tool captures network packets?", "options": ["Wireshark", "Notepad", "Calculator", "Paint"], "correct": 0},
-    {"category": "Operating Systems", "text": "In Linux, which file contains hashed passwords?", "options": ["/etc/passwd", "/etc/shadow", "/etc/group", "/etc/hosts"], "correct": 1},
-    {"category": "Operating Systems", "text": "Which command changes file permissions in Linux?", "options": ["chown", "chmod", "ls", "pwd"], "correct": 1},
-    {"category": "Web Security", "text": "What does XSS stand for?", "options": ["Extensible Style Sheets", "Cross-Site Scripting", "XML Site Security", "X-Ray Security System"], "correct": 1},
-    {"category": "Web Security", "text": "How can you prevent SQL Injection?", "options": ["Use shorter passwords", "Use Prepared Statements/Parameterized Queries", "Disable HTTPS", "Use older databases"], "correct": 1},
-    {"category": "Physical Security", "text": "What is a 'Mantrap'?", "options": ["A virus", "A physical access control system with two interlocking doors", "A firewall rule", "A honeypot"], "correct": 1},
-    {"category": "Physical Security", "text": "Which is a biometric authentication factor?", "options": ["Password", "Smart Card", "Fingerprint", "PIN"], "correct": 2},
-    {"category": "Incident Response", "text": "What is the first phase of Incident Response?", "options": ["Eradication", "Preparation", "Recovery", "Lessons Learned"], "correct": 1},
-    {"category": "Incident Response", "text": "What happens in the 'Containment' phase?", "options": ["Preventing the spread of the attack", "Restoring from backups", "Training employees", "Identifying the attacker"], "correct": 0},
-    {"category": "Cryptography", "text": "What is PKI?", "options": ["Public Key Infrastructure", "Private Key Internet", "Public Knowledge Interface", "Personal Key ID"], "correct": 0},
-    {"category": "Cryptography", "text": "What is a Digital Certificate?", "options": ["A diploma", "A file proving identity and binding a public key to an entity", "A password list", "An encrypted email"], "correct": 1},
-    {"category": "Cloud Security", "text": "What does IaaS stand for?", "options": ["Internet as a Service", "Infrastructure as a Service", "Intelligence as a Service", "Identity as a Service"], "correct": 1},
-    {"category": "Cloud Security", "text": "Responsibility in cloud security is often...", "options": ["Solely the provider's", "Solely the customer's", "Shared", "Non-existent"], "correct": 2},
-    {"category": "Mobile Security", "text": "What is 'BYOD'?", "options": ["Bring Your Own Device", "Build Your Own Database", "Buy Your Own Domain", "Block Your Own Data"], "correct": 0},
-    {"category": "Mobile Security", "text": "What is 'MDM'?", "options": ["Mobile Data Mining", "Mobile Device Management", "Main Domain Master", "Mini Disk Media"], "correct": 1},
-    {"category": "Threats", "text": "Attack using a dictionary of words to guess passwords?", "options": ["Brute Force", "Dictionary Attack", "Rainbow Table", "Phishing"], "correct": 1},
-    {"category": "Threats", "text": "Attack trying every possible combination of characters?", "options": ["Brute Force", "Dictionary Attack", "SQL Injection", "XSS"], "correct": 0},
-    {"category": "Threats", "text": "Precomputed table of hash values for cracking passwords?", "options": ["Excel Table", "Rainbow Table", "Routing Table", "ARP Table"], "correct": 1},
-    {"category": "Network", "text": "Port 22 used for?", "options": ["HTTP", "SSH", "FTP", "Telnet"], "correct": 1},
-    {"category": "Network", "text": "Port 53 used for?", "options": ["DNS", "DHCP", "SMTP", "POP3"], "correct": 0},
-    {"category": "Network", "text": "Port 3389 used for?", "options": ["RDP", "HTTP", "HTTPS", "SSH"], "correct": 0},
-    {"category": "Defense", "text": "Technique to hide internal IP addresses?", "options": ["NAT", "PAT", "DNS", "DHCP"], "correct": 0},
-    {"category": "Defense", "text": "Network segment for public-facing servers?", "options": ["LAN", "WAN", "DMZ", "VLAN"], "correct": 2},
-    {"category": "Defense", "text": "Logical segmentation of a switch?", "options": ["VLAN", "VPN", "Subnet", "Trunk"], "correct": 0},
-    {"category": "General", "text": "CIA Triad stands for?", "options": ["Confidentiality, Integrity, Availability", "Control, Intelligence, Authentication", "Computer, Internet, Access", "Cyber, Info, Assets"], "correct": 0},
-    {"category": "General", "text": "Non-repudiation means?", "options": ["User cannot deny an action", "User cannot login", "User is anonymous", "Data is encrypted"], "correct": 0}
+    {
+      "category": "Security Fundamentals",
+      "text": "Which element of the CIA triad is compromised when an attacker performs a successful Ransomware encryption on a company database?",
+      "options": [
+        "Confidentiality of the data",
+        "Availability of the services",
+        "Authenticity of the sender",
+        "Non-repudiation of the user"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security Fundamentals",
+      "text": "What is the primary difference between a 'Security Policy' and a 'Security Procedure' in an organizational context?",
+      "options": [
+        "Policies provide high-level goals while procedures provide step-by-step instructions",
+        "Policies are mandatory requirements while procedures are always optional guidelines",
+        "Policies are technical configurations while procedures are legal compliance documents",
+        "Policies focus on hardware settings while procedures focus on employee behavior"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Security Fundamentals",
+      "text": "The principle of 'Least Privilege' is best demonstrated by which of the following actions?",
+      "options": [
+        "Giving all managers administrative access to simplify network troubleshooting tasks",
+        "Allowing users to install any software necessary for their daily productivity needs",
+        "Providing users only the access levels required to perform their specific job duties",
+        "Granting guest users access to internal files to facilitate easier collaboration"
+      ],
+      "correct": 2
+    },
+    {
+      "category": "Security Fundamentals",
+      "text": "Which of the following is considered an Administrative Control rather than a Technical or Physical control?",
+      "options": [
+        "Implementing an automated intrusion prevention system on the main network",
+        "Conducting annual security awareness training for all department employees",
+        "Installing biometric scanners on the entrance to the server room facility",
+        "Configuring complex firewall rules to block unauthorized port 80 traffic"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security Fundamentals",
+      "text": "In risk management, choosing to purchase an insurance policy to cover potential cyber losses is an example of:",
+      "options": [
+        "Risk Avoidance strategy",
+        "Risk Acceptance strategy",
+        "Risk Mitigation strategy",
+        "Risk Transference strategy"
+      ],
+      "correct": 3
+    },
+    {
+      "category": "Security Fundamentals",
+      "text": "Which term describes the process of proving that a specific user actually performed a specific action on a computer system?",
+      "options": [
+        "Authorization of user",
+        "Non-repudiation of user",
+        "Identification of user",
+        "Authentication of user"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security Fundamentals",
+      "text": "What is the primary purpose of an 'Acceptable Use Policy' (AUP) in a business or school environment?",
+      "options": [
+        "To define the technical specifications for high-speed network hardware",
+        "To outline the permitted and prohibited activities for all network users",
+        "To list the serial numbers of all company-owned mobile and desktop devices",
+        "To provide the contact information for the external cybersecurity consultants"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security Fundamentals",
+      "text": "An organization decides to stop using a specific software because it is too vulnerable to attacks. This is an example of:",
+      "options": [
+        "Risk Mitigation",
+        "Risk Acceptance",
+        "Risk Transference",
+        "Risk Avoidance"
+      ],
+      "correct": 3
+    },
+    {
+      "category": "Security Fundamentals",
+      "text": "Which type of control is a security camera that records footage of an unauthorized entry after it has already occurred?",
+      "options": [
+        "Preventive control",
+        "Detective control",
+        "Corrective control",
+        "Deterrent control"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security Fundamentals",
+      "text": "The 'Integrity' component of the CIA triad is most concerned with which of the following scenarios?",
+      "options": [
+        "Ensuring that unauthorized users cannot read private financial data",
+        "Ensuring that information is not modified by unauthorized individuals",
+        "Ensuring that systems are operational and accessible during business hours",
+        "Ensuring that all users have identical permissions across all platforms"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security Fundamentals",
+      "text": "What is the primary function of a 'Certificate Authority' (CA) in a secure digital environment?",
+      "options": [
+        "To block malicious traffic from entering the local area network",
+        "To verify and issue digital certificates to entities and users",
+        "To store backup copies of all encrypted files in a remote cloud",
+        "To monitor employee emails for violations of company policies"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security Fundamentals",
+      "text": "Which concept refers to the probability of a threat source exploiting a vulnerability and the resulting impact?",
+      "options": [
+        "Security Asset",
+        "Security Threat",
+        "Security Risk",
+        "Security Breach"
+      ],
+      "correct": 2
+    },
+    {
+      "category": "Security Fundamentals",
+      "text": "Multi-factor Authentication (MFA) typically requires two or more elements from which three categories?",
+      "options": [
+        "What you know, what you have, and what you are",
+        "What you say, what you do, and what you see",
+        "Where you work, where you live, and where you go",
+        "Who you know, who you like, and who you trust"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Security Fundamentals",
+      "text": "A security guard standing at the gate is primarily providing which type of security control?",
+      "options": [
+        "Technical Control",
+        "Physical Control",
+        "Logical Control",
+        "Virtual Control"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security Fundamentals",
+      "text": "What is the definition of 'Security Governance' within a large-scale modern organization?",
+      "options": [
+        "The software used to manage the passwords of all administrative accounts",
+        "The framework of rules and practices that direct security operations",
+        "The physical locks used to secure the servers in the main data center",
+        "The antivirus software installed on all mobile devices and workstations"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security Fundamentals",
+      "text": "Which document is legally binding and specifies the uptime and performance expectations for a service provider?",
+      "options": [
+        "Memorandum of Understanding",
+        "Interconnection Security Agreement",
+        "Service Level Agreement",
+        "Non-Disclosure Agreement"
+      ],
+      "correct": 2
+    },
+    {
+      "category": "Security Fundamentals",
+      "text": "What is the primary role of 'Asset Management' in a comprehensive cybersecurity program?",
+      "options": [
+        "To track and secure all hardware and software within the network",
+        "To manage the retirement funds for the IT and security staff",
+        "To negotiate the pricing for new server hardware and software",
+        "To design the user interface for the company's public website"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Security Fundamentals",
+      "text": "Which of the following is a 'Technical Control' used to protect the confidentiality of sensitive data?",
+      "options": [
+        "A written policy about data handling",
+        "An encrypted storage volume or drive",
+        "A background check for new employees",
+        "A warning sign on the server room door"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security Fundamentals",
+      "text": "The term 'Due Diligence' in cybersecurity refers to which of the following organizational actions?",
+      "options": [
+        "The act of investigating and understanding risks before making decisions",
+        "The act of installing the latest firewall firmware every single month",
+        "The act of firing employees who fail to use complex account passwords",
+        "The act of purchasing the most expensive security software on the market"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Security Fundamentals",
+      "text": "Which type of security control is designed to discourage potential attackers from attempting a security breach?",
+      "options": [
+        "Detective control",
+        "Deterrent control",
+        "Corrective control",
+        "Compensating control"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security Fundamentals",
+      "text": "What does the term 'Air Gapping' refer to in the context of high-security computer systems?",
+      "options": [
+        "Connecting systems via a high-speed wireless mesh network",
+        "Physically isolating a computer or network from all others",
+        "Installing extra cooling fans to prevent server overheating",
+        "Using cloud-based storage to sync files across multiple sites"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security Fundamentals",
+      "text": "Which standard is widely used globally to provide a framework for managing information security systems?",
+      "options": [
+        "ISO/IEC 27001",
+        "IEEE 802.11ac",
+        "ANSI/TIA 568",
+        "RFC 1918"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Security Fundamentals",
+      "text": "A 'Single Point of Failure' is best described as which of the following in a system design?",
+      "options": [
+        "A user who forgets their password more than three times in a week",
+        "A component that, if it fails, stops the entire system from working",
+        "A software bug that only affects one specific version of an application",
+        "A network cable that is slightly longer than the standard requirements"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security Fundamentals",
+      "text": "Which of the following is a primary goal of 'Change Management' in a secure IT environment?",
+      "options": [
+        "To ensure that all employees change their passwords every thirty days",
+        "To ensure that system modifications do not compromise security or stability",
+        "To ensure that every computer is replaced with a newer model every year",
+        "To ensure that the company switches to a new internet provider every month"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security Fundamentals",
+      "text": "What is 'Shoulder Surfing' in the context of physical security and social engineering?",
+      "options": [
+        "Looking over someone's shoulder to see their password or sensitive data",
+        "Using a wireless scanner to steal data from a laptop in a public place",
+        "Asking an employee for their username and password over the telephone",
+        "Searching through the trash to find documents with sensitive information"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Security Fundamentals",
+      "text": "Which of the following describes the 'Identification' step in the access control process?",
+      "options": [
+        "A user providing a unique username to the system login prompt",
+        "A user proving who they are by typing a secret eight-digit PIN",
+        "A system checking the user's permissions to see which files they can open",
+        "A system recording the time and date that the user successfully logged in"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Security Fundamentals",
+      "text": "The 'Availability' portion of the CIA triad is most directly supported by which of the following?",
+      "options": [
+        "Data encryption",
+        "Digital signatures",
+        "Redundant systems",
+        "Access control lists"
+      ],
+      "correct": 2
+    },
+    {
+      "category": "Security Fundamentals",
+      "text": "Which type of security control is 'Implicit Deny' when configured on a network firewall?",
+      "options": [
+        "A rule that allows all traffic except what is specifically blocked",
+        "A rule that blocks all traffic except what is specifically allowed",
+        "A rule that asks for a password before allowing any web traffic",
+        "A rule that only works during specific hours of the business day"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security Fundamentals",
+      "text": "What is the primary benefit of 'Security Awareness Training' for an organization's workforce?",
+      "options": [
+        "It reduces the likelihood of successful social engineering attacks",
+        "It increases the speed at which employees can type their passwords",
+        "It allows the IT department to stop monitoring the network for threats",
+        "It provides a way for employees to fix their own hardware problems"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Security Fundamentals",
+      "text": "Which regulatory standard focuses on protecting the privacy and security of health-related information in the US?",
+      "options": [
+        "PCI DSS",
+        "FERPA",
+        "HIPAA",
+        "SOX"
+      ],
+      "correct": 2
+    },
+    {
+      "category": "Cyber Threats and Vulnerabilities",
+      "text": "Which type of malware is specifically designed to hide its presence and maintain privileged access to a system without detection?",
+      "options": [
+        "A standard computer virus",
+        "A self-replicating worm",
+        "A sophisticated rootkit",
+        "A credential-stealing keylogger"
+      ],
+      "correct": 2
+    },
+    {
+      "category": "Cyber Threats and Vulnerabilities",
+      "text": "What is the defining characteristic of a 'Zero-Day' vulnerability in a software application?",
+      "options": [
+        "It is a vulnerability that was discovered exactly zero days ago by the vendor",
+        "It is a flaw for which no official patch or fix has been released by the developer",
+        "It is a security hole that causes the system to crash exactly at midnight",
+        "It is a weakness that only exists in newly installed operating system versions"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Cyber Threats and Vulnerabilities",
+      "text": "An attacker uses a list of common words and phrases to attempt to gain access to a user account. This is known as a:",
+      "options": [
+        "Brute force attack",
+        "Dictionary attack",
+        "Rainbow table attack",
+        "Birthday attack"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Cyber Threats and Vulnerabilities",
+      "text": "Which social engineering attack involves sending highly personalized emails to a specific executive to steal corporate secrets?",
+      "options": [
+        "General phishing campaign",
+        "Whaling attack",
+        "Vishing attempt",
+        "Smishing message"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Cyber Threats and Vulnerabilities",
+      "text": "A 'Logic Bomb' is a type of malicious code that is characterized by which of the following?",
+      "options": [
+        "It spreads automatically across the network to all connected devices",
+        "It encrypts user files and demands payment in an untraceable currency",
+        "It triggers a destructive action when specific conditions or dates are met",
+        "It redirects internet browser traffic to a fraudulent advertising website"
+      ],
+      "correct": 2
+    },
+    {
+      "category": "Cyber Threats and Vulnerabilities",
+      "text": "What is the primary difference between a computer virus and a computer worm?",
+      "options": [
+        "A virus requires a host file to spread while a worm can spread independently",
+        "A virus only affects Windows while a worm only affects Linux and Mac systems",
+        "A virus is always harmless while a worm is always designed to destroy hardware",
+        "A virus encrypts all data while a worm only steals the user's saved passwords"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Cyber Threats and Vulnerabilities",
+      "text": "Which of the following describes a 'Replay Attack' in network security?",
+      "options": [
+        "An attacker captures valid data and later sends it again to gain access",
+        "An attacker crashes a server by sending the same request a million times",
+        "An attacker changes the DNS records to point to a malicious server",
+        "An attacker physically steals a backup tape and plays it on their machine"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Cyber Threats and Vulnerabilities",
+      "text": "What is 'Pharming' in the context of cyber threats?",
+      "options": [
+        "Redirecting users to a fake website even if they type the correct URL",
+        "Sending fake text messages to users to steal their banking information",
+        "Using a phone call to trick someone into revealing their social security number",
+        "Infecting a computer with malware that generates cryptocurrency for the attacker"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Cyber Threats and Vulnerabilities",
+      "text": "A 'Buffer Overflow' attack is best described by which of the following?",
+      "options": [
+        "Sending more data to a program than it can handle to overwrite memory",
+        "Exhausting the available power supply to a server until it shuts down",
+        "Filling up a hard drive with junk files until the operating system stops",
+        "Overwhelming a network switch with too many Ethernet cables at once"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Cyber Threats and Vulnerabilities",
+      "text": "Which of the following is a type of malware that records every character a user types on their keyboard?",
+      "options": [
+        "Trojan horse",
+        "Keylogger",
+        "Adware",
+        "Spyware"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Cyber Threats and Vulnerabilities",
+      "text": "What is the primary goal of a 'SQL Injection' (SQLi) attack?",
+      "options": [
+        "To shut down a web server by using up all of its CPU and RAM resources",
+        "To execute malicious database queries to steal or modify sensitive data",
+        "To bypass a physical security lock using a specialized electronic device",
+        "To infect a user's computer with a virus through a malicious email attachment"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Cyber Threats and Vulnerabilities",
+      "text": "Which type of attacker is motivated by political or social causes rather than financial gain?",
+      "options": [
+        "Script Kiddie",
+        "Hacktivist",
+        "Insider Threat",
+        "State-Sponsored Actor"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Cyber Threats and Vulnerabilities",
+      "text": "What is 'Tailgating' in the context of physical security threats?",
+      "options": [
+        "Driving a vehicle too closely to a delivery truck to see its contents",
+        "Following an authorized person into a secure area without their knowledge",
+        "Using a wireless antenna to capture data from a remote office building",
+        "Installing a secret hardware device on the back of a user's workstation"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Cyber Threats and Vulnerabilities",
+      "text": "Which type of vulnerability is caused by a programmer forgetting to check the size of input data?",
+      "options": [
+        "Cross-Site Scripting",
+        "Buffer Overflow",
+        "SQL Injection",
+        "Broken Authentication"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Cyber Threats and Vulnerabilities",
+      "text": "A 'Trojan Horse' is characterized by which of the following behaviors?",
+      "options": [
+        "It appears to be a useful program but contains hidden malicious code",
+        "It spreads itself automatically to every contact in a user's email list",
+        "It locks the computer screen and demands a payment to unlock it",
+        "It deletes itself as soon as the antivirus software starts a full scan"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Cyber Threats and Vulnerabilities",
+      "text": "What is 'Vishing'?",
+      "options": [
+        "A phishing attack that is conducted over a telephone or voice call",
+        "A phishing attack that uses malicious video files to infect a computer",
+        "A phishing attack that specifically targets high-level corporate executives",
+        "A phishing attack that uses text messages sent to a user's mobile phone"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Cyber Threats and Vulnerabilities",
+      "text": "Which term describes a network of computers infected with malware and controlled by a single attacker?",
+      "options": [
+        "Server Farm",
+        "Botnet",
+        "Intranet",
+        "Mesh Network"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Cyber Threats and Vulnerabilities",
+      "text": "An 'Insider Threat' is most dangerous because the individual already has:",
+      "options": [
+        "A higher level of education than most external hackers",
+        "Authorized access to the organization's systems and data",
+        "The ability to use sophisticated hacking tools from the internet",
+        "Physical access to the CEO's personal home computer system"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Cyber Threats and Vulnerabilities",
+      "text": "What is 'Bluejacking' in the context of wireless threats?",
+      "options": [
+        "Stealing files from a mobile device using a Bluetooth connection",
+        "Sending unsolicited messages to a mobile device via Bluetooth",
+        "Eavesdropping on a phone call made over a Bluetooth headset",
+        "Cracking the encryption of a secure Bluetooth keyboard or mouse"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Cyber Threats and Vulnerabilities",
+      "text": "Which type of threat actor is characterized by having very low technical skill and using pre-made tools?",
+      "options": [
+        "Advanced Persistent Threat",
+        "Script Kiddie",
+        "Cyber Terrorist",
+        "Competitor"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Cyber Threats and Vulnerabilities",
+      "text": "What is 'Spear Phishing'?",
+      "options": [
+        "A phishing attack that is sent to millions of people at once",
+        "A targeted phishing attack directed at a specific person or group",
+        "A phishing attack that uses a spear-like device to steal hardware",
+        "A phishing attack that only works on computers used for fishing"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Cyber Threats and Vulnerabilities",
+      "text": "Which attack involves an adversary sitting between two communicating parties to intercept their data?",
+      "options": [
+        "Denial of Service",
+        "Man-in-the-Middle",
+        "Brute Force",
+        "Side-Channel"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Cyber Threats and Vulnerabilities",
+      "text": "A 'Rootkit' is primarily used by attackers to achieve which of the following?",
+      "options": [
+        "To display as many advertisements as possible to the computer user",
+        "To gain and maintain administrative-level access while remaining hidden",
+        "To speed up the internet connection for the attacker's own use",
+        "To encrypt all of the files on the hard drive for a ransom payment"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Cyber Threats and Vulnerabilities",
+      "text": "Which of the following is a symptom of a 'DDoS' attack on a web server?",
+      "options": [
+        "The server hardware physically melts from the high traffic load",
+        "The website becomes extremely slow or completely unavailable to users",
+        "The background color of the website changes to a bright red color",
+        "All of the user's saved passwords are deleted from the server database"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Cyber Threats and Vulnerabilities",
+      "text": "What is 'Adware'?",
+      "options": [
+        "Malware that is designed to display unwanted advertisements on a system",
+        "Software that is used to block all advertisements on a web browser",
+        "A type of virus that specifically targets advertising companies' servers",
+        "A program that helps users create professional advertisements for free"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Cyber Threats and Vulnerabilities",
+      "text": "What is 'Typosquatting'?",
+      "options": [
+        "Registering domain names that are common misspellings of popular sites",
+        "Using a computer for a very long time until the user gets tired",
+        "Hacking into a computer while the authorized user is away from the desk",
+        "Changing the keyboard layout of a computer to confuse the user"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Cyber Threats and Vulnerabilities",
+      "text": "An attacker uses 'Social Engineering' to gain access to a network by primarily exploiting:",
+      "options": [
+        "Weaknesses in the firewall configuration settings",
+        "Human psychology and the natural tendency to trust",
+        "Bugs in the operating system's kernel source code",
+        "Lack of physical locks on the server room cabinets"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Cyber Threats and Vulnerabilities",
+      "text": "Which type of attack involves trying every possible combination of characters to find a password?",
+      "options": [
+        "Dictionary Attack",
+        "Brute Force Attack",
+        "Rainbow Table Attack",
+        "Birthday Attack"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Cyber Threats and Vulnerabilities",
+      "text": "What is a 'Zombie' in the context of cybersecurity?",
+      "options": [
+        "A computer that has been infected and is part of a botnet",
+        "An IT worker who has worked too many hours without a break",
+        "A virus that keeps coming back after it has been deleted",
+        "A deleted file that is still visible in the computer's memory"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Cyber Threats and Vulnerabilities",
+      "text": "Which of the following describes 'Cross-Site Scripting' (XSS)?",
+      "options": [
+        "Injecting malicious scripts into a web page viewed by other users",
+        "Sending thousands of emails to a single user to crash their inbox",
+        "Using a specialized tool to crack a wireless network's password",
+        "Stealing a user's physical security token from their office desk"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Security and Design",
+      "text": "Which architectural concept involves placing a web server in a zone that is accessible from the internet but isolated from the internal LAN?",
+      "options": [
+        "Virtual Private Network",
+        "Demilitarized Zone",
+        "Intranet Segment",
+        "Extranet Gateway"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security and Design",
+      "text": "What is the primary purpose of 'Defense in Depth' in a modern enterprise security architecture?",
+      "options": [
+        "To ensure that all data is backed up in at least three different geographical locations",
+        "To use multiple layers of security controls so that no single point of failure exists",
+        "To encrypt all internal communications with the highest available bit-rate levels",
+        "To prevent any external traffic from reaching the internal corporate workstations"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security and Design",
+      "text": "In a Public Key Infrastructure (PKI), which key is used by the sender to encrypt a message intended for a specific recipient?",
+      "options": [
+        "The sender's private key",
+        "The sender's public key",
+        "The recipient's private key",
+        "The recipient's public key"
+      ],
+      "correct": 3
+    },
+    {
+      "category": "Security and Design",
+      "text": "Which hashing algorithm is currently considered insecure for cryptographic use due to its susceptibility to collision attacks?",
+      "options": [
+        "SHA-256 algorithm",
+        "SHA-512 algorithm",
+        "MD5 message digest",
+        "AES-256 encryption"
+      ],
+      "correct": 2
+    },
+    {
+      "category": "Security and Design",
+      "text": "The 'Salt' added to a password before hashing is primarily used to prevent which of the following?",
+      "options": [
+        "The use of weak or common passwords by employees",
+        "The effectiveness of precomputed rainbow table attacks",
+        "The ability of an attacker to sniff passwords on the wire",
+        "The accidental deletion of the password database file"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security and Design",
+      "text": "In 'Asymmetric Encryption', if Alice wants to send a secure message to Bob, which key does she use?",
+      "options": [
+        "Alice's private key",
+        "Alice's public key",
+        "Bob's private key",
+        "Bob's public key"
+      ],
+      "correct": 3
+    },
+    {
+      "category": "Security and Design",
+      "text": "Which type of encryption uses the same key for both the encryption and decryption processes?",
+      "options": [
+        "Asymmetric Encryption",
+        "Symmetric Encryption",
+        "Hashing Algorithm",
+        "Steganography"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security and Design",
+      "text": "What is the primary goal of 'Steganography' in the context of information security?",
+      "options": [
+        "To encrypt data so that it cannot be understood without a secret key",
+        "To hide the existence of a message within another non-secret file",
+        "To compress data so that it takes up very little space on a hard drive",
+        "To verify the identity of a sender using a digital certificate or ID"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security and Design",
+      "text": "Which of the following is a common 'Block Cipher' algorithm used for modern data encryption?",
+      "options": [
+        "RC4 algorithm",
+        "AES algorithm",
+        "MD5 algorithm",
+        "SHA-1 algorithm"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security and Design",
+      "text": "What is the function of 'Perfect Forward Secrecy' (PFS) in secure communications?",
+      "options": [
+        "Ensuring that a compromised long-term key does not compromise past session keys",
+        "Ensuring that every user has a unique password that never expires or changes",
+        "Ensuring that all data is encrypted twice using two different sets of keys",
+        "Ensuring that the encryption process happens instantly without any lag or delay"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Security and Design",
+      "text": "Which architectural model uses the concept of 'Subjects', 'Objects', and 'Access Modes' to define security?",
+      "options": [
+        "The OSI Reference Model",
+        "The Bell-LaPadula Model",
+        "The TCP/IP Network Model",
+        "The Software Life Cycle"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security and Design",
+      "text": "A 'Digital Signature' provides which of the following three security properties?",
+      "options": [
+        "Confidentiality, Speed, and Reliability",
+        "Integrity, Authentication, and Non-repudiation",
+        "Availability, Scalability, and Redundancy",
+        "Privacy, Anonymity, and Data Masking"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security and Design",
+      "text": "Which of the following is a key characteristic of the 'Biba' security model?",
+      "options": [
+        "It is primarily focused on maintaining the confidentiality of data",
+        "It is primarily focused on maintaining the integrity of data",
+        "It is primarily focused on the availability of network services",
+        "It is primarily focused on the physical security of server rooms"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security and Design",
+      "text": "In cryptography, what is 'Key Stretching' used for?",
+      "options": [
+        "To make a short or weak password more resistant to brute-force attacks",
+        "To physically pull on a copper wire to increase the speed of data travel",
+        "To share a single private key among many different users in a company",
+        "To increase the size of an encrypted file so it is harder for an attacker to find"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Security and Design",
+      "text": "Which of the following describes 'Elliptic Curve Cryptography' (ECC)?",
+      "options": [
+        "A method of encryption that uses circular logic to confuse potential hackers",
+        "A type of public-key cryptography that provides high security with smaller keys",
+        "A hardware-based encryption system that only works with curved computer monitors",
+        "A deprecated hashing algorithm that was replaced by SHA-256 ten years ago"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security and Design",
+      "text": "What is a 'Trusted Platform Module' (TPM)?",
+      "options": [
+        "A software program that monitors the activity of all users on a network",
+        "A dedicated hardware chip on a computer that stores cryptographic keys",
+        "A secure website where employees can download authorized software updates",
+        "A physical room where all of the company's most important servers are kept"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security and Design",
+      "text": "The 'Secure Boot' feature in a computer's UEFI is designed to prevent:",
+      "options": [
+        "The user from installing a different operating system than the one provided",
+        "The loading of unauthorized or malicious operating systems during startup",
+        "The computer from turning on if it has been physically moved from its desk",
+        "The use of any USB devices that have not been registered with the IT staff"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security and Design",
+      "text": "What is 'Obfuscation' in the context of software development and security?",
+      "options": [
+        "The process of making code difficult for humans to read and understand",
+        "The process of deleting all of the source code after a program is compiled",
+        "The process of making a program run as fast as possible on older hardware",
+        "The process of translating a program into multiple different world languages"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Security and Design",
+      "text": "Which of the following encryption modes is considered the most secure for modern use?",
+      "options": [
+        "Electronic Code Book (ECB)",
+        "Cipher Block Chaining (CBC)",
+        "Galois/Counter Mode (GCM)",
+        "Output Feedback (OFB)"
+      ],
+      "correct": 2
+    },
+    {
+      "category": "Security and Design",
+      "text": "What is the primary purpose of a 'Digital Certificate'?",
+      "options": [
+        "To encrypt all of the files on a user's local hard drive",
+        "To bind a public key to a specific individual or entity",
+        "To allow a user to log in to their computer without a password",
+        "To prove that a user has completed their security awareness training"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security and Design",
+      "text": "Which of the following is an example of 'Data at Rest'?",
+      "options": [
+        "Files that are being sent from a workstation to a central server",
+        "Information that is currently being displayed on a user's monitor",
+        "Data stored on a hard drive or an offline backup storage tape",
+        "Packets that are traveling through a wireless router to the internet"
+      ],
+      "correct": 2
+    },
+    {
+      "category": "Security and Design",
+      "text": "What is 'Full Disk Encryption' (FDE)?",
+      "options": [
+        "Encrypting only the most sensitive files on a computer's hard drive",
+        "Encrypting every single bit of data on a storage drive for security",
+        "Using a special software to make the hard drive spin faster than normal",
+        "Deleting all data on a hard drive so that it can be safely thrown away"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security and Design",
+      "text": "Which security principle suggests that systems should be secure by default without any user action?",
+      "options": [
+        "Security through Obscurity",
+        "Secure by Design",
+        "Open Design Principle",
+        "Economy of Mechanism"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security and Design",
+      "text": "What is the 'Kernel' of an operating system?",
+      "options": [
+        "The graphical user interface that the user interacts with most often",
+        "The core part of the OS that manages system resources and hardware",
+        "The collection of all the installed applications on the computer system",
+        "The physical case that protects the CPU and other internal components"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security and Design",
+      "text": "In the context of security design, what is a 'Fail-Safe' mechanism?",
+      "options": [
+        "A system that shuts down completely if a security breach is detected",
+        "A system that remains secure even if one of its components fails",
+        "A system that allows all traffic if the security software stops working",
+        "A system that automatically backups data to the cloud every five minutes"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security and Design",
+      "text": "Which of the following is a 'Hardware Security Module' (HSM) used for?",
+      "options": [
+        "To increase the processing power of a server for complex math problems",
+        "To securely manage, process, and store cryptographic keys and operations",
+        "To block physical access to a server room using an electronic keycard",
+        "To monitor the temperature of the data center to prevent fire hazards"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security and Design",
+      "text": "What is 'Sandboxing' in computer security?",
+      "options": [
+        "Running an untrusted program in an isolated and restricted environment",
+        "Physically placing a server in a container filled with dry desert sand",
+        "A method of cleaning a computer's keyboard using compressed air tools",
+        "Creating a fake website to trick hackers into revealing their location"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Security and Design",
+      "text": "What is 'End-to-End Encryption' (E2EE)?",
+      "options": [
+        "Encryption where only the sender and receiver can read the message",
+        "Encryption that only works when both users are on the same network",
+        "Encryption that is performed by the internet service provider automatically",
+        "Encryption that only protects the data while it is stored on the server"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Security and Design",
+      "text": "Which of the following is a primary weakness of 'Symmetric Encryption'?",
+      "options": [
+        "It is much slower than asymmetric encryption for large amounts of data",
+        "The challenge of securely distributing the secret key to both parties",
+        "It uses too much electricity and causes mobile devices to lose battery",
+        "It is no longer supported by any modern web browsers or operating systems"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security and Design",
+      "text": "What is 'Quantum Cryptography' primarily concerned with?",
+      "options": [
+        "Using the principles of quantum mechanics to secure communications",
+        "Increasing the speed of standard encryption using quantum computers",
+        "Decrypting old messages that were encrypted using legacy algorithms",
+        "A new way of storing passwords that uses liquid nitrogen for cooling"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Network and Data Security",
+      "text": "Which network protocol operates at Layer 3 of the OSI model and is responsible for logical addressing and routing?",
+      "options": [
+        "Ethernet protocol",
+        "Internet Protocol",
+        "Transmission Control Protocol",
+        "Hypertext Transfer Protocol"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Network and Data Security",
+      "text": "A 'Stateful Inspection' firewall differs from a 'Packet Filtering' firewall because it:",
+      "options": [
+        "Blocks traffic based only on the source IP address and the destination port",
+        "Tracks the context and status of active connections to make filtering decisions",
+        "Requires a physical hardware device rather than a software-based application",
+        "Automatically encrypts all outgoing data packets to ensure total confidentiality"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Network and Data Security",
+      "text": "Which tool is commonly used by administrators to capture and analyze network traffic for troubleshooting or security audits?",
+      "options": [
+        "A network port scanner",
+        "A protocol analyzer",
+        "A vulnerability scanner",
+        "A host-based firewall"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Network and Data Security",
+      "text": "What is the main security risk associated with using 'Split Tunneling' on a corporate VPN connection?",
+      "options": [
+        "It slows down the connection speed for all internal company applications",
+        "It allows users to bypass the corporate firewall for personal internet traffic",
+        "It prevents the VPN from encrypting any data sent to the internal network",
+        "It requires the purchase of expensive hardware for every remote employee"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Network and Data Security",
+      "text": "Which wireless security standard uses the CCMP protocol and AES encryption to provide the highest level of security?",
+      "options": [
+        "WEP protocol",
+        "WPA protocol",
+        "WPA2 protocol",
+        "TKIP protocol"
+      ],
+      "correct": 2
+    },
+    {
+      "category": "Network and Data Security",
+      "text": "What does 'DHCP' stand for in the context of computer networking?",
+      "options": [
+        "Data Handling and Control Protocol",
+        "Dynamic Host Configuration Protocol",
+        "Digital Hardware Connection Path",
+        "Direct Hub Communication Port"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Network and Data Security",
+      "text": "Which of the following ports is typically used for secure web traffic (HTTPS)?",
+      "options": [
+        "Port 21",
+        "Port 80",
+        "Port 443",
+        "Port 3389"
+      ],
+      "correct": 2
+    },
+    {
+      "category": "Network and Data Security",
+      "text": "What is the primary function of a 'DNS' (Domain Name System) server?",
+      "options": [
+        "To translate easy-to-read domain names into numerical IP addresses",
+        "To store the backup copies of all files found on a specific website",
+        "To prevent hackers from accessing the internal company database",
+        "To speed up the internet connection for all users in an office"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Network and Data Security",
+      "text": "A 'VLAN' (Virtual Local Area Network) is primarily used for which of the following?",
+      "options": [
+        "Connecting two different offices together over a long distance",
+        "Logically segmenting a network into smaller, isolated groups",
+        "Increasing the maximum download speed of an internet connection",
+        "Automatically updating the software on all connected workstations"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Network and Data Security",
+      "text": "Which of the following describes 'NAT' (Network Address Translation)?",
+      "options": [
+        "A method of hiding internal IP addresses behind a single public IP",
+        "A way of making a website load faster by using a cache server",
+        "An encryption protocol used to secure wireless network connections",
+        "A physical device used to connect multiple computers to a printer"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Network and Data Security",
+      "text": "What is the difference between 'TCP' and 'UDP' protocols?",
+      "options": [
+        "TCP is reliable and connection-oriented while UDP is fast and connectionless",
+        "TCP is used for wireless networks while UDP is used for wired connections",
+        "TCP is only used for emails while UDP is only used for web browsing traffic",
+        "TCP is insecure and outdated while UDP is the modern secure standard"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Network and Data Security",
+      "text": "Which network device operates at Layer 2 and uses MAC addresses to forward data?",
+      "options": [
+        "Hub",
+        "Router",
+        "Switch",
+        "Modem"
+      ],
+      "correct": 2
+    },
+    {
+      "category": "Network and Data Security",
+      "text": "What is a 'MAC Address'?",
+      "options": [
+        "A unique physical identifier assigned to a network interface card",
+        "The password used to log in to an Apple Macintosh computer system",
+        "A logical address used to route data across different internet sites",
+        "The security key used to encrypt a WPA2-protected wireless network"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Network and Data Security",
+      "text": "Which port is commonly used for 'SSH' (Secure Shell) remote access?",
+      "options": [
+        "Port 22",
+        "Port 23",
+        "Port 25",
+        "Port 53"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Network and Data Security",
+      "text": "What is the primary purpose of an 'Intrusion Detection System' (IDS)?",
+      "options": [
+        "To monitor network traffic and alert administrators to suspicious activity",
+        "To automatically block any user who tries to visit a social media website",
+        "To encrypt all of the data that is stored on the company's central server",
+        "To provide a high-speed wireless connection to guests in the lobby area"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Network and Data Security",
+      "text": "Which protocol is used to send email messages between different mail servers?",
+      "options": [
+        "POP3",
+        "IMAP",
+        "SMTP",
+        "HTTP"
+      ],
+      "correct": 2
+    },
+    {
+      "category": "Network and Data Security",
+      "text": "What is 'Packet Sniffing'?",
+      "options": [
+        "The process of intercepting and viewing data as it travels over a network",
+        "A way of cleaning the internal components of a network router or switch",
+        "Using a computer's microphone to listen to the sounds of the data center",
+        "A software feature that automatically deletes any infected email attachments"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Network and Data Security",
+      "text": "Which of the following is an IPv6 address?",
+      "options": [
+        "192.168.1.1",
+        "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
+        "00:1A:2B:3C:4D:5E",
+        "http://www.fbla.org"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Network and Data Security",
+      "text": "What is the 'OSI Model'?",
+      "options": [
+        "A seven-layer framework used to understand how networks communicate",
+        "A type of firewall that only works with open-source operating systems",
+        "A security policy that requires all employees to use complex passwords",
+        "A program used to create professional diagrams of network connections"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Network and Data Security",
+      "text": "What is a 'Proxy Server' used for in a corporate network?",
+      "options": [
+        "To act as an intermediary between an internal user and the internet",
+        "To provide a backup power source for the servers during a blackout",
+        "To store the user's personal files so they can be accessed from home",
+        "To physically connect the office network to the telephone company's line"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Network and Data Security",
+      "text": "Which of the following is the most secure way to manage a remote server?",
+      "options": [
+        "Using Telnet on port 23",
+        "Using SSH on port 22",
+        "Using FTP on port 21",
+        "Using HTTP on port 80"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Network and Data Security",
+      "text": "What is 'Wardriving'?",
+      "options": [
+        "Searching for unprotected wireless networks while driving in a vehicle",
+        "A type of racing game where players must hack into other cars' computers",
+        "Using a computer to control a self-driving car without the owner's consent",
+        "An military exercise used to test the security of a government's data center"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Network and Data Security",
+      "text": "Which layer of the OSI model is responsible for error-free delivery of data?",
+      "options": [
+        "Physical Layer",
+        "Data Link Layer",
+        "Transport Layer",
+        "Session Layer"
+      ],
+      "correct": 2
+    },
+    {
+      "category": "Network and Data Security",
+      "text": "What is 'IP Spoofing'?",
+      "options": [
+        "Changing the source IP address of a packet to hide the sender's identity",
+        "Using a fake name when registering a new domain name for a website",
+        "Answering a phone call and pretending to be a representative from an ISP",
+        "Creating a fake wireless access point to steal users' login information"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Network and Data Security",
+      "text": "Which protocol is used to automatically assign IP addresses to devices on a network?",
+      "options": [
+        "DNS",
+        "DHCP",
+        "SNMP",
+        "ICMP"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Network and Data Security",
+      "text": "What is a 'Honey Pot' in network security?",
+      "options": [
+        "A computer system designed to be attractive to hackers to trap them",
+        "A server that stores all of the company's most important and secret files",
+        "A special software that makes the internet connection run much faster",
+        "A device that cleans the dust out of a computer's internal components"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Network and Data Security",
+      "text": "Which of the following describes a 'Load Balancer'?",
+      "options": [
+        "A device that distributes network traffic across multiple servers",
+        "A program that checks the weight of all hardware in the server room",
+        "A security rule that limits the amount of data a user can download",
+        "A physical scale used to weigh boxes of new computer equipment"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Network and Data Security",
+      "text": "What is 'Port Scanning'?",
+      "options": [
+        "Probing a server to find which network ports are open and listening",
+        "Using a physical scanner to digitize paper documents and photos",
+        "A method of increasing the speed of a USB port using a special cable",
+        "Checking the physical condition of a network port for any damage"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Network and Data Security",
+      "text": "Which of the following is a symptom of 'ARP Spoofing' on a local network?",
+      "options": [
+        "Network traffic being redirected to the attacker's computer system",
+        "The internet speed increasing significantly for all of the users",
+        "The computer's monitor turning off and on at random intervals",
+        "All of the user's desktop icons being moved to the recycle bin"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Network and Data Security",
+      "text": "What does 'WAN' stand for?",
+      "options": [
+        "Wireless Access Network",
+        "Wide Area Network",
+        "Web Authentication Node",
+        "Work Area Notification"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security Operations and Management",
+      "text": "During an incident response process, what is the primary goal of the 'Containment' phase?",
+      "options": [
+        "To determine the original entry point used by the malicious actor",
+        "To prevent the threat from spreading further and causing more damage",
+        "To restore the affected systems to their original functional state",
+        "To identify the specific individuals responsible for the cyber attack"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security Operations and Management",
+      "text": "Which document outlines the specific roles and responsibilities of employees during a major security breach?",
+      "options": [
+        "Service Level Agreement",
+        "Incident Response Plan",
+        "Acceptable Use Policy",
+        "Business Impact Analysis"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security Operations and Management",
+      "text": "What is the main advantage of an 'Incremental Backup' strategy over a 'Full Backup' strategy?",
+      "options": [
+        "It takes significantly less time and storage space to complete the backup",
+        "It makes the data restoration process much faster and more reliable",
+        "It ensures that every file on the system is backed up every single day",
+        "It eliminates the need for any physical storage media like tapes or disks"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Security Operations and Management",
+      "text": "What is 'Forensics' in the context of cybersecurity?",
+      "options": [
+        "The process of collecting and analyzing evidence after a cyber attack",
+        "The act of predicting which company will be hacked in the near future",
+        "A method of training new employees on how to use their computers",
+        "The physical repair of a server that has been damaged by a fire"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Security Operations and Management",
+      "text": "What is a 'Business Continuity Plan' (BCP) designed to do?",
+      "options": [
+        "To ensure that an organization can continue to operate during a disaster",
+        "To help a company decide which new products to sell in the next year",
+        "To provide a list of all the employees who are eligible for a promotion",
+        "To calculate the total amount of profit a business makes every month"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Security Operations and Management",
+      "text": "Which of the following is the first step in the 'Incident Response' process?",
+      "options": [
+        "Containment",
+        "Eradication",
+        "Preparation",
+        "Recovery"
+      ],
+      "correct": 2
+    },
+    {
+      "category": "Security Operations and Management",
+      "text": "What is a 'Tabletop Exercise' in security management?",
+      "options": [
+        "A meeting where staff discuss how they would respond to a scenario",
+        "A physical test of how much weight a server rack can safely hold",
+        "A method of cleaning the desks in an office to prevent data theft",
+        "A game played by employees to learn the names of their coworkers"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Security Operations and Management",
+      "text": "What is the primary purpose of 'Patch Management'?",
+      "options": [
+        "To ensure that all software is updated with the latest security fixes",
+        "To physically repair any holes that are found in the data center walls",
+        "To manage the distribution of company-branded clothing to employees",
+        "To keep track of all the different types of cables used in the network"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Security Operations and Management",
+      "text": "What is a 'BIA' (Business Impact Analysis) used for?",
+      "options": [
+        "To identify the most critical business functions and their risks",
+        "To analyze the impact of a new advertising campaign on sales",
+        "To determine which employees should receive a bonus this year",
+        "To check the chemical composition of the office's drinking water"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Security Operations and Management",
+      "text": "What is 'Disaster Recovery' primarily focused on?",
+      "options": [
+        "The technical process of restoring systems after a major failure",
+        "Preventing a disaster from happening by using high-quality hardware",
+        "Hiring new staff members to replace those who left the company",
+        "Selling the company's assets to pay off debts after it goes bankrupt"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Security Operations and Management",
+      "text": "Which of the following describes the 'Separation of Duties' principle?",
+      "options": [
+        "Requiring more than one person to complete a sensitive task",
+        "Giving every employee their own private office with a locking door",
+        "Separating the IT department into two different buildings for safety",
+        "Ensuring that no two employees have the same job title or salary"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Security Operations and Management",
+      "text": "What is the role of a 'SIEM' (Security Information and Event Management) system?",
+      "options": [
+        "To aggregate and analyze security logs from many different sources",
+        "To automatically shut down the network if any user logs in after 5 PM",
+        "To provide a high-speed internet connection to all of the servers",
+        "To store the company's social media passwords in a secure vault"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Security Operations and Management",
+      "text": "What is an 'MTBF' (Mean Time Between Failures) rating used for?",
+      "options": [
+        "To estimate the reliability and expected life of a hardware component",
+        "To calculate the total number of times a user forgot their password",
+        "To measure the speed of an internet connection during peak hours",
+        "To determine the average length of a meeting in the IT department"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Security Operations and Management",
+      "text": "What is 'Off-site Storage' used for in a backup plan?",
+      "options": [
+        "Keeping a copy of data in a different location in case of a disaster",
+        "Storing the company's extra furniture in a rented warehouse space",
+        "Hiring a different company to manage the employee payroll system",
+        "Using a computer that is located in a different country for work"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Security Operations and Management",
+      "text": "Which of the following is a primary goal of a 'Post-Incident Review'?",
+      "options": [
+        "To identify the specific person who should be blamed and fired",
+        "To learn from the incident and improve future response procedures",
+        "To calculate the total amount of money lost during the data breach",
+        "To create a press release that hides the fact that a breach happened"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security Protocols and Threat Mitigation",
+      "text": "How does an Intrusion Prevention System (IPS) differ from an Intrusion Detection System (IDS)?",
+      "options": [
+        "An IPS only monitors traffic while an IDS can actively block suspicious packets",
+        "An IPS can actively block malicious traffic while an IDS only generates alerts",
+        "An IPS is installed on a host while an IDS is only installed on network routers",
+        "An IPS uses signatures while an IDS only uses behavior-based detection methods"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security Protocols and Threat Mitigation",
+      "text": "Which protocol is used to securely manage and configure network devices over an encrypted connection?",
+      "options": [
+        "Telnet protocol",
+        "Simple Network Management Protocol v1",
+        "Secure Shell protocol",
+        "File Transfer Protocol"
+      ],
+      "correct": 2
+    },
+    {
+      "category": "Security Protocols and Threat Mitigation",
+      "text": "In a 'Man-in-the-Middle' (MitM) attack, the adversary's primary goal is to:",
+      "options": [
+        "Crash the target server by flooding it with illegitimate traffic requests",
+        "Intercept and potentially alter communication between two unsuspecting parties",
+        "Physically steal the hard drives from the target's primary data center",
+        "Guess the administrative password of the target's wireless router device"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security Protocols and Threat Mitigation",
+      "text": "Which of the following describes 'Data Masking' as a threat mitigation technique?",
+      "options": [
+        "Encrypting a hard drive so that it cannot be read without a key",
+        "Replacing sensitive data with functional but fictional data for testing",
+        "Hiding a secret message inside a digital image file or audio clip",
+        "Deleting all temporary files and browser history to preserve privacy"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security Protocols and Threat Mitigation",
+      "text": "What is the primary purpose of a 'Vulnerability Scanner'?",
+      "options": [
+        "To identify known security weaknesses in a system or network",
+        "To automatically fix any bugs that are found in a program's code",
+        "To block all incoming traffic from countries that are known for hacking",
+        "To monitor the internet speed of every computer in the organization"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Security Protocols and Threat Mitigation",
+      "text": "Which of the following is a way to mitigate the risk of 'Phishing' attacks?",
+      "options": [
+        "Providing regular security awareness training to all employees",
+        "Installing a faster and more expensive firewall on the network",
+        "Requiring all users to use a wireless mouse instead of a wired one",
+        "Replacing all of the company's desktop computers with new laptops"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Security Protocols and Threat Mitigation",
+      "text": "What is 'Penetration Testing'?",
+      "options": [
+        "A simulated cyber attack against a system to check for vulnerabilities",
+        "A physical test of how much pressure a server's case can withstand",
+        "A method of testing the speed of a computer's processor and RAM",
+        "A way of checking if a network cable is plugged in correctly to a port"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Security Protocols and Threat Mitigation",
+      "text": "Which of the following can help mitigate 'Brute Force' attacks on user accounts?",
+      "options": [
+        "Implementing account lockout policies after several failed attempts",
+        "Allowing users to use the same password for all of their accounts",
+        "Removing the requirement for users to change their passwords often",
+        "Enabling the guest account on all of the company's workstations"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Security Protocols and Threat Mitigation",
+      "text": "What is 'Whitelisting' in the context of application security?",
+      "options": [
+        "Allowing only approved programs to run on a computer system",
+        "Blocking all programs that are known to be malicious or dangerous",
+        "Giving all users administrative access to any software they need",
+        "Installing a program that automatically cleans the computer's memory"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Security Protocols and Threat Mitigation",
+      "text": "Which protocol is used to secure communication between a web browser and a server?",
+      "options": [
+        "HTTP",
+        "HTTPS",
+        "FTP",
+        "SMTP"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security Protocols and Threat Mitigation",
+      "text": "What is 'Data Loss Prevention' (DLP) software used for?",
+      "options": [
+        "To prevent sensitive data from leaving the organization's network",
+        "To automatically backup all files to a secure cloud-based storage",
+        "To recover files that have been accidentally deleted by a user",
+        "To speed up the process of sending large files over the internet"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Security Protocols and Threat Mitigation",
+      "text": "Which of the following is a method used to mitigate 'SQL Injection' attacks?",
+      "options": [
+        "Using parameterized queries or prepared statements in the code",
+        "Increasing the size of the database server's internal memory",
+        "Requiring all database users to use a very long and complex password",
+        "Installing a new version of the web browser on all of the workstations"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Security Protocols and Threat Mitigation",
+      "text": "What is the function of a 'Web Application Firewall' (WAF)?",
+      "options": [
+        "To protect a web server from attacks like XSS and SQL injection",
+        "To block all users from visiting any website that is not for work",
+        "To speed up the loading time of a website for all of its visitors",
+        "To encrypt the data that is stored on the web server's hard drive"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Security Protocols and Threat Mitigation",
+      "text": "What is 'Antivirus' software designed to do?",
+      "options": [
+        "To detect, block, and remove malicious software from a system",
+        "To prevent a computer from catching a physical biological virus",
+        "To increase the speed of a computer by deleting old and unused files",
+        "To provide a secure connection to the internet using a virtual network"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Security Protocols and Threat Mitigation",
+      "text": "Which of the following is an example of 'Physical Security' mitigation?",
+      "options": [
+        "Using a cable lock to secure a laptop to a desk in a public office",
+        "Requiring all users to use a complex password with sixteen characters",
+        "Installing a software firewall on every computer in the organization",
+        "Updating the operating system to the latest version every single week"
+      ],
+      "correct": 0
+    }
   ]
 }
