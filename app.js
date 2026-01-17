@@ -229,9 +229,12 @@ function setupEventListeners() {
 document.addEventListener('keydown', (e) => {
     if (quizInterface && !quizInterface.classList.contains('hidden')) {
         if (e.key >= '1' && e.key <= '4') {
-            const index = parseInt(e.key, 10) - 1;
-            if (questions[currentQuestionIndex] && index < questions[currentQuestionIndex].options.length) {
-                selectAnswer(index);
+            const position = parseInt(e.key, 10) - 1; // 0-3 for positions 1-4
+            const buttons = optionsContainer.children;
+            if (position < buttons.length) {
+                // Get the original index from the button at this visual position
+                const originalIdx = parseInt(buttons[position].dataset.originalIdx);
+                selectAnswer(originalIdx);
             }
         }
         if (e.key === 'Enter') {
@@ -478,6 +481,10 @@ function renderQuestion() {
         const opt = q.options[originalIdx];
         const btn = document.createElement('button');
         btn.className = "w-full text-left p-4 sm:p-5 rounded-xl border-2 border-slate-100 hover:border-blue-400 hover:bg-blue-50/50 transition-all flex items-center group outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 relative overflow-hidden";
+        
+        // Store the shuffled position for later reference
+        btn.dataset.shuffledIdx = shuffledIdx;
+        btn.dataset.originalIdx = originalIdx;
 
         if (userAnswers[currentQuestionIndex] === originalIdx) {
             btn.classList.add('border-blue-600', 'bg-blue-50', 'ring-1', 'ring-blue-200');
@@ -514,16 +521,8 @@ function selectAnswer(index) {
     for (let i = 0; i < buttons.length; i++) {
         const btn = buttons[i];
         const indicator = btn.querySelector('div');
-        const opt = questions[currentQuestionIndex].options;
-        
-        // Get the original index from this button by checking which option it contains
-        let originalIdx = null;
-        for (let j = 0; j < opt.length; j++) {
-            if (btn.textContent.includes(opt[j])) {
-                originalIdx = j;
-                break;
-            }
-        }
+        const originalIdx = parseInt(btn.dataset.originalIdx);
+        const shuffledIdx = parseInt(btn.dataset.shuffledIdx);
 
         if (originalIdx === index) {
             btn.classList.add('border-blue-600', 'bg-blue-50', 'ring-1', 'ring-blue-200');
@@ -532,12 +531,8 @@ function selectAnswer(index) {
         } else {
             btn.classList.remove('border-blue-600', 'bg-blue-50', 'ring-1', 'ring-blue-200');
             btn.classList.add('border-slate-100');
-            // Show position number
-            let posNum = 1;
-            for (let j = 0; j < i; j++) {
-                posNum++;
-            }
-            indicator.innerHTML = (i + 1);
+            // Show the correct shuffled position number
+            indicator.innerHTML = (shuffledIdx + 1);
         }
     }
 }
