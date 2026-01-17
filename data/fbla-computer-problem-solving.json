@@ -1,0 +1,1647 @@
+{
+  "id": "fbla-cps-comprehensive-2026",
+  "title": "FBLA Computer Problem Solving Comprehensive Practice",
+  "description": "150 updated questions aligned with the 2025-2026 Competitive Events Guidelines.",
+  "timeLimitSeconds": 3000,
+  "questions": [
+    {
+      "category": "Operating Systems",
+      "text": "Which Windows 11 feature allows users to organize open applications into separate desktop environments for better productivity?",
+      "options": [
+        "Multiple Virtual Desktops",
+        "Snap Layouts and Groups",
+        "Task View Grid Manager",
+        "Desktop Activity Center"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Operating Systems",
+      "text": "What is the primary purpose of the 'chmod' command when managing files within a Linux-based terminal environment?",
+      "options": [
+        "To modify the owner and group of a file",
+        "To change the read, write, and execute permissions",
+        "To move files between different directory paths",
+        "To delete hidden system configuration files"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Operating Systems",
+      "text": "When a Windows system encounters a 'Stop Error' (BSOD), which of the following is the most effective initial troubleshooting step?",
+      "options": [
+        "Immediately performing a clean installation of the OS",
+        "Replacing the primary system motherboard and CPU",
+        "Recording the specific error code provided on the screen",
+        "Updating all peripheral device drivers simultaneously"
+      ],
+      "correct": 2
+    },
+    {
+      "category": "Operating Systems",
+      "text": "Which file system is required to support volumes larger than 32GB and individual files larger than 4GB on modern Windows systems?",
+      "options": [
+        "File Allocation Table (FAT32)",
+        "Extended File Allocation Table (exFAT)",
+        "New Technology File System (NTFS)",
+        "Hierarchical File System Plus (HFS+)"
+      ],
+      "correct": 2
+    },
+    {
+      "category": "Operating Systems",
+      "text": "Which macOS utility is specifically designed to manage passwords, certificates, and secure notes across the operating system?",
+      "options": [
+        "iCloud Drive Synchronization",
+        "Keychain Access Utility",
+        "Security and Privacy Pane",
+        "FileVault Encryption Tool"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Operating Systems",
+      "text": "In a 64-bit operating system, what is the theoretical maximum amount of RAM that can be addressed by the processor?",
+      "options": [
+        "Approximately 4 gigabytes",
+        "Approximately 16 gigabytes",
+        "Approximately 1 terabyte",
+        "Approximately 16 exabytes"
+      ],
+      "correct": 3
+    },
+    {
+      "category": "Operating Systems",
+      "text": "Which command-line tool in Windows provides detailed information about the system's DirectX components and drivers?",
+      "options": [
+        "msinfo32.exe",
+        "dxdiag.exe",
+        "systeminfo.com",
+        "devmgmt.msc"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Operating Systems",
+      "text": "What is the function of the 'Page File' (pagefile.sys) within the Windows memory management architecture?",
+      "options": [
+        "Storing temporary internet browser cache files",
+        "Acting as virtual memory to extend physical RAM",
+        "Indexing files for faster search results locally",
+        "Recording system event logs for administrative review"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Operating Systems",
+      "text": "Which of the following is a key characteristic of an 'Open Source' operating system like Ubuntu Linux?",
+      "options": [
+        "The software is provided for free but cannot be modified",
+        "The source code is publicly available for modification",
+        "Technical support is provided exclusively by the manufacturer",
+        "Proprietary drivers are required for all hardware components"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Operating Systems",
+      "text": "Which Windows administrative tool is used to manage hard drives, including creating partitions and formatting volumes?",
+      "options": [
+        "Device Manager",
+        "Disk Management",
+        "System Configuration",
+        "Performance Monitor"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Operating Systems",
+      "text": "What does the 'SFC /scannow' command accomplish when executed in an elevated Command Prompt window?",
+      "options": [
+        "Scans for malware and viruses in the boot sector",
+        "Checks and repairs corrupted Windows system files",
+        "Analyzes the hard drive for physical sector errors",
+        "Optimizes the system registry for faster boot times"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Operating Systems",
+      "text": "Which of the following describes a 'distro' in the context of the Linux operating system?",
+      "options": [
+        "A specific hardware driver for peripheral devices",
+        "A version of the OS bundled with software and tools",
+        "A specialized command for distributing system updates",
+        "A network protocol used for file sharing between nodes"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Operating Systems",
+      "text": "Which registry hive contains configuration information specific to the currently logged-in user?",
+      "options": [
+        "HKEY_LOCAL_MACHINE",
+        "HKEY_CURRENT_USER",
+        "HKEY_CLASSES_ROOT",
+        "HKEY_CURRENT_CONFIG"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Operating Systems",
+      "text": "What is the purpose of the 'Safe Mode' boot option in the Windows operating system?",
+      "options": [
+        "To run the OS with the highest possible security settings",
+        "To start the system with only essential drivers and services",
+        "To bypass the user login screen for administrative access",
+        "To disable all network connections for offline work"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Operating Systems",
+      "text": "Which tool allows a user to automate the execution of programs or scripts at specific times or intervals?",
+      "options": [
+        "Service Manager",
+        "Task Scheduler",
+        "Event Viewer",
+        "Resource Monitor"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Operating Systems",
+      "text": "Which file extension is commonly associated with an executable installation package on a macOS system?",
+      "options": [
+        ".exe",
+        ".msi",
+        ".dmg",
+        ".deb"
+      ],
+      "correct": 2
+    },
+    {
+      "category": "Operating Systems",
+      "text": "What is the primary function of the 'Kernel' in a modern operating system?",
+      "options": [
+        "Providing the graphical user interface for the user",
+        "Managing communication between hardware and software",
+        "Connecting the computer to local and wide area networks",
+        "Editing the system registry and configuration files"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Operating Systems",
+      "text": "Which Windows feature uses a small amount of flash memory to improve system performance by caching disk data?",
+      "options": [
+        "ReadyBoost",
+        "QuickLaunch",
+        "BitLocker",
+        "Hyper-V"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Operating Systems",
+      "text": "In Linux, which directory typically stores global system configuration files?",
+      "options": [
+        "/bin",
+        "/etc",
+        "/usr",
+        "/var"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Operating Systems",
+      "text": "What is the purpose of the 'msconfig' utility in Windows?",
+      "options": [
+        "To manage hardware drivers and resource conflicts",
+        "To troubleshoot the system startup and boot process",
+        "To edit the binary data within the system registry",
+        "To monitor real-time CPU and memory utilization"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Operating Systems",
+      "text": "Which Windows 11 feature allows users to run Android applications directly on the desktop?",
+      "options": [
+        "Windows Subsystem for Linux (WSL)",
+        "Windows Subsystem for Android (WSA)",
+        "Android Desktop Integration (ADI)",
+        "Google Play Services for Windows (GPS)"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Operating Systems",
+      "text": "Which command would you use in a Linux terminal to display the current working directory path?",
+      "options": [
+        "dir",
+        "ls",
+        "pwd",
+        "cd"
+      ],
+      "correct": 2
+    },
+    {
+      "category": "Operating Systems",
+      "text": "What is the default browser included with Windows 11 based on the Chromium engine?",
+      "options": [
+        "Internet Explorer",
+        "Microsoft Edge",
+        "Google Chrome",
+        "Mozilla Firefox"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Operating Systems",
+      "text": "Which of the following describes a 'Clean Install' of an operating system?",
+      "options": [
+        "Installing the OS over an existing version while keeping files",
+        "Installing the OS on a freshly formatted drive or partition",
+        "Using a recovery partition to reset the OS to factory defaults",
+        "Running the OS from a live USB drive without installation"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Operating Systems",
+      "text": "Which tool in macOS is used to create backups of the entire system on an external drive?",
+      "options": [
+        "Migration Assistant",
+        "Time Machine",
+        "Disk Utility",
+        "AirDrop"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Operating Systems",
+      "text": "What is the function of the 'root' user account in a Linux operating system?",
+      "options": [
+        "A guest account with limited access to system folders",
+        "The superuser account with full administrative access",
+        "The default account created for basic office productivity",
+        "A hidden account used only for remote network access"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Operating Systems",
+      "text": "Which Windows feature provides a consistent way to manage various management consoles via a single interface?",
+      "options": [
+        "Control Panel",
+        "Microsoft Management Console (MMC)",
+        "Windows Settings App",
+        "Administrative Tools Folder"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Operating Systems",
+      "text": "What happens when you 'End Task' for a non-responsive application in the Windows Task Manager?",
+      "options": [
+        "The computer immediately restarts to clear the error",
+        "The OS terminates the process and clears its memory",
+        "The application is uninstalled to prevent future issues",
+        "The application is put into a suspended sleep state"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Operating Systems",
+      "text": "Which tool would you use to view the history of system errors, warnings, and information messages?",
+      "options": [
+        "Resource Monitor",
+        "Event Viewer",
+        "Performance Monitor",
+        "Reliability Monitor"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Operating Systems",
+      "text": "What is the primary difference between a 'Workgroup' and a 'Domain' in Windows networking?",
+      "options": [
+        "Workgroups require a server; Domains are peer-to-peer",
+        "Domains use centralized administration via Active Directory",
+        "Workgroups support up to 100 users; Domains support only 10",
+        "Domains are used for home networking; Workgroups for business"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Operating Systems",
+      "text": "Which command is used to terminate a running process in a Linux environment?",
+      "options": [
+        "stop",
+        "kill",
+        "end",
+        "exit"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Operating Systems",
+      "text": "Which utility allows you to see exactly which files a process is accessing in real-time?",
+      "options": [
+        "Task Manager",
+        "Resource Monitor",
+        "Device Manager",
+        "System Information"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Operating Systems",
+      "text": "What is the purpose of 'Windows Update' in maintaining an operating system?",
+      "options": [
+        "To upgrade the hardware components of the PC automatically",
+        "To deliver security patches and software improvements",
+        "To back up user data to the Microsoft cloud services",
+        "To clear temporary files and speed up the hard drive"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Operating Systems",
+      "text": "Which of the following is a symptom of a 'Memory Leak' in an operating system?",
+      "options": [
+        "The hard drive runs out of physical storage space",
+        "An application consumes more RAM over time without releasing it",
+        "The computer loses power suddenly during high-intensity tasks",
+        "The monitor flickers and displays distorted graphical images"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Operating Systems",
+      "text": "Which Linux command displays a real-time, dynamic view of running system processes?",
+      "options": [
+        "ps",
+        "top",
+        "list",
+        "proc"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Operating Systems",
+      "text": "Which feature in Windows allows a user to return the computer's system files to an earlier point in time?",
+      "options": [
+        "System Restore",
+        "Disk Cleanup",
+        "File History",
+        "Backup and Restore"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Operating Systems",
+      "text": "What is the maximum file size supported by the FAT32 file system?",
+      "options": [
+        "2 GB",
+        "4 GB",
+        "32 GB",
+        "2 TB"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Operating Systems",
+      "text": "Which file system is native to macOS for SSD-based computers?",
+      "options": [
+        "HFS+",
+        "APFS",
+        "NTFS",
+        "ext4"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Networks",
+      "text": "Which of the following network devices operates primarily at Layer 3 of the OSI Model to direct traffic between different networks?",
+      "options": [
+        "Network Hub",
+        "Ethernet Switch",
+        "Network Router",
+        "Wireless Bridge"
+      ],
+      "correct": 2
+    },
+    {
+      "category": "Networks",
+      "text": "What is the primary function of the Domain Name System (DNS) on the internet?",
+      "options": [
+        "Encrypting data packets during transmission",
+        "Translating human-readable names to IP addresses",
+        "Assigning dynamic IP addresses to local clients",
+        "Filtering malicious traffic before it enters a LAN"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Networks",
+      "text": "Which protocol is used by a client to automatically obtain an IP address, subnet mask, and default gateway from a server?",
+      "options": [
+        "DNS (Domain Name System)",
+        "DHCP (Dynamic Host Configuration Protocol)",
+        "HTTP (Hypertext Transfer Protocol)",
+        "SMTP (Simple Mail Transfer Protocol)"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Networks",
+      "text": "Which of the following IP addresses is considered a private address within a Class C network range?",
+      "options": [
+        "10.0.0.1",
+        "172.16.0.5",
+        "192.168.1.50",
+        "224.0.0.1"
+      ],
+      "correct": 2
+    },
+    {
+      "category": "Networks",
+      "text": "What is the purpose of a Subnet Mask in TCP/IP networking?",
+      "options": [
+        "To hide the IP address from unauthorized external users",
+        "To distinguish the network portion from the host portion",
+        "To identify the physical MAC address of the device",
+        "To route traffic between two different geographical areas"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Networks",
+      "text": "Which command-line tool is used to test the connectivity between two devices by sending ICMP Echo Request packets?",
+      "options": [
+        "ipconfig",
+        "tracert",
+        "ping",
+        "nslookup"
+      ],
+      "correct": 2
+    },
+    {
+      "category": "Networks",
+      "text": "Which wireless security standard provides the strongest encryption and is currently the industry standard?",
+      "options": [
+        "WEP (Wired Equivalent Privacy)",
+        "WPA (Wi-Fi Protected Access)",
+        "WPA2 (Wi-Fi Protected Access 2)",
+        "WPA3 (Wi-Fi Protected Access 3)"
+      ],
+      "correct": 3
+    },
+    {
+      "category": "Networks",
+      "text": "What is the function of the 'Default Gateway' in a small home or office network configuration?",
+      "options": [
+        "Providing the wireless signal for mobile devices",
+        "Routing traffic from the local network to the internet",
+        "Storing locally cached copies of frequently visited sites",
+        "Assigning MAC addresses to newly connected hardware"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Networks",
+      "text": "Which network topology connects all devices to a single central cable, which is terminated at both ends?",
+      "options": [
+        "Star Topology",
+        "Ring Topology",
+        "Bus Topology",
+        "Mesh Topology"
+      ],
+      "correct": 2
+    },
+    {
+      "category": "Networks",
+      "text": "What is the primary advantage of using Fiber Optic cabling over standard Twisted Pair (Copper) cabling?",
+      "options": [
+        "Lower cost of installation and maintenance",
+        "Greater resistance to electromagnetic interference",
+        "Easier termination of connectors in the field",
+        "Higher power delivery via Power over Ethernet"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Networks",
+      "text": "Which port number is standard for the Hypertext Transfer Protocol Secure (HTTPS)?",
+      "options": [
+        "21",
+        "80",
+        "443",
+        "3389"
+      ],
+      "correct": 2
+    },
+    {
+      "category": "Networks",
+      "text": "Which device is used to connect multiple computers within a local area network (LAN) by using MAC addresses to forward data?",
+      "options": [
+        "Network Switch",
+        "Network Hub",
+        "Network Router",
+        "Modem"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Networks",
+      "text": "What does an IP address starting with 169.254.x.x typically indicate about a computer's network status?",
+      "options": [
+        "The computer is successfully connected to the internet",
+        "The computer has assigned itself an APIPA address",
+        "The computer is connected to a secure VPN tunnel",
+        "The computer has a manual static IP address assigned"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Networks",
+      "text": "Which protocol is primarily used for sending email messages from a client to a server?",
+      "options": [
+        "POP3",
+        "IMAP",
+        "SMTP",
+        "SNMP"
+      ],
+      "correct": 2
+    },
+    {
+      "category": "Networks",
+      "text": "Which layer of the OSI model is responsible for establishing, managing, and terminating sessions between applications?",
+      "options": [
+        "Transport Layer",
+        "Session Layer",
+        "Network Layer",
+        "Data Link Layer"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Networks",
+      "text": "Which of the following identifies a unique physical address assigned to a network interface controller (NIC)?",
+      "options": [
+        "IP Address",
+        "MAC Address",
+        "DNS Address",
+        "Subnet Mask"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Networks",
+      "text": "What is the purpose of the 'tracert' (Trace Route) command-line utility?",
+      "options": [
+        "To determine the path a packet takes to reach a destination",
+        "To find the geographical location of an IP address",
+        "To change the DNS server settings of the local host",
+        "To speed up the connection to a remote web server"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Networks",
+      "text": "Which of the following wireless frequencies provides faster data rates but has a shorter effective range and less wall penetration?",
+      "options": [
+        "2.4 GHz",
+        "5 GHz",
+        "900 MHz",
+        "60 MHz"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Networks",
+      "text": "What is 'Latencey' in the context of computer networking?",
+      "options": [
+        "The total amount of data transferred per second",
+        "The time delay for data to travel from source to destination",
+        "The physical length of the network cable used",
+        "The number of devices connected to a single access point"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Networks",
+      "text": "Which protocol is used to securely log into and manage a remote server via a command-line interface?",
+      "options": [
+        "Telnet",
+        "SSH (Secure Shell)",
+        "FTP (File Transfer Protocol)",
+        "RDP (Remote Desktop Protocol)"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Networks",
+      "text": "What is the function of a Firewall on a network?",
+      "options": [
+        "To increase the speed of the internet connection",
+        "To monitor and filter incoming and outgoing traffic",
+        "To provide power to network devices through cables",
+        "To translate web addresses into binary code"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Networks",
+      "text": "Which of the following is a characteristic of the UDP (User Datagram Protocol) compared to TCP?",
+      "options": [
+        "It provides guaranteed delivery of all packets",
+        "It is connectionless and does not require a handshake",
+        "It automatically retransmits any lost data packets",
+        "It uses a larger header to ensure data integrity"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Networks",
+      "text": "Which type of network spans a large geographical area, such as a city, country, or the entire world?",
+      "options": [
+        "LAN (Local Area Network)",
+        "PAN (Personal Area Network)",
+        "WAN (Wide Area Network)",
+        "WLAN (Wireless Local Area Network)"
+      ],
+      "correct": 2
+    },
+    {
+      "category": "Networks",
+      "text": "What does 'Full Duplex' communication mean in networking?",
+      "options": [
+        "Data can only be sent in one direction at a time",
+        "Data can be sent and received simultaneously",
+        "Data is broadcast to all devices on the network",
+        "Data is encrypted using two different security keys"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Networks",
+      "text": "Which cable type is most commonly used for Gigabit Ethernet in a modern office environment?",
+      "options": [
+        "Cat 3",
+        "Cat 5",
+        "Cat 6",
+        "RG-6"
+      ],
+      "correct": 2
+    },
+    {
+      "category": "Networks",
+      "text": "What is the purpose of Port Forwarding on a router?",
+      "options": [
+        "To change the MAC address of a local computer",
+        "To direct external traffic to a specific internal device",
+        "To block all traffic from a specific country or region",
+        "To allow multiple routers to share a single IP address"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Networks",
+      "text": "Which layer of the OSI model does a Hub primarily operate at?",
+      "options": [
+        "Physical Layer",
+        "Data Link Layer",
+        "Network Layer",
+        "Transport Layer"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Networks",
+      "text": "What is the standard length of an IPv6 address?",
+      "options": [
+        "32 bits",
+        "64 bits",
+        "128 bits",
+        "256 bits"
+      ],
+      "correct": 2
+    },
+    {
+      "category": "Networks",
+      "text": "Which network service translates private internal IP addresses to a public external IP address?",
+      "options": [
+        "DNS",
+        "NAT (Network Address Translation)",
+        "DHCP",
+        "WINS"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Networks",
+      "text": "What is the maximum length of a standard Ethernet cable (Cat 5e/6) before a repeater or switch is required?",
+      "options": [
+        "50 meters",
+        "100 meters",
+        "250 meters",
+        "500 meters"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Computer Hardware",
+      "text": "Which component is considered the 'brain' of the computer, responsible for executing instructions and processing data?",
+      "options": [
+        "Motherboard",
+        "Central Processing Unit (CPU)",
+        "Random Access Memory (RAM)",
+        "Hard Disk Drive (HDD)"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Computer Hardware",
+      "text": "Which type of memory is 'volatile,' meaning its contents are lost when the power is turned off?",
+      "options": [
+        "ROM (Read-Only Memory)",
+        "RAM (Random Access Memory)",
+        "SSD (Solid State Drive)",
+        "Flash Memory"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Computer Hardware",
+      "text": "Which power supply connector is primarily used to provide power to modern high-end graphics cards (GPUs)?",
+      "options": [
+        "SATA Power Connector",
+        "4-pin Molex Connector",
+        "PCIe 6/8-pin Connector",
+        "24-pin ATX Connector"
+      ],
+      "correct": 2
+    },
+    {
+      "category": "Computer Hardware",
+      "text": "What is the main advantage of a Solid State Drive (SSD) over a traditional Hard Disk Drive (HDD)?",
+      "options": [
+        "Higher storage capacity for a lower price per GB",
+        "Faster data access speeds and better durability",
+        "Compatible with older IDE/PATA interfaces",
+        "Requires less sophisticated cooling systems"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Computer Hardware",
+      "text": "Which expansion slot on a motherboard is most commonly used for modern video cards due to its high bandwidth?",
+      "options": [
+        "PCI (Peripheral Component Interconnect)",
+        "AGP (Accelerated Graphics Port)",
+        "PCI Express (PCIe) x16",
+        "PCI Express (PCIe) x1"
+      ],
+      "correct": 2
+    },
+    {
+      "category": "Computer Hardware",
+      "text": "What is the primary function of the BIOS/UEFI on a computer system?",
+      "options": [
+        "To manage user files and directory structures",
+        "To initialize and test hardware during the boot process",
+        "To provide high-speed networking capabilities",
+        "To perform complex mathematical calculations for the CPU"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Computer Hardware",
+      "text": "Which component is used to dissipate heat from the CPU using a metal structure and a fan?",
+      "options": [
+        "Thermal Paste",
+        "Heat Sink",
+        "Power Supply",
+        "Southbridge"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Computer Hardware",
+      "text": "Which interface is used to connect an internal SSD directly to the motherboard via a small, flat slot for maximum speed?",
+      "options": [
+        "SATA III",
+        "M.2 NVMe",
+        "USB-C",
+        "FireWire"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Computer Hardware",
+      "text": "What does 'Overclocking' a CPU refer to?",
+      "options": [
+        "Increasing the clock speed beyond the factory rating",
+        "Installing multiple processors on a single motherboard",
+        "Reducing the power consumption to save energy",
+        "Synchronizing the system clock with an internet server"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Computer Hardware",
+      "text": "Which type of RAM is typically used in laptop computers due to its smaller physical size?",
+      "options": [
+        "DIMM",
+        "SO-DIMM",
+        "ECC RAM",
+        "VRAM"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Computer Hardware",
+      "text": "What is the purpose of the 'CMOS Battery' on a computer motherboard?",
+      "options": [
+        "To provide emergency power for the entire computer",
+        "To maintain the BIOS settings and system clock",
+        "To speed up the charging of mobile peripheral devices",
+        "To power the cooling fans when the PC is in sleep mode"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Computer Hardware",
+      "text": "Which video connector type is capable of carrying both high-definition video and multi-channel audio signals?",
+      "options": [
+        "VGA (Video Graphics Array)",
+        "DVI (Digital Visual Interface)",
+        "HDMI (High-Definition Multimedia Interface)",
+        "S-Video"
+      ],
+      "correct": 2
+    },
+    {
+      "category": "Computer Hardware",
+      "text": "What is the function of the Northbridge chipset on older motherboards?",
+      "options": [
+        "Managing low-speed peripherals like keyboards and mice",
+        "Controlling communication between the CPU and RAM",
+        "Providing power to the internal hard disk drives",
+        "Handling the audio and network interface functions"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Computer Hardware",
+      "text": "Which level of CPU cache is the smallest, fastest, and located closest to the processor cores?",
+      "options": [
+        "L1 Cache",
+        "L2 Cache",
+        "L3 Cache",
+        "System RAM"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Computer Hardware",
+      "text": "What is the purpose of 'ECC' (Error Correction Code) memory?",
+      "options": [
+        "To increase the speed of data transfers in gaming PCs",
+        "To detect and correct common types of internal data corruption",
+        "To allow memory to work even if a RAM module is missing",
+        "To encrypt the data stored in RAM for better security"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Computer Hardware",
+      "text": "Which standard defines the physical dimensions and mounting points for computer motherboards and cases?",
+      "options": [
+        "CPU Socket Type",
+        "Form Factor (e.g., ATX, Micro-ATX)",
+        "Bus Architecture",
+        "Chipset Model"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Computer Hardware",
+      "text": "What is the primary purpose of applying thermal paste between the CPU and the heat sink?",
+      "options": [
+        "To glue the heat sink permanently to the CPU",
+        "To fill microscopic air gaps and improve heat transfer",
+        "To protect the CPU pins from bending during installation",
+        "To provide electrical insulation between components"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Computer Hardware",
+      "text": "Which of the following is an example of an 'Output Device'?",
+      "options": [
+        "Keyboard",
+        "Webcam",
+        "Monitor",
+        "Microphone"
+      ],
+      "correct": 2
+    },
+    {
+      "category": "Computer Hardware",
+      "text": "Which storage technology uses mirrored drives to provide data redundancy, ensuring no data is lost if one drive fails?",
+      "options": [
+        "RAID 0",
+        "RAID 1",
+        "RAID 5",
+        "RAID 10"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Computer Hardware",
+      "text": "What does 'S.M.A.R.T.' stand for in the context of hard drive technology?",
+      "options": [
+        "System Management and Recovery Tool",
+        "Self-Monitoring, Analysis, and Reporting Technology",
+        "Static Memory and Real-time Transfer",
+        "Secure Monitoring and Remote Testing"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Computer Hardware",
+      "text": "Which port type is most commonly used for connecting mice, keyboards, and external drives today?",
+      "options": [
+        "Serial Port",
+        "Parallel Port",
+        "USB (Universal Serial Bus)",
+        "PS/2 Port"
+      ],
+      "correct": 2
+    },
+    {
+      "category": "Computer Hardware",
+      "text": "What is the function of the 'Power Supply Unit' (PSU) in a computer?",
+      "options": [
+        "To store electrical energy for use during power outages",
+        "To convert AC power from the wall into DC power for the PC",
+        "To regulate the temperature of the internal components",
+        "To amplify the audio signal sent to the speakers"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Computer Hardware",
+      "text": "Which component is responsible for generating the images displayed on the monitor?",
+      "options": [
+        "CPU",
+        "RAM",
+        "GPU (Graphics Processing Unit)",
+        "Sound Card"
+      ],
+      "correct": 2
+    },
+    {
+      "category": "Computer Hardware",
+      "text": "What is the purpose of the 'Reset Button' on a computer case?",
+      "options": [
+        "To clear the hard drive of all user data",
+        "To force a hardware reboot without cutting power",
+        "To return the BIOS settings to factory defaults",
+        "To log the current user out of the operating system"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Computer Hardware",
+      "text": "Which of the following is a symptom of a failing Power Supply Unit?",
+      "options": [
+        "The computer displays a 'No Operating System Found' error",
+        "The system randomly reboots or shuts down under load",
+        "The mouse cursor moves slowly or lags across the screen",
+        "The monitor displays 'No Signal' while the PC is on"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Computer Hardware",
+      "text": "What does the 'Wattage' rating of a Power Supply indicate?",
+      "options": [
+        "The physical size and weight of the PSU unit",
+        "The maximum power the unit can deliver to components",
+        "The speed at which the internal cooling fan spins",
+        "The number of devices that can be connected via USB"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Computer Hardware",
+      "text": "Which interface is used to connect a monitor using a 15-pin, D-shaped blue connector?",
+      "options": [
+        "HDMI",
+        "DisplayPort",
+        "VGA",
+        "DVI"
+      ],
+      "correct": 2
+    },
+    {
+      "category": "Computer Hardware",
+      "text": "What is 'Hyper-Threading' technology in Intel CPUs?",
+      "options": [
+        "A way to combine two physical CPUs into one socket",
+        "Allowing a single core to execute two threads at once",
+        "An automatic method for cleaning the CPU's cache",
+        "A feature that increases the voltage for more speed"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Computer Hardware",
+      "text": "Which hardware device is used to protect a computer from power surges and provide temporary power during a blackout?",
+      "options": [
+        "Surge Protector",
+        "Uninterruptible Power Supply (UPS)",
+        "Power Inverter",
+        "Voltage Regulator"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security",
+      "text": "Which type of malware is designed to encrypt a user's files and demand payment for the decryption key?",
+      "options": [
+        "Spyware",
+        "Adware",
+        "Ransomware",
+        "Rootkit"
+      ],
+      "correct": 2
+    },
+    {
+      "category": "Security",
+      "text": "What is 'Phishing' in the context of cybersecurity?",
+      "options": [
+        "Attempting to crash a server by flooding it with traffic",
+        "Using deceptive emails to steal sensitive information",
+        "Installing hidden software to track a user's keystrokes",
+        "Gaining physical access to a secure server room"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security",
+      "text": "Which of the following is an example of 'Multi-Factor Authentication' (MFA)?",
+      "options": [
+        "Using a long password with symbols and numbers",
+        "Using both a password and a code from a mobile app",
+        "Using two different passwords for the same account",
+        "Sharing your password with a trusted administrator"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security",
+      "text": "What is the primary purpose of a 'VPN' (Virtual Private Network)?",
+      "options": [
+        "To increase the speed of the local internet connection",
+        "To create a secure, encrypted tunnel over a public network",
+        "To block all advertisements while browsing the web",
+        "To provide a free internet connection in public places"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security",
+      "text": "Which of the following describes 'Social Engineering'?",
+      "options": [
+        "Writing code that exploits a vulnerability in a browser",
+        "Manipulating people into giving up confidential info",
+        "Setting up a network of computers to perform tasks",
+        "Designing a website to be more user-friendly"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security",
+      "text": "What is a 'Trojan Horse' in computer security?",
+      "options": [
+        "A virus that replicates itself across an entire network",
+        "Malicious software disguised as a legitimate program",
+        "An attack that tries every possible password combination",
+        "A hardware device that monitors network traffic"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security",
+      "text": "Which security measure involves converting data into an unreadable format that can only be reversed with a key?",
+      "options": [
+        "Authentication",
+        "Authorization",
+        "Encryption",
+        "Accounting"
+      ],
+      "correct": 2
+    },
+    {
+      "category": "Security",
+      "text": "What is a 'Brute Force' attack?",
+      "options": [
+        "Using physical force to gain access to a computer",
+        "Attempting to crack a password by trying every possibility",
+        "Sending a large amount of spam to a single email address",
+        "Stealing a computer and selling it for parts"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security",
+      "text": "Which of the following is a characteristic of a 'Strong Password'?",
+      "options": [
+        "It contains the user's name or date of birth",
+        "It uses a mix of uppercase, lowercase, numbers, and symbols",
+        "It is exactly eight characters long and all lowercase",
+        "It is a common word found in the dictionary"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security",
+      "text": "What is the function of 'Antivirus' software?",
+      "options": [
+        "To speed up the computer's processing power",
+        "To detect, quarantine, and remove malicious software",
+        "To provide a backup of the user's personal files",
+        "To manage the network connections of the PC"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security",
+      "text": "Which of the following describes 'Shoulder Surfing'?",
+      "options": [
+        "Looking over someone's shoulder to see their password",
+        "Connecting to an unsecured public Wi-Fi network",
+        "Using a computer while standing up at a desk",
+        "Interposing a device between a user and a server"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Security",
+      "text": "What is a 'Firewall' designed to do?",
+      "options": [
+        "Extinguish physical fires in the server room",
+        "Filter network traffic based on security rules",
+        "Scan downloaded files for potential viruses",
+        "Update the operating system automatically"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security",
+      "text": "Which type of malware records every key pressed by the user to steal credentials?",
+      "options": [
+        "Keylogger",
+        "Logic Bomb",
+        "Worm",
+        "Rootkit"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Security",
+      "text": "What is 'Tailgating' in a physical security context?",
+      "options": [
+        "Working on a computer while sitting in a car",
+        "Following an authorized person into a secure area",
+        "Installing software on multiple computers at once",
+        "Leaving a computer unattended while logged in"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security",
+      "text": "What does 'HTTPS' indicate when seen in a browser's address bar?",
+      "options": [
+        "The website is faster than a standard site",
+        "The connection to the website is encrypted",
+        "The website is owned by a verified government",
+        "The website is free to use and has no ads"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security",
+      "text": "Which of the following is a 'Zero-Day' vulnerability?",
+      "options": [
+        "A security flaw that has existed for over a year",
+        "A flaw that is unknown to the software developer",
+        "A vulnerability that only affects mobile devices",
+        "A password that must be changed every 24 hours"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security",
+      "text": "What is the purpose of 'Data Sanitization'?",
+      "options": [
+        "Cleaning the dust off of physical hard drives",
+        "Permanently removing data so it cannot be recovered",
+        "Organizing files into folders for easier access",
+        "Compressing files to save space on the disk"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security",
+      "text": "Which type of attack involves redirecting a user from a legitimate website to a fake one by poisoning DNS records?",
+      "options": [
+        "Phishing",
+        "Pharming",
+        "Whaling",
+        "Vishing"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security",
+      "text": "What is a 'Rootkit'?",
+      "options": [
+        "A set of tools used to repair a broken OS",
+        "Malware that gains high-level system access while hiding",
+        "A physical device used to lock a computer to a desk",
+        "The initial set of files needed to boot a computer"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security",
+      "text": "Which principle suggests that users should only have the minimum level of access necessary for their job?",
+      "options": [
+        "Principle of Maximum Access",
+        "Principle of Least Privilege",
+        "Principle of Open Security",
+        "Principle of Role Redundancy"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security",
+      "text": "What is a 'Spyware' program?",
+      "options": [
+        "Software that helps users find the best deals online",
+        "Software that secretly monitors user activity",
+        "Software that protects the PC from hackers",
+        "Software used by the government to track criminals"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Security",
+      "text": "Which of the following describes 'Bio-metrics'?",
+      "options": [
+        "Using physical characteristics like fingerprints for auth",
+        "Measuring the electrical usage of a computer system",
+        "Calculating the lifespan of hardware components",
+        "Studying the impact of computers on human health"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Security",
+      "text": "What is a 'Man-in-the-Middle' (MitM) attack?",
+      "options": [
+        "An attacker sitting between two users in an office",
+        "An attacker intercepting communication between two parties",
+        "A server that is located between two different networks",
+        "A software bug that causes a delay in data transfer"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Laptops, Tablets, and Mobile Devices",
+      "text": "Which type of screen technology is commonly used in mobile devices because it doesn't require a backlight and can produce true blacks?",
+      "options": [
+        "LCD (Liquid Crystal Display)",
+        "OLED (Organic Light Emitting Diode)",
+        "LED-backlit LCD",
+        "Plasma Display"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Laptops, Tablets, and Mobile Devices",
+      "text": "What is the primary purpose of the 'Digitizer' in a tablet or smartphone?",
+      "options": [
+        "To convert analog audio signals into digital data",
+        "To translate touch input into digital signals",
+        "To improve the resolution of the built-in camera",
+        "To encrypt the data stored on the internal flash chip"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Laptops, Tablets, and Mobile Devices",
+      "text": "Which component in a laptop is responsible for converting DC power from the battery into AC power for the CCFL backlight?",
+      "options": [
+        "Inverter",
+        "Transformer",
+        "Rectifier",
+        "Capacitor"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Laptops, Tablets, and Mobile Devices",
+      "text": "Which of the following is a common symptom of a failing laptop battery?",
+      "options": [
+        "The screen becomes excessively bright",
+        "The laptop shuts down immediately when unplugged",
+        "The keys on the keyboard begin to stick",
+        "The Wi-Fi connection drops frequently"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Laptops, Tablets, and Mobile Devices",
+      "text": "What is the function of the 'Fn' (Function) key on a laptop keyboard?",
+      "options": [
+        "To perform a 'Force Next' command in applications",
+        "To access secondary functions like brightness or volume",
+        "To format the hard drive during the boot sequence",
+        "To toggle between the primary and secondary batteries"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Laptops, Tablets, and Mobile Devices",
+      "text": "Which small expansion card is typically used in laptops to provide Wi-Fi and Bluetooth connectivity?",
+      "options": [
+        "PCI Express x16",
+        "Mini-PCIe or M.2",
+        "PCMCIA Card",
+        "ExpressCard/54"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Laptops, Tablets, and Mobile Devices",
+      "text": "What is 'Tethering' in the context of mobile devices?",
+      "options": [
+        "Physically locking a laptop to a desk with a cable",
+        "Sharing a mobile device's data connection with others",
+        "Syncing a tablet with a desktop computer via cloud",
+        "Charging a mobile device using a wireless pad"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Laptops, Tablets, and Mobile Devices",
+      "text": "Which technology allows mobile devices to make payments by tapping them against a compatible terminal?",
+      "options": [
+        "Bluetooth Low Energy (BLE)",
+        "Near Field Communication (NFC)",
+        "Infrared (IR) Blaster",
+        "Radio Frequency Identification (RFID)"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Laptops, Tablets, and Mobile Devices",
+      "text": "What is the primary difference between a 'Tablet' and a 'Laptop'?",
+      "options": [
+        "Tablets always have more storage than laptops",
+        "Tablets primarily use a touchscreen interface",
+        "Laptops cannot connect to cellular networks",
+        "Tablets do not have internal processors or RAM"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Laptops, Tablets, and Mobile Devices",
+      "text": "Which component is often built into the bezel of a laptop screen to provide wireless signal reception?",
+      "options": [
+        "Webcam",
+        "Wi-Fi Antenna",
+        "Microphone",
+        "Ambient Light Sensor"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Laptops, Tablets, and Mobile Devices",
+      "text": "What does 'Airplane Mode' do on a mobile device?",
+      "options": [
+        "Increases the battery life by dimming the screen",
+        "Disables all wireless transmission functions",
+        "Automatically connects to the airport's public Wi-Fi",
+        "Enables a special GPS mode for high-altitude tracking"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Laptops, Tablets, and Mobile Devices",
+      "text": "Which of the following is a disadvantage of an 'Internal' laptop battery compared to a 'Removable' one?",
+      "options": [
+        "Internal batteries have a much shorter lifespan",
+        "It is more difficult for a user to replace it themselves",
+        "Internal batteries provide less power to the CPU",
+        "It causes the laptop to be much heavier and bulkier"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Laptops, Tablets, and Mobile Devices",
+      "text": "What is a 'Docking Station' used for with a laptop?",
+      "options": [
+        "To charge the laptop's battery faster than a cable",
+        "To connect a laptop to multiple desktop peripherals",
+        "To provide a cooling surface for high-performance use",
+        "To protect the laptop from physical damage during travel"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Laptops, Tablets, and Mobile Devices",
+      "text": "Which sensor in a smartphone allows the screen to rotate based on how the device is held?",
+      "options": [
+        "Magnetometer",
+        "Accelerometer/Gyroscope",
+        "Proximity Sensor",
+        "Barometer"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Laptops, Tablets, and Mobile Devices",
+      "text": "What is the purpose of a 'Stylus' when used with a tablet?",
+      "options": [
+        "To clean the screen of fingerprints and smudges",
+        "To provide more precise input than a finger",
+        "To extend the range of the Bluetooth antenna",
+        "To act as a physical key to unlock the device"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Printers and Peripherals",
+      "text": "Which printer technology uses a laser beam to create an electrostatic image on a drum?",
+      "options": [
+        "Inkjet",
+        "Thermal",
+        "Laser",
+        "Dot Matrix"
+      ],
+      "correct": 2
+    },
+    {
+      "category": "Printers and Peripherals",
+      "text": "In a laser printer, what is the purpose of the 'Fuser Assembly'?",
+      "options": [
+        "To spray liquid ink onto the paper surface",
+        "To melt the toner powder onto the paper using heat",
+        "To clean the excess toner from the imaging drum",
+        "To pull the paper from the tray into the printer"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Printers and Peripherals",
+      "text": "Which type of printer is most commonly used for printing receipts because it requires no ink or toner?",
+      "options": [
+        "Inkjet",
+        "Impact",
+        "Thermal",
+        "Laser"
+      ],
+      "correct": 2
+    },
+    {
+      "category": "Printers and Peripherals",
+      "text": "What is the primary cause of 'ghosting' (faint images of previous pages) in a laser printer?",
+      "options": [
+        "Low ink levels in the primary color cartridges",
+        "A damaged imaging drum or cleaning blade",
+        "Using the wrong type of paper for the print job",
+        "A clogged print head that needs to be aligned"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Printers and Peripherals",
+      "text": "Which connection type is the most common standard for connecting a printer directly to a computer today?",
+      "options": [
+        "Parallel (LPT)",
+        "Serial (RS-232)",
+        "USB",
+        "FireWire"
+      ],
+      "correct": 2
+    },
+    {
+      "category": "Printers and Peripherals",
+      "text": "What is 'Duplexing' in the context of professional printers?",
+      "options": [
+        "Printing on both sides of a sheet of paper",
+        "Printing in two different colors at the same time",
+        "Connecting two printers to a single computer",
+        "Printing two copies of a document automatically"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Printers and Peripherals",
+      "text": "Which maintenance task is unique to inkjet printers to prevent streaks in the printed output?",
+      "options": [
+        "Replacing the fuser unit",
+        "Cleaning the print heads",
+        "Re-shaking the toner cartridge",
+        "Applying oil to the rollers"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Printers and Peripherals",
+      "text": "What does 'PPM' stand for when measuring printer performance?",
+      "options": [
+        "Pixels Per Millimeter",
+        "Pages Per Minute",
+        "Power Per Module",
+        "Prints Per Month"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Printers and Peripherals",
+      "text": "Which peripheral device is used to convert physical documents into digital image files?",
+      "options": [
+        "Plotter",
+        "Scanner",
+        "Digitizer",
+        "Projector"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Printers and Peripherals",
+      "text": "What is a 'KVM Switch' used for in a computer setup?",
+      "options": [
+        "To share one set of peripherals among multiple PCs",
+        "To increase the speed of a keyboard and mouse",
+        "To convert a VGA signal into an HDMI signal",
+        "To protect the computer from electrical surges"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Printers and Peripherals",
+      "text": "Which type of printer uses a ribbon and a series of small pins to strike the paper?",
+      "options": [
+        "Laser",
+        "Inkjet",
+        "Dot Matrix",
+        "Thermal"
+      ],
+      "correct": 2
+    },
+    {
+      "category": "Printers and Peripherals",
+      "text": "What is the purpose of a 'Printer Driver'?",
+      "options": [
+        "To physically move the paper through the printer",
+        "To allow the OS to communicate with the printer",
+        "To store the ink and toner used during printing",
+        "To provide power to the printer's internal motor"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Printers and Peripherals",
+      "text": "What should you do if a laser printer starts producing vertical white lines on the page?",
+      "options": [
+        "Replace the fuser assembly immediately",
+        "Gently shake the toner cartridge to redistribute it",
+        "Clean the print heads with a damp cloth",
+        "Increase the print resolution in the settings"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Printers and Peripherals",
+      "text": "Which of the following is considered an 'Input' peripheral?",
+      "options": [
+        "Monitor",
+        "Printer",
+        "Scanner",
+        "Speakers"
+      ],
+      "correct": 2
+    }
+  ]
+}

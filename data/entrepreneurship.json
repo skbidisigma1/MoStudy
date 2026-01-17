@@ -1,0 +1,18 @@
+{
+  "id": "fbla-ent-2025-2026",
+  "title": "Entrepreneurship",
+  "description": "FBLA Objective Test covering business plans, marketing, finance, and management.",
+  "timeLimitSeconds": 3000,
+  "questions": [
+    {"category": "Business Plan", "text": "What is the detailed written statement of a new business?", "options": ["Resume", "Business Plan", "Cover Letter", "Memo"], "correct": 1},
+    {"category": "Business Plan", "text": "First section of a business plan?", "options": ["Marketing Plan", "Financials", "Executive Summary", "Appendix"], "correct": 2},
+    {"category": "Finance", "text": "Money used to start a business?", "options": ["Revenue", "Capital", "Profit", "Expense"], "correct": 1},
+    {"category": "Marketing", "text": "The 4 Ps of Marketing?", "options": ["Product, Price, Place, Promotion", "Plan, Pitch, Pay, Profit", "People, Product, Process, Policy", "None"], "correct": 0},
+    {"category": "Management", "text": "SWOT Analysis stands for?", "options": ["Strengths, Weaknesses, Opportunities, Threats", "Sales, Work, Organization, Time", "Strategy, Work, Operations, Tasks", "None"], "correct": 0},
+    {"category": "Ownership", "text": "Advantages of a Franchise?", "options": ["Total control", "Proven business model", "No fees", "Keep all profit"], "correct": 1},
+    {"category": "Finance", "text": "Income minus Expenses equals?", "options": ["Sales", "Revenue", "Profit (Net Income)", "Liability"], "correct": 2},
+    {"category": "Finance", "text": "Type of funding from wealthy individuals?", "options": ["Bank Loan", "Angel Investor", "Credit Card", "Bootstrap"], "correct": 1},
+    {"category": "Legal", "text": "Document filing to form a Corporation?", "options": ["Articles of Incorporation", "Partnership Agreement", "DBA", "License"], "correct": 0},
+    {"category": "Generic", "text": "Sample Ent Question?", "options": ["A", "B", "C", "D"], "correct": 0}
+  ]
+}
