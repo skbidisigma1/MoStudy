@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FBLA Computer Problem Solving Mock Exam</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        
+        /* Animations */
+        .fade-in-page { animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .fade-in-up { animation: fadeInUp 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards; opacity: 0; transform: translateY(10px); }
+        
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        /* Review Grid Button Styles */
+        .grid-btn { position: relative; transition: all 0.2s; }
+        .grid-btn:hover { transform: scale(1.05); z-index: 10; }
+        .flag-dot {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            width: 10px;
+            height: 10px;
+            background-color: #f97316; /* Orange-500 */
+            border: 2px solid white;
+            border-radius: 50%;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 h-screen flex flex-col overflow-hidden selection:bg-blue-100 selection:text-blue-900">
+
+    <!-- Header -->
+    <header class="bg-blue-900 text-white p-4 shadow-lg flex justify-between items-center z-10 shrink-0 border-b border-blue-800">
+        <div class="flex items-center gap-3">
+            <div class="bg-white text-blue-900 font-extrabold px-2 py-1 rounded text-sm tracking-wide">FBLA</div>
+            <h1 class="font-semibold text-lg tracking-tight hidden sm:block">Computer Problem Solving</h1>
+            <h1 class="font-semibold text-lg tracking-tight sm:hidden">Comp. Prob. Solving</h1>
+        </div>
+        <div class="flex items-center gap-4">
+            <button id="review-nav-btn" onclick="showReviewScreen()" class="hidden text-sm bg-blue-800/50 hover:bg-blue-700/80 hover:shadow-md px-4 py-1.5 rounded-full border border-blue-700/50 transition backdrop-blur-sm flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                View Grid
+            </button>
+            <div id="timer-display" class="hidden font-mono text-xl font-bold bg-blue-950/50 px-4 py-1 rounded-lg border border-blue-800 shadow-inner min-w-[80px] text-center">50:00</div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow relative overflow-y-auto p-4 flex justify-center scroll-smooth bg-slate-100">
+        
+        <!-- Welcome Screen -->
+        <div id="start-screen" class="max-w-2xl w-full mx-auto my-auto fade-in-page">
+            <div class="bg-white p-8 rounded-2xl shadow-xl border border-slate-200 relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-500 to-indigo-600"></div>
+                <h2 class="text-3xl font-bold text-slate-800 mb-4 mt-2">Practice Competition</h2>
+                <p class="text-slate-600 mb-8 leading-relaxed">
+                    This interactive exam simulates the FBLA Computer Problem Solving objective test (2025-2026 guidelines).
+                    You have 50 minutes to complete 100 questions.
+                </p>
+                
+                <div class="grid grid-cols-2 gap-4 mb-8">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 hover:border-blue-200 transition group">
+                        <span class="block text-xs font-bold text-blue-400 uppercase tracking-wider mb-1">20 Questions</span>
+                        <span class="font-semibold text-slate-700 group-hover:text-blue-700 transition">Operating Systems</span>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 hover:border-blue-200 transition group">
+                        <span class="block text-xs font-bold text-blue-400 uppercase tracking-wider mb-1">20 Questions</span>
+                        <span class="font-semibold text-slate-700 group-hover:text-blue-700 transition">Networks</span>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 hover:border-blue-200 transition group">
+                        <span class="block text-xs font-bold text-blue-400 uppercase tracking-wider mb-1">20 Questions</span>
+                        <span class="font-semibold text-slate-700 group-hover:text-blue-700 transition">Hardware</span>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 hover:border-blue-200 transition group">
+                        <span class="block text-xs font-bold text-blue-400 uppercase tracking-wider mb-1">15 Questions</span>
+                        <span class="font-semibold text-slate-700 group-hover:text-blue-700 transition">Security</span>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 hover:border-blue-200 transition group">
+                        <span class="block text-xs font-bold text-blue-400 uppercase tracking-wider mb-1">15 Questions</span>
+                        <span class="font-semibold text-slate-700 group-hover:text-blue-700 transition">Mobile Devices</span>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 hover:border-blue-200 transition group">
+                        <span class="block text-xs font-bold text-blue-400 uppercase tracking-wider mb-1">10 Questions</span>
+                        <span class="font-semibold text-slate-700 group-hover:text-blue-700 transition">Printers</span>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-3">
+                    <button onclick="startQuiz()" class="w-full bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-bold py-4 px-6 rounded-xl transition-all shadow-lg hover:shadow-blue-500/30 transform hover:-translate-y-0.5 text-lg">
+                        Start Exam
+                    </button>
+                    <p class="text-center text-xs text-slate-400 mt-2 font-medium">
+                        Shortcuts: <span class="bg-slate-100 px-1 rounded border">1-4</span> to Answer, <span class="bg-slate-100 px-1 rounded border">Enter</span> for Next
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz Interface -->
+        <div id="quiz-interface" class="hidden max-w-3xl w-full mx-auto pb-20 fade-in-page">
+            <!-- Progress Bar -->
+            <div class="mb-8 sticky top-0 bg-slate-100 pt-2 pb-4 z-10 backdrop-blur-sm bg-opacity-90">
+                <div class="flex justify-between text-xs font-bold text-slate-500 mb-2 uppercase tracking-wide">
+                    <span id="question-tracker">Question 1 of 100</span>
+                    <span id="category-badge" class="hidden">Category</span> 
+                </div>
+                <div class="w-full bg-white rounded-full h-3 shadow-inner overflow-hidden">
+                    <div id="progress-bar" class="bg-gradient-to-r from-blue-500 to-indigo-600 h-3 rounded-full transition-all duration-500 ease-out shadow-lg" style="width: 1%"></div>
+                </div>
+            </div>
+
+            <!-- Question Card -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-10 mb-6 relative overflow-hidden">
+                <h3 id="question-text" class="text-xl sm:text-2xl font-semibold text-slate-800 mb-8 leading-relaxed">
+                    Question text goes here...
+                </h3>
+                
+                <div id="options-container" class="space-y-4">
+                    <!-- Options injected via JS -->
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <div class="flex justify-between items-center">
+                <div class="flex gap-3">
+                    <button id="prev-btn" onclick="prevQuestion()" class="bg-white hover:bg-slate-50 text-slate-700 font-semibold py-2.5 px-6 rounded-lg shadow-sm border border-slate-200 transition disabled:opacity-50 disabled:cursor-not-allowed">
+                        Previous
+                    </button>
+                    <button id="flag-btn" onclick="toggleFlag()" class="text-slate-500 hover:text-orange-600 hover:bg-orange-50 font-semibold text-sm flex items-center gap-2 px-4 py-2.5 rounded-lg transition border border-transparent hover:border-orange-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21v-8a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5-5 5h-11z" />
+                        </svg>
+                        Flag
+                    </button>
+                </div>
+                
+                <button id="next-btn" onclick="nextQuestion()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 px-10 rounded-lg shadow-lg shadow-blue-500/30 transition transform hover:-translate-y-0.5 active:translate-y-0">
+                    Next
+                </button>
+            </div>
+            <p class="text-center text-xs text-slate-400 mt-8">Press Enter to continue</p>
+        </div>
+
+        <!-- Review Screen (Grid) -->
+        <div id="review-screen" class="hidden max-w-4xl w-full mx-auto my-auto fade-in-page pb-10">
+            <div class="bg-white p-8 rounded-2xl shadow-xl border border-slate-200">
+                <div class="flex justify-between items-center mb-6 border-b pb-4">
+                    <div>
+                        <h2 class="text-2xl font-bold text-slate-800">Review Your Answers</h2>
+                        <p class="text-slate-500 text-sm mt-1">Review your progress before submitting.</p>
+                    </div>
+                    <div class="text-right">
+                         <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-1">Time Remaining</span>
+                         <span id="review-timer" class="text-xl font-mono font-bold text-blue-600">--:--</span>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-6 mb-8 text-sm bg-slate-50 p-4 rounded-lg border border-slate-100 justify-center sm:justify-start">
+                    <div class="flex items-center gap-2"><div class="w-3 h-3 bg-blue-600 rounded shadow-sm"></div> <span class="text-slate-600 font-medium">Answered</span></div>
+                    <div class="flex items-center gap-2"><div class="w-3 h-3 bg-slate-200 rounded border border-slate-300"></div> <span class="text-slate-600 font-medium">Unanswered</span></div>
+                    <div class="flex items-center gap-2"><div class="w-3 h-3 bg-orange-500 rounded-full border-2 border-white shadow-sm ring-1 ring-orange-200"></div> <span class="text-slate-600 font-medium">Flagged (Dot)</span></div>
+                </div>
+
+                <div id="review-grid" class="grid grid-cols-5 sm:grid-cols-10 gap-3 mb-10">
+                    <!-- Grid items injected via JS -->
+                </div>
+
+                <div class="flex justify-between items-center pt-4">
+                    <button onclick="returnToQuiz()" class="text-blue-600 font-semibold hover:text-blue-800 hover:bg-blue-50 px-4 py-2 rounded transition flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
+                        Return to Quiz
+                    </button>
+                    <button onclick="finishQuiz()" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-xl shadow-lg shadow-green-500/30 transition transform hover:-translate-y-0.5 flex items-center gap-2">
+                        <span>Submit Final Exam</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div id="results-screen" class="hidden max-w-5xl w-full mx-auto my-auto fade-in-page pb-20 pt-10">
+            <div class="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden mb-8">
+                <!-- Header / Score -->
+                <div class="bg-slate-900 text-white p-8 text-center relative overflow-hidden">
+                    <div class="absolute inset-0 bg-blue-900 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+                    <h2 class="text-3xl font-bold mb-6 relative z-10">Exam Results</h2>
+                    
+                    <div class="flex flex-col sm:flex-row justify-center items-center gap-8 sm:gap-16 relative z-10">
+                        <div class="text-center">
+                            <div class="text-6xl font-extrabold text-blue-400 mb-1" id="final-score">0%</div>
+                            <p class="text-slate-300 font-medium uppercase tracking-wide text-sm">Total Score</p>
+                        </div>
+                        <div class="h-16 w-px bg-slate-700 hidden sm:block"></div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-white mb-1" id="score-details">0/100</div>
+                            <p class="text-slate-300 font-medium uppercase tracking-wide text-sm">Correct</p>
+                        </div>
+                        <div class="h-16 w-px bg-slate-700 hidden sm:block"></div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-white mb-1" id="time-taken-display">0m 0s</div>
+                            <p class="text-slate-300 font-medium uppercase tracking-wide text-sm">Time Taken</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Breakdown -->
+                <div class="p-8 bg-slate-50 border-b border-slate-200">
+                    <h3 class="text-lg font-bold text-slate-700 mb-4">Category Performance</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" id="category-breakdown">
+                        <!-- Breakdown injected via JS -->
+                    </div>
+                </div>
+
+                <!-- Detailed Review Section -->
+                <div class="p-8">
+                    <div class="flex flex-col sm:flex-row justify-between items-end sm:items-center mb-6 gap-4 border-b border-slate-100 pb-6">
+                        <h3 class="text-xl font-bold text-slate-800">Detailed Review</h3>
+                        
+                        <!-- Search & Filter -->
+                        <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+                            <div class="relative">
+                                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                                </span>
+                                <input type="text" id="search-input" placeholder="Search questions..." class="pl-9 pr-4 py-2 border border-slate-300 rounded-lg text-sm w-full focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition">
+                            </div>
+                            
+                            <select id="status-filter" class="py-2 px-3 border border-slate-300 rounded-lg text-sm bg-white focus:ring-2 focus:ring-blue-500 outline-none cursor-pointer">
+                                <option value="all">All Statuses</option>
+                                <option value="incorrect">Incorrect Only</option>
+                                <option value="correct">Correct Only</option>
+                                <option value="flagged">Flagged Only</option>
+                            </select>
+
+                            <select id="category-filter" class="py-2 px-3 border border-slate-300 rounded-lg text-sm bg-white focus:ring-2 focus:ring-blue-500 outline-none cursor-pointer">
+                                <option value="all">All Categories</option>
+                                <!-- Categories injected via JS -->
+                            </select>
+                        </div>
+                    </div>
+
+                    <div id="detailed-review" class="space-y-4">
+                        <!-- Detailed questions injected here -->
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 p-6 text-center border-t border-slate-200">
+                    <button onclick="location.reload()" class="bg-slate-800 hover:bg-slate-900 text-white font-bold py-3 px-8 rounded-lg shadow-lg transition transform hover:-translate-y-0.5">
+                        Take Exam Again
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        // --- DATA ---
+        // Questions with balanced lengths and clear answers
+        const questionsSource = [
+            // --- OPERATING SYSTEMS (20) ---
+            { category: "Operating Systems", text: "Which utility allows you to view processes, performance, and startup apps?", options: ["Device Manager", "Task Manager", "Disk Management", "SysConfig"], correct: 1 },
+            { category: "Operating Systems", text: "Which file system is the Windows default for large files and permissions?", options: ["FAT32", "exFAT", "NTFS", "HFS+"], correct: 2 },
+            { category: "Operating Systems", text: "What is the primary function of the Windows Registry?", options: ["Stores user documents", "Caches web pages", "Stores OS/App config settings", "Manages network connections"], correct: 2 },
+            { category: "Operating Systems", text: "First step when troubleshooting a 'Blue Screen of Death' (BSOD)?", options: ["Reinstall Windows", "Note the error code", "Replace the hard drive", "Flash the BIOS"], correct: 1 },
+            { category: "Operating Systems", text: "Command to display current TCP/IP network configuration?", options: ["ping", "tracert", "ipconfig", "nslookup"], correct: 2 },
+            { category: "Operating Systems", text: "Boot method to startup from a network server?", options: ["PXE Boot", "USB Boot", "Safe Mode", "UEFI Shell"], correct: 0 },
+            { category: "Operating Systems", text: "Linux command to run programs with root privileges?", options: ["chmod", "sudo", "grep", "chown"], correct: 1 },
+            { category: "Operating Systems", text: "Purpose of 'Virtual Memory'?", options: ["Increases CPU clock speed", "Uses disk space as extra RAM", "Stores BIOS settings", "Backs up user files"], correct: 1 },
+            { category: "Operating Systems", text: "Feature to run older programs on Windows?", options: ["Compatibility Mode", "Safe Mode", "System Restore", "BitLocker"], correct: 0 },
+            { category: "Operating Systems", text: "What do beep codes during POST indicate?", options: ["OS corruption", "Hardware initialization error", "Network unplugged", "Monitor off"], correct: 1 },
+            { category: "Operating Systems", text: "Best utility to free up disk space by deleting temp files?", options: ["Disk Defragmenter", "Disk Cleanup", "Partition Manager", "Event Viewer"], correct: 1 },
+            { category: "Operating Systems", text: "Main difference between 32-bit and 64-bit OS?", options: ["32-bit is faster", "64-bit addresses more RAM", "32-bit supports more drives", "64-bit has no USB support"], correct: 1 },
+            { category: "Operating Systems", text: "Partition style required for UEFI boot?", options: ["MBR", "GPT", "FAT16", "Logical"], correct: 1 },
+            { category: "Operating Systems", text: "macOS file management tool (like Explorer)?", options: ["Spotlight", "Finder", "Safari", "Dock"], correct: 1 },
+            { category: "Operating Systems", text: "What does the 'cd' command do?", options: ["Create Directory", "Change Directory", "Copy Data", "Check Disk"], correct: 1 },
+            { category: "Operating Systems", text: "Where to check if an app is hogging CPU?", options: ["Control Panel", "Task Manager", "System Info", "Device Manager"], correct: 1 },
+            { category: "Operating Systems", text: "Windows edition with DirectAccess and AppLocker?", options: ["Home", "Pro", "Enterprise", "Education"], correct: 2 },
+            { category: "Operating Systems", text: "Function of a Device Driver?", options: ["Connects hardware physically", "Software allowing OS to talk to hardware", "Powers the device", "Cools the device"], correct: 1 },
+            { category: "Operating Systems", text: "Tool to partition a new hard drive?", options: ["Disk Management", "Device Manager", "Task Scheduler", "Services"], correct: 0 },
+            { category: "Operating Systems", text: "Feature to revert system state after unstable update?", options: ["System Restore", "Task Manager", "Check Disk", "Defender"], correct: 0 },
+
+            // --- NETWORKS (20) ---
+            { category: "Networks", text: "Protocol for assigning dynamic IP addresses?", options: ["DNS", "DHCP", "HTTP", "FTP"], correct: 1 },
+            { category: "Networks", text: "Unique physical address assigned to a NIC?", options: ["IP Address", "MAC Address", "Subnet Mask", "Gateway"], correct: 1 },
+            { category: "Networks", text: "Device that uses MAC addresses to forward data efficiently?", options: ["Hub", "Switch", "Repeater", "Modem"], correct: 1 },
+            { category: "Networks", text: "Protocol that translates domain names to IPs?", options: ["DHCP", "DNS", "ARP", "TCP"], correct: 1 },
+            { category: "Networks", text: "Port number for unencrypted Web traffic (HTTP)?", options: ["21", "25", "80", "443"], correct: 2 },
+            { category: "Networks", text: "Wi-Fi 5 standard (5GHz/2.4GHz)?", options: ["802.11g", "802.11n", "802.11ac", "802.11ax"], correct: 2 },
+            { category: "Networks", text: "Example of a Private IP address?", options: ["8.8.8.8", "192.168.1.50", "172.50.1.1", "200.100.50.25"], correct: 1 },
+            { category: "Networks", text: "Difference between TCP and UDP?", options: ["TCP is connectionless", "TCP is reliable/connection-oriented", "TCP is wireless only", "No difference"], correct: 1 },
+            { category: "Networks", text: "Command to test connectivity to a host?", options: ["ping", "netstat", "ipconfig", "nslookup"], correct: 0 },
+            { category: "Networks", text: "Bit length of an IPv6 address?", options: ["32 bits", "64 bits", "128 bits", "256 bits"], correct: 2 },
+            { category: "Networks", text: "Network covering a city or country?", options: ["LAN", "PAN", "WAN", "WLAN"], correct: 2 },
+            { category: "Networks", text: "What does SSH stand for?", options: ["Secure Shell", "Simple Shell", "System Shell", "Secure Socket"], correct: 0 },
+            { category: "Networks", text: "Device that routes traffic between networks?", options: ["Switch", "Router", "Hub", "Access Point"], correct: 1 },
+            { category: "Networks", text: "Cable for 10Gbps over short distance?", options: ["Cat 5", "Cat 5e", "Cat 6a", "Coaxial"], correct: 2 },
+            { category: "Networks", text: "Function of a VPN?", options: ["Increases speed", "Secure encrypted tunnel", "File server", "Virus blocker"], correct: 1 },
+            { category: "Networks", text: "Frequency with better range but lower speed?", options: ["2.4 GHz", "5 GHz", "6 GHz", "60 GHz"], correct: 0 },
+            { category: "Networks", text: "Tool to attach a connector to a cable?", options: ["Punch down", "Crimper", "Multimeter", "Tester"], correct: 1 },
+            { category: "Networks", text: "Protocol for sending email?", options: ["POP3", "IMAP", "SMTP", "SNMP"], correct: 2 },
+            { category: "Networks", text: "Purpose of Subnet Mask?", options: ["Identifies MAC", "Encrypts data", "Identifies network vs host portion", "Assigns DNS"], correct: 2 },
+            { category: "Networks", text: "What is Latency?", options: ["Cable width", "Data rate", "Delay in transmission", "Signal strength"], correct: 2 },
+
+            // --- HARDWARE & CONNECTIVITY (20) ---
+            { category: "Computer Hardware", text: "Component called the 'brain' of the computer?", options: ["RAM", "Hard Drive", "CPU", "Motherboard"], correct: 2 },
+            { category: "Computer Hardware", text: "Fast storage with no moving parts?", options: ["HDD", "SSD", "Tape Drive", "Optical Drive"], correct: 1 },
+            { category: "Computer Hardware", text: "What does RAM stand for?", options: ["Read Access Memory", "Random Access Memory", "Rapid Action Memory", "Real Access Module"], correct: 1 },
+            { category: "Computer Hardware", text: "Connector for HD video and audio?", options: ["VGA", "DVI", "HDMI", "PS/2"], correct: 2 },
+            { category: "Computer Hardware", text: "Component supplying power to the PC?", options: ["CPU", "PSU", "GPU", "UPS"], correct: 1 },
+            { category: "Computer Hardware", text: "Purpose of a GPU?", options: ["Store data", "Manage network", "Render graphics", "Cool CPU"], correct: 2 },
+            { category: "Computer Hardware", text: "Slot for modern graphics cards?", options: ["PCI", "PCIe x16", "AGP", "ISA"], correct: 1 },
+            { category: "Computer Hardware", text: "What happens to RAM when powered off?", options: ["Saved to disk", "Compressed", "Data is lost (Volatile)", "Remains"], correct: 2 },
+            { category: "Computer Hardware", text: "Fastest interface for external drives?", options: ["USB 2.0", "USB 3.0", "Thunderbolt 3/4", "FireWire"], correct: 2 },
+            { category: "Computer Hardware", text: "Purpose of thermal paste?", options: ["Glue CPU", "Heat transfer to heatsink", "Clean board", "Insulate"], correct: 1 },
+            { category: "Computer Hardware", text: "Standard desktop form factor?", options: ["ATX", "Micro-ATX", "Mini-ITX", "Nano-ITX"], correct: 0 },
+            { category: "Computer Hardware", text: "Likely cause of shutdown after 10 mins?", options: ["Full Disk", "Overheating", "Bad Driver", "Bad Keyboard"], correct: 1 },
+            { category: "Computer Hardware", text: "RAID level for speed (striping), no redundancy?", options: ["RAID 0", "RAID 1", "RAID 5", "RAID 10"], correct: 0 },
+            { category: "Computer Hardware", text: "Where does BIOS/UEFI reside?", options: ["Hard Drive", "Motherboard ROM chip", "CPU Cache", "RAM"], correct: 1 },
+            { category: "Computer Hardware", text: "Reversible connector for modern phones?", options: ["Micro-USB", "Mini-USB", "USB-C", "USB-A"], correct: 2 },
+            { category: "Computer Hardware", text: "Device converting digital to analog for phone lines?", options: ["Router", "Switch", "Modem", "NIC"], correct: 2 },
+            { category: "Computer Hardware", text: "Upgrade to improve gaming FPS?", options: ["Storage", "Sound Card", "Graphics Card (GPU)", "NIC"], correct: 2 },
+            { category: "Computer Hardware", text: "Function of a Heat Sink?", options: ["Generate heat", "Dissipate heat", "Measure temp", "Speed fan"], correct: 1 },
+            { category: "Computer Hardware", text: "Largest storage unit?", options: ["Gigabyte", "Terabyte", "Megabyte", "Petabyte"], correct: 3 },
+            { category: "Computer Hardware", text: "Cause of clock resetting to default?", options: ["OS corruption", "CMOS Battery dead", "CPU failure", "RAM failure"], correct: 1 },
+
+            // --- SECURITY (15) ---
+            { category: "Security", text: "What is 'Phishing'?", options: ["Disk optimization", "Fraudulent attempt to get sensitive data", "File deletion virus", "Network scan"], correct: 1 },
+            { category: "Security", text: "Example of Two-Factor Authentication (2FA)?", options: ["Password + PIN", "Password + Fingerprint", "Two passwords", "Retina + Fingerprint"], correct: 1 },
+            { category: "Security", text: "Malware that encrypts files and demands payment?", options: ["Spyware", "Adware", "Ransomware", "Trojan"], correct: 2 },
+            { category: "Security", text: "Purpose of a Firewall?", options: ["Prevent theft", "Control network traffic", "Remove viruses", "Back up data"], correct: 1 },
+            { category: "Security", text: "Most secure home Wi-Fi protocol?", options: ["WEP", "WPA", "WPA2", "WPA3"], correct: 3 },
+            { category: "Security", text: "What is a 'Zero-Day' vulnerability?", options: ["Unknown/Unpatched flaw", "Harmless virus", "Trial software", "No interaction needed"], correct: 0 },
+            { category: "Security", text: "What does 'S' in HTTPS stand for?", options: ["Speed", "Secure", "Simple", "Standard"], correct: 1 },
+            { category: "Security", text: "What is 'Social Engineering'?", options: ["Hacking firewall", "Manipulating people for info", "Coding social apps", "Ergonomics"], correct: 1 },
+            { category: "Security", text: "What is a DDoS attack?", options: ["Direct Denial", "Distributed Denial of Service", "Data Destruction", "Digital Domain"], correct: 1 },
+            { category: "Security", text: "Principle ensuring data accuracy?", options: ["Confidentiality", "Integrity", "Availability", "Authorization"], correct: 1 },
+            { category: "Security", text: "What is 'Spyware'?", options: ["Speed software", "Secret monitoring malware", "Antivirus", "Firewall rule"], correct: 1 },
+            { category: "Security", text: "Browsing mode that doesn't save history?", options: ["Standard", "Developer", "Incognito/Private", "Offline"], correct: 2 },
+            { category: "Security", text: "What is a 'Trojan Horse'?", options: ["Helpful utility", "Malware disguised as legitimate", "Hardware firewall", "Strong password"], correct: 1 },
+            { category: "Security", text: "Best practice for passwords?", options: ["Birthdate", "Simple word", "Long mix of chars", "Reuse everywhere"], correct: 2 },
+            { category: "Security", text: "What is 'Spoofing'?", options: ["Masquerading as another user/device", "Deleting data", "Encrypting data", "Compressing data"], correct: 0 },
+
+            // --- LAPTOPS & MOBILE (15) ---
+            { category: "Laptops & Mobile", text: "Part converting DC to AC for old backlights?", options: ["Rectifier", "Inverter", "Transformer", "Capacitor"], correct: 1 },
+            { category: "Laptops & Mobile", text: "Common modern battery type?", options: ["NiCad", "NiMH", "Lithium-Ion", "Alkaline"], correct: 2 },
+            { category: "Laptops & Mobile", text: "Laptop typing numbers instead of letters?", options: ["Broken keyboard", "Num Lock on", "BIOS corrupt", "Wrong language"], correct: 1 },
+            { category: "Laptops & Mobile", text: "Gesture to zoom in?", options: ["Swipe", "Pinch", "Tap", "Long press"], correct: 1 },
+            { category: "Laptops & Mobile", text: "Tech for phone-to-headset connection?", options: ["NFC", "Bluetooth", "Infrared", "GPS"], correct: 1 },
+            { category: "Laptops & Mobile", text: "Unique ID for mobile on network?", options: ["MAC", "IMEI", "IP", "SSID"], correct: 1 },
+            { category: "Laptops & Mobile", text: "What is 'Tethering'?", options: ["Charging", "Sharing internet connection", "Locking device", "Syncing"], correct: 1 },
+            { category: "Laptops & Mobile", text: "Non-upgradeable tablet component?", options: ["Storage", "RAM", "Case", "Screen"], correct: 1 },
+            { category: "Laptops & Mobile", text: "Function of Accelerometer?", options: ["Boosts net", "Detects motion/orientation", "Cools battery", "Locates GPS"], correct: 1 },
+            { category: "Laptops & Mobile", text: "Cracked screen but image visible?", options: ["GPU", "LCD/OLED Panel", "Inverter", "Webcam"], correct: 1 },
+            { category: "Laptops & Mobile", text: "Key for secondary laptop functions?", options: ["Alt", "Ctrl", "Fn", "Shift"], correct: 2 },
+            { category: "Laptops & Mobile", text: "Why SODIMM for laptops?", options: ["Faster", "Smaller form factor", "Cheaper", "More capacity"], correct: 1 },
+            { category: "Laptops & Mobile", text: "Mode disabling wireless?", options: ["Silent", "Do Not Disturb", "Airplane Mode", "Saver"], correct: 2 },
+            { category: "Laptops & Mobile", text: "First step for frozen phone?", options: ["Factory Reset", "Force Restart", "Replace Battery", "Update"], correct: 1 },
+            { category: "Laptops & Mobile", text: "Digitizer failure symptom?", options: ["Black screen", "No touch response", "No sound", "No charge"], correct: 1 },
+
+            // --- PRINTERS (10) ---
+            { category: "Printers", text: "Printer type using toner?", options: ["Inkjet", "Laser", "Thermal", "Impact"], correct: 1 },
+            { category: "Printers", text: "Part bonding toner to paper?", options: ["Drum", "Fuser", "Corona Wire", "Laser"], correct: 1 },
+            { category: "Printers", text: "Printer for receipts?", options: ["Laser", "Thermal", "Inkjet", "3D"], correct: 1 },
+            { category: "Printers", text: "Cause of garbage characters?", options: ["No paper", "Incorrect Driver", "Low Toner", "Jam"], correct: 1 },
+            { category: "Printers", text: "Service managing print queue?", options: ["Manager", "Print Spooler", "Queue", "Buffer"], correct: 1 },
+            { category: "Printers", text: "Connection for network sharing?", options: ["USB", "Parallel", "Ethernet/Wi-Fi", "Serial"], correct: 2 },
+            { category: "Printers", text: "Fix for streaks on inkjet?", options: ["New cable", "Clean print heads", "New paper", "Reinstall OS"], correct: 1 },
+            { category: "Printers", text: "What is 'Duplexing'?", options: ["Color print", "Double-sided print", "Two copies", "Scan+Print"], correct: 1 },
+            { category: "Printers", text: "Printer using a ribbon?", options: ["Impact / Dot Matrix", "Laser", "Inkjet", "Thermal"], correct: 0 },
+            { category: "Printers", text: "Adobe page description language?", options: ["PCL", "PostScript", "XML", "ASCII"], correct: 1 }
+        ];
+
+        // --- APP STATE ---
+        let questions = []; 
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let timerInterval;
+        let startTime;
+        let finalTimeStr = "";
+        let timeLeft = 3000; 
+        let userAnswers = [];
+        let flaggedQuestions = [];
+
+        // --- DOM ELEMENTS ---
+        const startScreen = document.getElementById('start-screen');
+        const quizInterface = document.getElementById('quiz-interface');
+        const reviewScreen = document.getElementById('review-screen');
+        const resultsScreen = document.getElementById('results-screen');
+        const timerDisplay = document.getElementById('timer-display');
+        const reviewTimer = document.getElementById('review-timer');
+        const reviewNavBtn = document.getElementById('review-nav-btn');
+        
+        const questionText = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        const progressBar = document.getElementById('progress-bar');
+        const questionTracker = document.getElementById('question-tracker');
+        const categoryBadge = document.getElementById('category-badge');
+        const flagBtn = document.getElementById('flag-btn');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+
+        // --- KEYBOARD LISTENERS ---
+        document.addEventListener('keydown', (e) => {
+            if (!quizInterface.classList.contains('hidden')) {
+                if (e.key >= '1' && e.key <= '4') {
+                    const index = parseInt(e.key) - 1;
+                    if (index < questions[currentQuestionIndex].options.length) {
+                        selectAnswer(index);
+                    }
+                }
+                if (e.key === 'Enter') {
+                    nextQuestion();
+                }
+            }
+        });
+        
+        // Search/Filter Listeners
+        document.getElementById('search-input').addEventListener('input', filterResults);
+        document.getElementById('status-filter').addEventListener('change', filterResults);
+        document.getElementById('category-filter').addEventListener('change', filterResults);
+
+
+        // --- FUNCTIONS ---
+
+        function startQuiz() {
+            // Randomize
+            questions = [...questionsSource].sort(() => Math.random() - 0.5);
+            
+            // Reset
+            userAnswers = new Array(questions.length).fill(null);
+            flaggedQuestions = new Array(questions.length).fill(false);
+            currentQuestionIndex = 0;
+            timeLeft = 3000;
+            startTime = Date.now();
+
+            startScreen.classList.add('hidden');
+            quizInterface.classList.remove('hidden');
+            timerDisplay.classList.remove('hidden');
+            reviewNavBtn.classList.remove('hidden');
+            
+            renderQuestion();
+            startTimer();
+        }
+
+        function startTimer() {
+            updateTimerDisplay();
+            clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                updateTimerDisplay();
+                if (timeLeft <= 0) {
+                    finishQuiz();
+                }
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            const timeStr = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            timerDisplay.textContent = timeStr;
+            reviewTimer.textContent = timeStr;
+            
+            if (timeLeft < 300) { 
+                timerDisplay.classList.remove('bg-blue-950/50', 'border-blue-800');
+                timerDisplay.classList.add('bg-red-900/80', 'border-red-600', 'text-red-100');
+            }
+        }
+
+        function renderQuestion() {
+            const q = questions[currentQuestionIndex];
+            
+            // Text update with animation trigger
+            questionText.textContent = `${currentQuestionIndex + 1}. ${q.text}`;
+            categoryBadge.textContent = q.category; 
+            
+            questionTracker.textContent = `Question ${currentQuestionIndex + 1} of ${questions.length}`;
+            progressBar.style.width = `${((currentQuestionIndex + 1) / questions.length) * 100}%`;
+
+            updateFlagButtonUI();
+
+            optionsContainer.innerHTML = '';
+            q.options.forEach((opt, index) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-4 sm:p-5 rounded-xl border-2 border-slate-100 hover:border-blue-400 hover:bg-blue-50/50 transition-all flex items-center group outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 relative overflow-hidden";
+                
+                if (userAnswers[currentQuestionIndex] === index) {
+                    btn.classList.add('border-blue-600', 'bg-blue-50', 'ring-1', 'ring-blue-200');
+                    btn.classList.remove('border-slate-100');
+                }
+
+                btn.innerHTML = `
+                    <div class="w-8 h-8 rounded-full border-2 border-slate-300 mr-4 flex items-center justify-center group-hover:border-blue-500 font-bold text-sm text-slate-400 shrink-0 bg-white transition-colors z-10">
+                        ${userAnswers[currentQuestionIndex] === index ? '<div class="w-4 h-4 bg-blue-600 rounded-full"></div>' : (index + 1)}
+                    </div>
+                    <span class="text-slate-700 font-medium text-base sm:text-lg z-10">${opt}</span>
+                `;
+                
+                btn.onclick = () => selectAnswer(index);
+                optionsContainer.appendChild(btn);
+            });
+
+            prevBtn.disabled = currentQuestionIndex === 0;
+            
+            if (currentQuestionIndex === questions.length - 1) {
+                nextBtn.textContent = "Review Answers";
+                nextBtn.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+                nextBtn.classList.add('bg-indigo-600', 'hover:bg-indigo-700');
+            } else {
+                nextBtn.textContent = "Next";
+                nextBtn.classList.add('bg-blue-600', 'hover:bg-blue-700');
+                nextBtn.classList.remove('bg-indigo-600', 'hover:bg-indigo-700');
+            }
+        }
+
+        function selectAnswer(index) {
+            userAnswers[currentQuestionIndex] = index;
+            // Optimistic UI update (no full rerender)
+            const buttons = optionsContainer.children;
+            for (let i = 0; i < buttons.length; i++) {
+                const btn = buttons[i];
+                const indicator = btn.querySelector('div');
+                
+                if (i === index) {
+                    btn.classList.add('border-blue-600', 'bg-blue-50', 'ring-1', 'ring-blue-200');
+                    btn.classList.remove('border-slate-100');
+                    indicator.innerHTML = '<div class="w-4 h-4 bg-blue-600 rounded-full"></div>';
+                } else {
+                    btn.classList.remove('border-blue-600', 'bg-blue-50', 'ring-1', 'ring-blue-200');
+                    btn.classList.add('border-slate-100');
+                    indicator.innerHTML = (i + 1);
+                }
+            }
+        }
+
+        function toggleFlag() {
+            flaggedQuestions[currentQuestionIndex] = !flaggedQuestions[currentQuestionIndex];
+            updateFlagButtonUI();
+        }
+
+        function updateFlagButtonUI() {
+            if (flaggedQuestions[currentQuestionIndex]) {
+                flagBtn.classList.add('text-orange-600', 'bg-orange-50', 'border-orange-200');
+                flagBtn.classList.remove('text-slate-500', 'border-transparent');
+                flagBtn.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-orange-500" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M3 6a3 3 0 013-3h10a1 1 0 01.8 1.6L14.25 8l2.55 3.4A1 1 0 0116 13H6a1 1 0 00-1 1v3a1 1 0 11-2 0V6z" clip-rule="evenodd" />
+                    </svg> Flagged
+                `;
+            } else {
+                flagBtn.classList.remove('text-orange-600', 'bg-orange-50', 'border-orange-200');
+                flagBtn.classList.add('text-slate-500', 'border-transparent');
+                flagBtn.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21v-8a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5-5 5h-11z" />
+                    </svg> Flag
+                `;
+            }
+        }
+
+        function nextQuestion() {
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                renderQuestion();
+            } else {
+                showReviewScreen();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                renderQuestion();
+            }
+        }
+
+        function showReviewScreen() {
+            quizInterface.classList.add('hidden');
+            reviewScreen.classList.remove('hidden');
+            
+            const grid = document.getElementById('review-grid');
+            grid.innerHTML = '';
+
+            questions.forEach((q, i) => {
+                const btn = document.createElement('button');
+                btn.textContent = i + 1;
+                
+                // Base styles
+                let classes = "grid-btn h-10 w-full rounded-md font-bold text-sm border ";
+                
+                // Color Logic
+                if (userAnswers[i] !== null) {
+                    classes += "bg-blue-600 text-white border-blue-700";
+                } else {
+                    classes += "bg-slate-100 text-slate-500 border-slate-200 hover:bg-slate-200";
+                }
+
+                // Add orange dot if flagged
+                if (flaggedQuestions[i]) {
+                    btn.innerHTML += '<span class="flag-dot"></span>';
+                    // If not answered but flagged, maybe give it a slight orange tint background
+                    if(userAnswers[i] === null) {
+                         classes = "grid-btn h-10 w-full rounded-md font-bold text-sm border bg-orange-50 text-orange-800 border-orange-200";
+                         btn.innerHTML = (i+1) + '<span class="flag-dot"></span>';
+                    }
+                }
+
+                btn.className = classes;
+                btn.onclick = () => jumpToQuestion(i);
+                grid.appendChild(btn);
+            });
+        }
+
+        function jumpToQuestion(index) {
+            currentQuestionIndex = index;
+            reviewScreen.classList.add('hidden');
+            quizInterface.classList.remove('hidden');
+            renderQuestion();
+        }
+
+        function returnToQuiz() {
+            reviewScreen.classList.add('hidden');
+            quizInterface.classList.remove('hidden');
+        }
+
+        function finishQuiz() {
+            clearInterval(timerInterval);
+            
+            // Calculate Time Taken
+            const endTime = Date.now();
+            const timeDiff = endTime - startTime;
+            const minutes = Math.floor(timeDiff / 60000);
+            const seconds = ((timeDiff % 60000) / 1000).toFixed(0);
+            finalTimeStr = `${minutes}m ${seconds}s`;
+
+            score = 0;
+            let categoryScores = {};
+
+            questions.forEach((q, i) => {
+                if (!categoryScores[q.category]) {
+                    categoryScores[q.category] = { correct: 0, total: 0 };
+                }
+                categoryScores[q.category].total++;
+
+                if (userAnswers[i] === q.correct) {
+                    score++;
+                    categoryScores[q.category].correct++;
+                }
+            });
+
+            // UI Switch
+            reviewScreen.classList.add('hidden');
+            quizInterface.classList.add('hidden');
+            timerDisplay.classList.add('hidden');
+            reviewNavBtn.classList.add('hidden');
+            resultsScreen.classList.remove('hidden');
+
+            // Render Header Stats
+            document.getElementById('final-score').textContent = Math.round((score / questions.length) * 100) + "%";
+            document.getElementById('score-details').textContent = `${score}/${questions.length}`;
+            document.getElementById('time-taken-display').textContent = finalTimeStr;
+
+            // Render Category Breakdown
+            const breakdownContainer = document.getElementById('category-breakdown');
+            breakdownContainer.innerHTML = '';
+            
+            // Populate category filter dropdown
+            const catFilter = document.getElementById('category-filter');
+            catFilter.innerHTML = '<option value="all">All Categories</option>';
+
+            const sortedCats = Object.keys(categoryScores).sort();
+
+            for (const cat of sortedCats) {
+                const stats = categoryScores[cat];
+                const percentage = Math.round((stats.correct / stats.total) * 100);
+                const barColor = percentage >= 70 ? 'bg-green-500' : (percentage >= 40 ? 'bg-yellow-500' : 'bg-red-500');
+                
+                // Add to breakdown grid
+                breakdownContainer.innerHTML += `
+                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-bold text-slate-700 text-sm truncate pr-2">${cat}</span>
+                            <span class="text-xs font-bold px-2 py-1 rounded bg-slate-100 text-slate-600">${stats.correct}/${stats.total}</span>
+                        </div>
+                        <div class="w-full bg-slate-100 rounded-full h-2">
+                            <div class="${barColor} h-2 rounded-full" style="width: ${percentage}%"></div>
+                        </div>
+                    </div>
+                `;
+
+                // Add to dropdown
+                const opt = document.createElement('option');
+                opt.value = cat;
+                opt.textContent = cat;
+                catFilter.appendChild(opt);
+            }
+
+            renderDetailedReview();
+        }
+
+        function renderDetailedReview() {
+            const container = document.getElementById('detailed-review');
+            container.innerHTML = '';
+
+            questions.forEach((q, i) => {
+                const userAnswerIdx = userAnswers[i];
+                const isCorrect = userAnswerIdx === q.correct;
+                const isUnanswered = userAnswerIdx === null;
+                const isFlagged = flaggedQuestions[i];
+
+                const card = document.createElement('div');
+                card.className = "p-5 rounded-xl border bg-white shadow-sm transition-all hover:shadow-md fade-in-up";
+                card.style.animationDelay = `${i * 0.02}s`; // Stagger animation
+                
+                // Set data attributes for filtering
+                card.dataset.status = isCorrect ? 'correct' : 'incorrect';
+                if(isFlagged) card.dataset.flagged = 'true';
+                card.dataset.category = q.category;
+                card.dataset.text = q.text.toLowerCase();
+
+                // Styles based on status
+                if (isCorrect) {
+                    card.classList.add('border-green-200', 'bg-green-50/30');
+                } else {
+                    card.classList.add('border-red-200', 'bg-red-50/30');
+                }
+
+                const statusBadge = isCorrect 
+                    ? `<span class="inline-flex items-center gap-1 text-green-700 font-bold bg-green-100 px-2 py-0.5 rounded text-xs">✓ Correct</span>` 
+                    : `<span class="inline-flex items-center gap-1 text-red-700 font-bold bg-red-100 px-2 py-0.5 rounded text-xs">✗ Incorrect</span>`;
+                
+                const flagBadge = isFlagged ? `<span class="text-orange-500 ml-2" title="Flagged">●</span>` : '';
+
+                let userAnswerText = isUnanswered ? `<span class="text-slate-400 italic">Skipped</span>` : q.options[userAnswerIdx];
+                let correctAnswerText = q.options[q.correct];
+
+                card.innerHTML = `
+                    <div class="flex justify-between items-start mb-2">
+                        <span class="font-mono text-slate-400 text-xs font-bold uppercase tracking-wider">Question ${i+1} ${flagBadge}</span>
+                        ${statusBadge}
+                    </div>
+                    <p class="text-slate-800 font-semibold mb-4 text-lg">${q.text}</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+                        <div class="p-3 rounded-lg ${isCorrect ? 'bg-green-100/50 border border-green-200' : 'bg-red-100/50 border border-red-200'}">
+                            <span class="block text-xs font-bold uppercase tracking-wide opacity-70 mb-1">Your Answer</span>
+                            <span class="${isCorrect ? 'text-green-900' : 'text-red-900'} font-medium">${userAnswerText}</span>
+                        </div>
+                        ${!isCorrect ? `
+                        <div class="p-3 rounded-lg bg-green-100/50 border border-green-200">
+                             <span class="block text-xs font-bold uppercase tracking-wide text-green-800 opacity-70 mb-1">Correct Answer</span>
+                             <span class="text-green-900 font-medium">${correctAnswerText}</span>
+                        </div>` : ''}
+                    </div>
+                    <div class="mt-2 text-right">
+                         <span class="text-xs text-slate-400 font-medium bg-slate-100 px-2 py-1 rounded">${q.category}</span>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function filterResults() {
+            const searchText = document.getElementById('search-input').value.toLowerCase();
+            const statusFilter = document.getElementById('status-filter').value;
+            const categoryFilter = document.getElementById('category-filter').value;
+            
+            const cards = document.querySelectorAll('#detailed-review > div');
+            
+            cards.forEach(card => {
+                const text = card.dataset.text;
+                const category = card.dataset.category;
+                const status = card.dataset.status;
+                const isFlagged = card.dataset.flagged === 'true';
+
+                let matchesSearch = text.includes(searchText);
+                let matchesCategory = categoryFilter === 'all' || category === categoryFilter;
+                
+                let matchesStatus = true;
+                if (statusFilter === 'incorrect') matchesStatus = status === 'incorrect';
+                if (statusFilter === 'correct') matchesStatus = status === 'correct';
+                if (statusFilter === 'flagged') matchesStatus = isFlagged;
+
+                if (matchesSearch && matchesCategory && matchesStatus) {
+                    card.classList.remove('hidden');
+                    card.classList.add('fade-in-up'); // Re-trigger anim
+                } else {
+                    card.classList.add('hidden');
+                    card.classList.remove('fade-in-up');
+                }
+            });
+        }
+
+    </script>
+</body>
+</html>
