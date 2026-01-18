@@ -2,7 +2,7 @@
   "id": "fbla-cyber-2025-2026-v2",
   "title": "Cybersecurity Comprehensive Exam",
   "description": "Updated 150-question objective test aligned with 2025-2026 FBLA National Standards.",
-  "timeLimitSeconds": 4500,
+  "timeLimitSeconds": 3000,
   "questions": [
     {
       "category": "Security Fundamentals",

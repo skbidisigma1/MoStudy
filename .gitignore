@@ -24,6 +24,11 @@ build/
 node_modules/
 npm-debug.log
 yarn-error.log
+.env.local
+.env
+.vercel/
+.vscode/
+.venv
 
 # OS
 .DS_Store

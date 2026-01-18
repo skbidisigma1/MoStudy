@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MoTest - Practice Exams</title>
+    <title>MoStudy - Home</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -12,8 +12,17 @@
     <!-- Header -->
     <header class="text-white p-3 sm:p-4 shadow-lg flex justify-between items-center z-10 shrink-0 gap-2 sm:gap-4" style="background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%); border-bottom: 1px solid var(--color-border);">
         <div class="flex items-center gap-2 sm:gap-3 min-w-0">
-            <div class="font-extrabold px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-xs sm:text-sm tracking-wide" style="background-color: var(--color-white); color: var(--color-primary); font-family: var(--font-heading);">MoTest</div>
+            <div class="font-extrabold px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-xs sm:text-sm tracking-wide" style="background-color: var(--color-white); color: var(--color-primary); font-family: var(--font-heading);">MoStudy</div>
             <h1 class="font-semibold text-sm sm:text-lg tracking-tight hidden sm:block truncate" style="font-family: var(--font-heading);">Practice Exams</h1>
+            
+            <nav class="flex items-center gap-5 sm:gap-8 ml-4 sm:ml-8">
+                <a href="index.html" class="text-white hover:opacity-80 transition font-bold text-xs sm:text-sm flex items-center py-1 sm:py-1.5">
+                    <span class="border-b-2 border-white pb-0.5">Home</span>
+                </a>
+                <a href="study.html" class="text-white hover:opacity-80 transition font-bold text-xs sm:text-sm flex items-center py-1 sm:py-1.5">
+                    <span class="border-b-2 border-transparent pb-0.5">Study</span>
+                </a>
+            </nav>
         </div>
         <div class="flex items-center gap-2 sm:gap-4 ml-auto">
             <button id="theme-toggle" class="text-white hover:opacity-80 transition p-1.5 sm:p-2 flex-shrink-0" onclick="toggleTheme()" title="Toggle theme">
@@ -29,266 +38,47 @@
     </header>
 
     <!-- Main Content Area -->
-    <main class="flex-grow relative overflow-y-auto p-4 flex justify-center scroll-smooth" style="background-color: var(--color-bg);">
+    <main class="flex-grow relative overflow-y-auto p-4 flex flex-col items-center justify-center scroll-smooth text-center" style="background-color: var(--color-bg);">
         
-        <!-- Welcome Screen -->
-        <div id="start-screen" class="max-w-5xl w-full mx-auto my-auto fade-in-page">
-            <div class="text-center mb-10">
-                <h2 class="text-3xl font-extrabold text-slate-800 tracking-tight mb-2">Select an Exam</h2>
-                <p class="text-slate-500">Choose a practice test from the catalog or upload your own.</p>
-            </div>
-
-            <input type="file" id="json-upload" accept="application/json" class="hidden" />
-
-            <!-- Upload Card -->
-            <div onclick="document.getElementById('json-upload').click()" class="bg-white p-6 rounded-2xl shadow-sm border-2 border-dashed border-slate-300 hover:border-blue-400 hover:bg-blue-50/30 transition cursor-pointer mb-8 group flex flex-col sm:flex-row items-center sm:justify-between gap-4 text-center sm:text-left">
-                <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition-transform">
-                        📂
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-slate-700 text-lg group-hover:text-blue-700 transition">Upload Custom JSON Test</h3>
-                        <p class="text-slate-500 text-sm">Drag and drop or click to browse local files</p>
-                    </div>
-                </div>
-                <button class="bg-white text-blue-600 font-semibold py-2 px-5 rounded-lg border border-slate-200 shadow-sm group-hover:shadow hover:bg-blue-50 transition text-sm">
-                    Select File
-                </button>
-            </div>
+        <div class="max-w-3xl w-full mx-auto py-12 px-6 fade-in-page">
+            <h2 class="text-4xl sm:text-5xl font-extrabold text-slate-800 tracking-tight mb-6">
+                Master Your Exams with <span class="text-blue-600">MoStudy</span>
+            </h2>
+            <p class="text-lg sm:text-xl text-slate-600 mb-10 leading-relaxed">
+                The ultimate practice platform for FBLA objective tests and competitive events. 
+                Prepare with our comprehensive catalog or upload your own custom study materials.
+            </p>
             
-            <div id="test-details-container" class="hidden bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200 relative overflow-hidden mb-8 fade-in-up">
-                 <button onclick="closeTestDetails()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-1 rounded-full hover:bg-slate-100 transition">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
-                 </button>
-                 
-                 <div class="flex flex-col gap-6">
-                    <div class="border-b border-slate-100 pb-4">
-                        <div class="flex items-center gap-3 mb-2">
-                            <span id="selected-test-icon" class="text-3xl"></span>
-                            <h3 id="selected-test-title" class="text-2xl font-bold text-slate-800"></h3>
-                        </div>
-                        <p id="selected-test-description" class="text-slate-500"></p>
-                    </div>
-                    
-                    <div class="flex flex-wrap gap-4 text-sm font-medium text-slate-600 bg-slate-50 p-4 rounded-xl border border-slate-100">
-                        <div class="flex items-center gap-2"><span class="text-slate-400">Questions:</span> <span id="selected-test-count" class="text-slate-800"></span></div>
-                        <div class="w-px h-4 bg-slate-300"></div>
-                        <div class="flex items-center gap-2"><span class="text-slate-400">Time:</span> <span id="selected-test-time" class="text-slate-800"></span></div>
-                        <div class="w-px h-4 bg-slate-300"></div>
-                        <div class="flex items-center gap-2"><span class="text-slate-400">Limit:</span> <span class="text-blue-600">100 (Randomized)</span></div>
-                    </div>
-
-                    <div id="test-category-tags" class="flex flex-wrap gap-2"></div>
-                    
-                    <div id="start-error" class="hidden bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm"></div>
-                    
-                    <div class="pt-2">
-                        <button id="start-btn" onclick="startQuiz()" class="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-10 rounded-xl shadow-lg hover:shadow-blue-500/20 transition transform hover:-translate-y-0.5 text-lg flex items-center justify-center gap-2">
-                            <span>Start Exam</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-                        </button>
-                    </div>
-                 </div>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="study.html" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-10 rounded-xl shadow-lg hover:shadow-blue-500/20 transition transform hover:-translate-y-0.5 text-lg flex items-center justify-center gap-2">
+                    Start Studying
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                </a>
+                <a href="https://github.com/Papaya-Voldemort/MoStudy" target="_blank" class="bg-white text-slate-700 font-bold py-4 px-10 rounded-xl border border-slate-200 shadow-sm hover:bg-slate-50 transition transform hover:-translate-y-0.5 text-lg flex items-center justify-center gap-2">
+                    View on GitHub
+                </a>
             </div>
 
-            <div id="catalog-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pb-10">
-                <!-- Catalog injected here -->
-            </div>
-        </div>
-
-        <!-- Quiz Interface -->
-        <div id="quiz-interface" class="hidden w-full mx-auto pb-24 sm:pb-20 fade-in-page flex flex-col">
-            <!-- Progress Bar - Sticky -->
-            <div class="sticky top-0 bg-slate-100 pt-2 pb-3 z-10 backdrop-blur-sm bg-opacity-90 px-4">
-                <div class="flex justify-between text-xs font-bold text-slate-500 mb-2 uppercase tracking-wide">
-                    <span id="question-tracker" class="truncate">Question 1 of 100</span>
-                    <span id="category-badge" class="hidden truncate ml-2">Category</span> 
+            <div class="mt-20 grid grid-cols-1 sm:grid-cols-3 gap-8">
+                <div class="p-6">
+                    <div class="text-3xl mb-4">📚</div>
+                    <h3 class="font-bold text-slate-800 mb-2">Practice Exams</h3>
+                    <p class="text-slate-500 text-sm">Access a wide variety of FBLA-specific practice tests.</p>
                 </div>
-                <div class="w-full bg-white rounded-full h-2 shadow-inner overflow-hidden">
-                    <div id="progress-bar" class="bg-gradient-to-r from-blue-500 to-indigo-600 h-2 rounded-full transition-all duration-500 ease-out shadow-lg" style="width: 1%"></div>
+                <div class="p-6">
+                    <div class="text-3xl mb-4">⏱️</div>
+                    <h3 class="font-bold text-slate-800 mb-2">Timed Tests</h3>
+                    <p class="text-slate-500 text-sm">Simulate real testing conditions with our built-in timer.</p>
                 </div>
-            </div>
-
-            <!-- Question Content - Scrollable -->
-            <div class="flex-grow overflow-y-auto px-4 sm:px-0 max-w-3xl w-full mx-auto">
-                <!-- Question Card -->
-                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4 sm:p-10 mb-4 sm:mb-6 mt-4 sm:mt-0 relative overflow-hidden">
-                    <h3 id="question-text" class="text-lg sm:text-2xl font-semibold text-slate-800 mb-6 sm:mb-8 leading-relaxed">
-                        Question text goes here...
-                    </h3>
-                    
-                    <div id="options-container" class="space-y-3 sm:space-y-4">
-                        <!-- Options injected via JS -->
-                    </div>
-                </div>
-            </div>
-
-            <!-- Mobile Number Pad - Always Visible on Mobile -->
-            <div id="mobile-number-pad" class="hidden fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 shadow-2xl px-4 py-3">
-                <p class="text-xs text-slate-500 text-center mb-2 font-semibold">Quick Select (1-4)</p>
-                <div class="grid grid-cols-4 gap-2">
-                    <button onclick="document.querySelector('#options-container').children[0]?.click?.()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 rounded-lg transition active:scale-95 text-sm">1</button>
-                    <button onclick="document.querySelector('#options-container').children[1]?.click?.()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 rounded-lg transition active:scale-95 text-sm">2</button>
-                    <button onclick="document.querySelector('#options-container').children[2]?.click?.()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 rounded-lg transition active:scale-95 text-sm">3</button>
-                    <button onclick="document.querySelector('#options-container').children[3]?.click?.()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 rounded-lg transition active:scale-95 text-sm">4</button>
-                </div>
-            </div>
-
-            <!-- Navigation - Bottom Bar (Mobile Optimized) -->
-            <div class="fixed sm:static bottom-20 sm:bottom-auto left-0 right-0 bg-white sm:bg-transparent border-t sm:border-t-0 border-slate-200 px-4 sm:px-0 py-3 sm:py-0 flex justify-between items-center gap-2 sm:gap-3 max-w-3xl w-full mx-auto sm:mb-0 z-20">
-                <div class="flex gap-2 sm:gap-3">
-                    <button id="prev-btn" onclick="prevQuestion()" class="bg-white hover:bg-slate-50 text-slate-700 font-semibold py-2 sm:py-2.5 px-3 sm:px-6 rounded-lg shadow-sm border border-slate-200 transition disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base flex-1 sm:flex-none">
-                        <span class="hidden sm:inline">Previous</span>
-                        <span class="sm:hidden">← Prev</span>
-                    </button>
-                    <button id="flag-btn" onclick="toggleFlag()" class="text-slate-500 hover:text-orange-600 hover:bg-orange-50 font-semibold text-xs sm:text-sm flex items-center gap-1 sm:gap-2 px-2 sm:px-4 py-2 sm:py-2.5 rounded-lg transition border border-transparent hover:border-orange-200 flex-1 sm:flex-none justify-center sm:justify-start">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21v-8a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5-5 5h-11z" />
-                        </svg>
-                        <span class="hidden sm:inline">Flag</span>
-                    </button>
-                </div>
-                
-                <button id="next-btn" onclick="nextQuestion()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 sm:py-2.5 px-4 sm:px-10 rounded-lg shadow-lg shadow-blue-500/30 transition transform hover:-translate-y-0.5 active:translate-y-0 text-sm sm:text-base flex-1 sm:flex-none">
-                    <span class="hidden sm:inline">Next</span>
-                    <span class="sm:hidden">Next →</span>
-                </button>
-            </div>
-        </div>
-
-        <!-- Review Screen (Grid) -->
-        <div id="review-screen" class="hidden w-full mx-auto fade-in-page pb-6 flex flex-col">
-            <div class="bg-white flex-grow flex flex-col overflow-hidden">
-                <!-- Header with Back Button -->
-                <div class="flex justify-between items-center gap-3 sm:gap-4 mb-4 sm:mb-6 border-b border-slate-200 pb-4 sm:pb-6 px-4 sm:p-8 pt-4 sm:pt-8 flex-shrink-0">
-                    <div class="flex-grow min-w-0">
-                        <h2 class="text-xl sm:text-2xl font-bold text-slate-800 truncate">Review Answers</h2>
-                        <p class="text-slate-500 text-xs sm:text-sm mt-0.5 sm:mt-1 truncate">Check your progress before submitting</p>
-                    </div>
-                    <div class="text-right flex-shrink-0">
-                         <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-1">Time Left</span>
-                         <span id="review-timer" class="text-lg sm:text-xl font-mono font-bold text-blue-600">--:--</span>
-                    </div>
-                </div>
-
-                <!-- Legend -->
-                <div class="flex flex-wrap gap-3 sm:gap-6 mb-4 sm:mb-8 text-xs sm:text-sm bg-slate-50 p-3 sm:p-4 px-4 sm:p-8 border-b border-slate-200 justify-center sm:justify-start flex-shrink-0">
-                    <div class="flex items-center gap-1.5 sm:gap-2"><div class="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-blue-600 rounded shadow-sm"></div> <span class="text-slate-600 font-medium">Answered</span></div>
-                    <div class="flex items-center gap-1.5 sm:gap-2"><div class="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-slate-200 rounded border border-slate-300"></div> <span class="text-slate-600 font-medium">Unanswered</span></div>
-                    <div class="flex items-center gap-1.5 sm:gap-2"><div class="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-orange-500 rounded-full border-2 border-white shadow-sm ring-1 ring-orange-200"></div> <span class="text-slate-600 font-medium">Flagged</span></div>
-                </div>
-
-                <!-- Grid - Scrollable -->
-                <div class="flex-grow overflow-y-auto px-4 sm:p-8 flex-shrink">
-                    <div id="review-grid" class="grid grid-cols-5 sm:grid-cols-10 gap-2 sm:gap-3 mb-4 sm:mb-10">
-                        <!-- Grid items injected via JS -->
-                    </div>
-                </div>
-
-                <!-- Bottom Actions -->
-                <div class="flex flex-col sm:flex-row gap-2 sm:gap-3 justify-between items-stretch sm:items-center pt-4 sm:pt-6 px-4 sm:p-8 border-t border-slate-200 flex-shrink-0 bg-slate-50">
-                    <button onclick="returnToQuiz()" class="text-white font-bold py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg sm:rounded-lg shadow-lg transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2 bg-slate-600 hover:bg-slate-700 w-full sm:w-auto order-2 sm:order-1 text-sm sm:text-base">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
-                        <span>Back to Quiz</span>
-                    </button>
-                    <button onclick="finishQuiz()" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2.5 sm:py-3 px-4 sm:px-8 rounded-lg shadow-lg shadow-green-500/30 transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2 w-full sm:w-auto order-1 sm:order-2 text-sm sm:text-base">
-                        <span>Submit Exam</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
-                    </button>
+                <div class="p-6">
+                    <div class="text-3xl mb-4">📊</div>
+                    <h3 class="font-bold text-slate-800 mb-2">Detailed Results</h3>
+                    <p class="text-slate-500 text-sm">Review your answers and see your performance breakdown.</p>
                 </div>
             </div>
         </div>
 
-        <!-- Results Screen -->
-        <div id="results-screen" class="hidden max-w-5xl w-full mx-auto my-auto fade-in-page pb-20 pt-10">
-            <div class="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden mb-8">
-                <!-- Header / Score -->
-                <div class="bg-slate-900 text-white p-8 text-center relative overflow-hidden">
-                    <div class="absolute inset-0 bg-blue-900 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
-                    <h2 class="text-3xl font-bold mb-6 relative z-10">Exam Results</h2>
-                    
-                    <div class="flex flex-col sm:flex-row justify-center items-center gap-8 sm:gap-16 relative z-10">
-                        <div class="text-center">
-                            <div class="text-6xl font-extrabold text-blue-400 mb-1" id="final-score">0%</div>
-                            <p class="text-slate-300 font-medium uppercase tracking-wide text-sm">Total Score</p>
-                        </div>
-                        <div class="h-16 w-px bg-slate-700 hidden sm:block"></div>
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-white mb-1" id="score-details">0/100</div>
-                            <p class="text-slate-300 font-medium uppercase tracking-wide text-sm">Correct</p>
-                        </div>
-                        <div class="h-16 w-px bg-slate-700 hidden sm:block"></div>
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-white mb-1" id="time-taken-display">0m 0s</div>
-                            <p class="text-slate-300 font-medium uppercase tracking-wide text-sm">Time Taken</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Breakdown -->
-                <div class="p-8 bg-slate-50 border-b border-slate-200">
-                    <h3 class="text-lg font-bold text-slate-700 mb-4">Category Performance</h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" id="category-breakdown">
-                        <!-- Breakdown injected via JS -->
-                    </div>
-                </div>
-
-                <!-- AI Summary Panel -->
-                <div id="ai-summary-panel" class="p-6 sm:p-8 bg-gradient-to-br from-slate-50 to-purple-50/30 border-b border-slate-200 hidden">
-                    <!-- AI summary content injected via JS -->
-                </div>
-
-                <!-- Detailed Review Section -->
-                <div class="p-8">
-                    <div class="flex flex-col sm:flex-row justify-between items-end sm:items-center mb-6 gap-4 border-b border-slate-100 pb-6">
-                        <h3 class="text-xl font-bold text-slate-800">Detailed Review</h3>
-                        
-                        <!-- Search & Filter -->
-                        <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
-                            <div class="relative">
-                                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-                                </span>
-                                <input type="text" id="search-input" placeholder="Search questions..." class="pl-9 pr-4 py-2 border border-slate-300 rounded-lg text-sm w-full focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition">
-                            </div>
-                            
-                            <select id="status-filter" class="py-2 px-3 border border-slate-300 rounded-lg text-sm bg-white focus:ring-2 focus:ring-blue-500 outline-none cursor-pointer">
-                                <option value="all">All Statuses</option>
-                                <option value="incorrect">Incorrect Only</option>
-                                <option value="correct">Correct Only</option>
-                                <option value="flagged">Flagged Only</option>
-                            </select>
-
-                            <select id="category-filter" class="py-2 px-3 border border-slate-300 rounded-lg text-sm bg-white focus:ring-2 focus:ring-blue-500 outline-none cursor-pointer">
-                                <option value="all">All Categories</option>
-                                <!-- Categories injected via JS -->
-                            </select>
-                        </div>
-                    </div>
-
-                    <div id="detailed-review" class="space-y-4">
-                        <!-- Detailed questions injected here -->
-                    </div>
-                </div>
-
-                <div class="bg-slate-50 p-6 border-t border-slate-200">
-                    <div class="flex flex-col sm:flex-row gap-3 justify-center items-center">
-                        <button onclick="exportScore()" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg shadow-lg transition transform hover:-translate-y-0.5 flex items-center gap-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
-                            Export Score
-                        </button>
-                        <button onclick="returnHome()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg shadow-lg transition transform hover:-translate-y-0.5 flex items-center gap-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-3m0 0l7-4 7 4M5 5v14a1 1 0 001 1h12a1 1 0 001-1V5M9 9h6m-6 4h6" /></svg>
-                            Home Menu
-                        </button>
-                        <button onclick="location.reload()" class="bg-slate-800 hover:bg-slate-900 text-white font-bold py-3 px-8 rounded-lg shadow-lg transition transform hover:-translate-y-0.5 flex items-center gap-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
-                            Take Exam Again
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
+    </main>
 
     </main>
 

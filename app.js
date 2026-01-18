@@ -152,13 +152,13 @@ const startError = document.getElementById('start-error');
 
 // --- UI INIT ---
 function initializeApp() {
-    // Verify DOM elements exist
+    initializeTheme();
+    
+    // Only continue if we are on a page with quiz elements
     if (!catalogGrid || !startScreen) {
-        console.error("Required DOM elements not found. Retrying...");
-        setTimeout(initializeApp, 100);
         return;
     }
-    initializeTheme();
+    
     renderCatalog();
     setupEventListeners();
 }
