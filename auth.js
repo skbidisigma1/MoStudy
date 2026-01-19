@@ -33,14 +33,16 @@ let settingsListenersBound = false;
 const getSettingsElements = () => {
     return {
         emailToggle: document.getElementById('notif-toggle'),
-        timerToggle: document.getElementById('timer-sounds-toggle')
+        timerToggle: document.getElementById('timer-sounds-toggle'),
+        saveBtn: document.getElementById('save-settings-btn')
     };
 };
 
 const setSettingsEnabled = (enabled) => {
-    const { emailToggle, timerToggle } = getSettingsElements();
+    const { emailToggle, timerToggle, saveBtn } = getSettingsElements();
     if (emailToggle) emailToggle.disabled = !enabled;
     if (timerToggle) timerToggle.disabled = !enabled;
+    if (saveBtn) saveBtn.disabled = !enabled;
 };
 
 const apiRequest = async (path, options = {}) => {
@@ -60,11 +62,25 @@ const apiRequest = async (path, options = {}) => {
     });
 };
 
+const showStatus = (message, isError = false) => {
+    const statusEl = document.getElementById('settings-status');
+    if (!statusEl) return;
+    
+    statusEl.textContent = message;
+    statusEl.className = `text-sm font-medium transition-opacity duration-300 ${isError ? 'text-red-500' : 'text-emerald-500'}`;
+    statusEl.style.opacity = '1';
+    
+    setTimeout(() => {
+        statusEl.style.opacity = '0';
+    }, 3000);
+};
+
 const loadSettings = async () => {
     try {
         const response = await apiRequest('/api/user-settings');
         if (!response.ok) {
-            console.warn('Failed to load settings from server');
+            const errData = await response.json().catch(() => ({}));
+            console.warn('Failed to load settings:', errData.message || 'Server error');
             return;
         }
 
@@ -79,11 +95,12 @@ const loadSettings = async () => {
         if (timerToggle) timerToggle.checked = Boolean(window.userSettings.timerAlerts);
     } catch (error) {
         console.error('Settings load error:', error);
+        showStatus('Error loading settings', true);
     }
 };
 
 const saveSettings = async () => {
-    const { emailToggle, timerToggle } = getSettingsElements();
+    const { emailToggle, timerToggle, saveBtn } = getSettingsElements();
     if (!emailToggle || !timerToggle) return;
 
     window.userSettings = {
@@ -91,6 +108,12 @@ const saveSettings = async () => {
         timerAlerts: timerToggle.checked
     };
 
+    if (saveBtn) {
+        saveBtn.disabled = true;
+        saveBtn.textContent = 'Saving...';
+    }
+
+    showStatus('Saving...');
     try {
         const response = await apiRequest('/api/user-settings', {
             method: 'POST',
@@ -98,29 +121,28 @@ const saveSettings = async () => {
         });
 
         if (!response.ok) {
-            throw new Error('Failed to save settings');
+            const errData = await response.json().catch(() => ({}));
+            throw new Error(errData.message || 'Failed to save settings');
         }
+        showStatus('Settings saved');
     } catch (error) {
         console.error('Settings save error:', error);
+        showStatus('Error saving settings', true);
+    } finally {
+        if (saveBtn) {
+            saveBtn.disabled = false;
+            saveBtn.textContent = 'Save Changes';
+        }
     }
 };
 
 const bindSettingsListeners = () => {
     if (settingsListenersBound) return;
 
-    const { emailToggle, timerToggle } = getSettingsElements();
-    if (!emailToggle || !timerToggle) return;
+    const { saveBtn } = getSettingsElements();
+    if (!saveBtn) return;
 
-    const handler = async () => {
-        try {
-            await saveSettings();
-        } catch (error) {
-            console.error('Settings save error:', error);
-        }
-    };
-
-    emailToggle.addEventListener('change', handler);
-    timerToggle.addEventListener('change', handler);
+    saveBtn.addEventListener('click', saveSettings);
     settingsListenersBound = true;
 };
 

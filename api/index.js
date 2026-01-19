@@ -19,14 +19,16 @@ const initializeFirebase = () => {
 
   const serviceAccountRaw = process.env.FIREBASE_SERVICE_ACCOUNT;
   if (!serviceAccountRaw) {
-    throw new Error('Missing FIREBASE_SERVICE_ACCOUNT environment variable');
+    console.error('FIREBASE_SERVICE_ACCOUNT is not set in environment variables');
+    throw new Error('Firebase configuration missing on server');
   }
 
   let serviceAccount;
   try {
     serviceAccount = JSON.parse(serviceAccountRaw);
   } catch (error) {
-    throw new Error('FIREBASE_SERVICE_ACCOUNT must be valid JSON');
+    console.error('Failed to parse FIREBASE_SERVICE_ACCOUNT:', error);
+    throw new Error('Invalid Firebase configuration format');
   }
 
   return admin.initializeApp({
@@ -50,14 +52,17 @@ app.get('/api/user-settings', async (req, res) => {
   try {
     const userId = req.auth?.payload?.sub;
     if (!userId) {
+      console.error('No userId in auth payload');
       return res.status(401).json({ error: 'Unauthorized' });
     }
 
     const db = getFirestore();
+    console.log(`Fetching settings for user: ${userId}`);
     const docRef = db.collection('users').doc(userId);
     const snapshot = await docRef.get();
 
     if (!snapshot.exists) {
+      console.log('No settings found for user, returning defaults');
       return res.json({
         emailNotifications: true,
         timerAlerts: true
@@ -65,13 +70,14 @@ app.get('/api/user-settings', async (req, res) => {
     }
 
     const data = snapshot.data() || {};
+    console.log('Settings found:', data);
     return res.json({
       emailNotifications: data.emailNotifications ?? true,
       timerAlerts: data.timerAlerts ?? true
     });
   } catch (error) {
-    console.error('Failed to load settings', error);
-    return res.status(500).json({ error: 'Failed to load settings' });
+    console.error('Detailed error in GET /api/user-settings:', error);
+    return res.status(500).json({ error: 'Failed to load settings', message: error.message });
   }
 });
 
@@ -79,11 +85,14 @@ app.post('/api/user-settings', async (req, res) => {
   try {
     const userId = req.auth?.payload?.sub;
     if (!userId) {
+      console.error('No userId in auth payload for POST');
       return res.status(401).json({ error: 'Unauthorized' });
     }
 
     const emailNotifications = Boolean(req.body?.emailNotifications);
     const timerAlerts = Boolean(req.body?.timerAlerts);
+
+    console.log(`Saving settings for user ${userId}:`, { emailNotifications, timerAlerts });
 
     const db = getFirestore();
     const docRef = db.collection('users').doc(userId);
@@ -96,10 +105,11 @@ app.post('/api/user-settings', async (req, res) => {
       { merge: true }
     );
 
+    console.log('Settings saved successfully');
     return res.json({ emailNotifications, timerAlerts });
   } catch (error) {
-    console.error('Failed to save settings', error);
-    return res.status(500).json({ error: 'Failed to save settings' });
+    console.error('Detailed error in POST /api/user-settings:', error);
+    return res.status(500).json({ error: 'Failed to save settings', message: error.message });
   }
 });
 

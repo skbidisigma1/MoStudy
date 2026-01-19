@@ -70,7 +70,10 @@
 
             <!-- Preferences Section -->
             <section class="mb-12">
-                <h3 class="text-xl font-bold text-slate-800 dark:text-white mb-8 uppercase tracking-wider text-xs opacity-70">General Preferences</h3>
+                <div class="flex items-center justify-between mb-8">
+                    <h3 class="text-xl font-bold text-slate-800 dark:text-white uppercase tracking-wider text-xs opacity-70">General Preferences</h3>
+                    <div id="settings-status" class="text-sm font-medium transition-opacity duration-300 opacity-0"></div>
+                </div>
                 
                 <div class="space-y-10">
                     <!-- Notification Toggle -->
@@ -80,7 +83,7 @@
                             <p class="text-slate-600 dark:text-slate-400 max-w-xl">Receive updates about new exam materials, platform features, and performance summaries.</p>
                         </div>
                         <label class="relative inline-flex items-center cursor-pointer ml-4">
-                            <input type="checkbox" id="notif-toggle" class="sr-only peer" checked>
+                            <input type="checkbox" id="notif-toggle" class="sr-only peer">
                             <div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
                         </label>
                     </div>
@@ -92,9 +95,16 @@
                             <p class="text-slate-600 dark:text-slate-400 max-w-xl">Enable audio notifications for the last 5 minutes of a practice exam to keep you on track.</p>
                         </div>
                         <label class="relative inline-flex items-center cursor-pointer ml-4">
-                            <input type="checkbox" id="timer-sounds-toggle" class="sr-only peer" checked>
+                            <input type="checkbox" id="timer-sounds-toggle" class="sr-only peer">
                             <div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
                         </label>
+                    </div>
+
+                    <!-- Save Button -->
+                    <div class="flex justify-end pt-4">
+                        <button id="save-settings-btn" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-xl font-bold transition-all shadow-sm hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed">
+                            Save Changes
+                        </button>
                     </div>
                 </div>
             </section>
