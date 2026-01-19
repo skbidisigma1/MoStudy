@@ -83,6 +83,127 @@
             border-color: #ef4444 !important;
             animation: pulse-recording 1s ease-in-out infinite;
         }
+
+        .scenario-generation-shell {
+            position: relative;
+            overflow: hidden;
+            border-radius: 24px;
+            background: radial-gradient(circle at top, rgba(59, 130, 246, 0.12), transparent 55%),
+                        radial-gradient(circle at bottom, rgba(99, 102, 241, 0.16), transparent 60%);
+        }
+
+        .scenario-orb {
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border-radius: 999px;
+            filter: blur(0px);
+            opacity: 0.35;
+            animation: floatOrb 6s ease-in-out infinite;
+        }
+
+        .scenario-orb.orb-one {
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.35), transparent 70%);
+            top: -40px;
+            right: -20px;
+        }
+
+        .scenario-orb.orb-two {
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.35), transparent 70%);
+            bottom: -50px;
+            left: -30px;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes floatOrb {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+
+        .generation-status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 0.85rem;
+            border-radius: 999px;
+            background: rgba(59, 130, 246, 0.1);
+            color: #2563eb;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .generation-shimmer {
+            background: linear-gradient(90deg, rgba(59,130,246,0.15), rgba(99,102,241,0.35), rgba(59,130,246,0.15));
+            background-size: 200% 100%;
+            animation: shimmer 2.2s ease-in-out infinite;
+        }
+
+        .difficulty-card {
+            position: relative;
+        }
+
+        .difficulty-card.is-selected {
+            border-color: #2563eb !important;
+            box-shadow: 0 12px 25px rgba(37, 99, 235, 0.25);
+            background: linear-gradient(180deg, #eff6ff 0%, #ffffff 70%);
+            transform: translateY(-2px);
+        }
+
+        .difficulty-card.is-selected::after {
+            content: "Selected";
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            background: #2563eb;
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.2rem 0.55rem;
+            border-radius: 999px;
+            box-shadow: 0 6px 12px rgba(37, 99, 235, 0.25);
+        }
+
+        @media (max-width: 640px) {
+            header nav {
+                gap: 0.75rem;
+                margin-left: 0.5rem;
+                overflow-x: auto;
+                padding-bottom: 0.25rem;
+            }
+
+            .progress-steps {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+
+            .progress-step {
+                width: 1.75rem;
+                height: 1.75rem;
+                font-size: 0.75rem;
+            }
+
+            #planning-screen,
+            #recording-screen,
+            #qa-screen,
+            #results-screen {
+                padding-top: 0.75rem;
+                padding-bottom: 0.75rem;
+            }
+
+            #scenario-content {
+                max-height: 280px;
+            }
+
+            #planning-screen .p-6,
+            #recording-screen .p-8,
+            #qa-screen .p-8 {
+                padding: 1rem !important;
+            }
+
+            .roleplay-timer {
+                font-size: 1.75rem;
+            }
+        }
     </style>
 </head>
 <body class="h-screen flex flex-col overflow-hidden" style="background-color: var(--color-bg); color: var(--color-text); font-family: var(--font-main);">
@@ -109,6 +230,10 @@
             </nav>
         </div>
         <div class="flex items-center gap-2 sm:gap-4 ml-auto">
+            <button id="theme-toggle" class="inline-flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-xs sm:text-sm font-semibold text-white/95 border border-white/30 hover:bg-white/15 transition" style="background-color: rgba(255,255,255,0.12);">
+                <span data-theme-icon>🌙</span>
+                <span data-theme-label class="hidden sm:inline">Dark</span>
+            </button>
             <div id="session-timer" class="hidden roleplay-timer text-sm sm:text-lg font-bold text-white px-3 sm:px-4 py-1.5 rounded-lg min-w-[80px] sm:min-w-[100px] text-center" style="background-color: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);">
                 20:00
             </div>
@@ -146,7 +271,7 @@
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
                 <!-- Easy -->
-                <button id="diff-easy" onclick="selectDifficulty('easy')" class="difficulty-card bg-white border-2 border-emerald-200 hover:border-emerald-500 hover:shadow-lg p-6 rounded-2xl transition group cursor-pointer text-left">
+                <button id="diff-easy" onclick="selectDifficulty('easy')" aria-pressed="false" class="difficulty-card bg-white border-2 border-emerald-200 hover:border-emerald-500 hover:shadow-lg p-6 rounded-2xl transition group cursor-pointer text-left">
                     <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-emerald-50 text-emerald-700 mx-auto mb-4 group-hover:scale-110 transition-transform">
                         <!-- Star (friendly, approachable) -->
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" stroke="none" aria-hidden="true"><path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.957a1 1 0 00.95.69h4.162c.969 0 1.371 1.24.588 1.81l-3.37 2.453a1 1 0 00-.364 1.118l1.286 3.957c.3.922-.755 1.688-1.54 1.118l-3.37-2.453a1 1 0 00-1.176 0l-3.37 2.453c-.784.57-1.839-.196-1.54-1.118l1.286-3.957a1 1 0 00-.364-1.118L2.11 9.384c-.783-.57-.38-1.81.588-1.81h4.162a1 1 0 00.95-.69L11.049 2.927z"/></svg>
@@ -156,7 +281,7 @@
                 </button>
 
                 <!-- Normal -->
-                <button id="diff-normal" onclick="selectDifficulty('normal')" class="difficulty-card bg-white border-2 border-blue-200 hover:border-blue-500 hover:shadow-lg p-6 rounded-2xl transition group cursor-pointer text-left">
+                <button id="diff-normal" onclick="selectDifficulty('normal')" aria-pressed="false" class="difficulty-card bg-white border-2 border-blue-200 hover:border-blue-500 hover:shadow-lg p-6 rounded-2xl transition group cursor-pointer text-left">
                     <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-blue-50 text-blue-700 mx-auto mb-4 group-hover:scale-110 transition-transform">
                         <!-- Check badge (reliable, standard) -->
                         <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h10v10H7z"/></svg>
@@ -166,7 +291,7 @@
                 </button>
 
                 <!-- Hard -->
-                <button id="diff-hard" onclick="selectDifficulty('hard')" class="difficulty-card bg-white border-2 border-orange-200 hover:border-orange-500 hover:shadow-lg p-6 rounded-2xl transition group cursor-pointer text-left">
+                <button id="diff-hard" onclick="selectDifficulty('hard')" aria-pressed="false" class="difficulty-card bg-white border-2 border-orange-200 hover:border-orange-500 hover:shadow-lg p-6 rounded-2xl transition group cursor-pointer text-left">
                     <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-orange-50 text-orange-700 mx-auto mb-4 group-hover:scale-110 transition-transform">
                         <!-- Lightning (fast, intense) -->
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
@@ -176,7 +301,7 @@
                 </button>
 
                 <!-- Impossible -->
-                <button id="diff-impossible" onclick="selectDifficulty('impossible')" class="difficulty-card bg-white border-2 border-red-200 hover:border-red-500 hover:shadow-lg p-6 rounded-2xl transition group cursor-pointer text-left">
+                <button id="diff-impossible" onclick="selectDifficulty('impossible')" aria-pressed="false" class="difficulty-card bg-white border-2 border-red-200 hover:border-red-500 hover:shadow-lg p-6 rounded-2xl transition group cursor-pointer text-left">
                     <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-red-50 text-red-700 mx-auto mb-4 group-hover:scale-110 transition-transform">
                         <!-- Crown (elite, expert) -->
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3l3 7 4-4 4 4 3-7v18H5V3z"/></svg>
@@ -217,16 +342,22 @@
 
         <!-- Scenario Generation Screen -->
         <div id="scenario-generation-screen" class="hidden max-w-4xl w-full mx-auto my-auto fade-in-page">
-            <div class="flex flex-col items-center justify-center py-16">
+            <div class="scenario-generation-shell flex flex-col items-center justify-center py-16 px-6">
+                <div class="scenario-orb orb-one"></div>
+                <div class="scenario-orb orb-two"></div>
                 <div class="w-20 h-20 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center mb-6">
                     <svg class="w-10 h-10 text-white animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                     </svg>
                 </div>
                 <h3 class="text-2xl font-bold text-slate-800 mb-2">Generating Your Scenario</h3>
-                <p class="text-slate-500 text-center max-w-md mb-4">Kimi K2 is creating a unique role play scenario based on official FBLA examples...</p>
-                <div class="w-64 h-2 bg-slate-200 rounded-full overflow-hidden">
-                    <div id="generation-progress" class="h-full bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full" style="width: 0%; transition: width 0.5s ease;"></div>
+                <p class="text-slate-500 text-center max-w-md mb-4">Gemini is creating a focused role play scenario based on official FBLA examples...</p>
+                <div class="generation-status-pill mb-5">
+                    <span class="ai-loading-spinner w-4 h-4"></span>
+                    <span id="generation-status">Reviewing event examples</span>
+                </div>
+                <div class="w-72 h-2 bg-slate-200 rounded-full overflow-hidden">
+                    <div id="generation-progress" class="h-full bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full generation-shimmer" style="width: 0%; transition: width 0.5s ease;"></div>
                 </div>
             </div>
         </div>
@@ -234,7 +365,7 @@
         <!-- Planning Phase Screen -->
         <div id="planning-screen" class="hidden max-w-5xl w-full mx-auto fade-in-page py-6">
             <!-- Progress Steps -->
-            <div class="flex items-center justify-center gap-2 mb-8">
+            <div class="progress-steps flex items-center justify-center gap-2 mb-8">
                 <div class="progress-step active w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold bg-blue-600 text-white">1</div>
                 <div class="w-12 h-1 bg-slate-200 rounded"></div>
                 <div class="progress-step w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold bg-slate-200 text-slate-500">2</div>
@@ -302,7 +433,7 @@
         <!-- Recording Screen (Main Presentation) -->
         <div id="recording-screen" class="hidden max-w-4xl w-full mx-auto fade-in-page py-6">
             <!-- Progress Steps -->
-            <div class="flex items-center justify-center gap-2 mb-8">
+            <div class="progress-steps flex items-center justify-center gap-2 mb-8">
                 <div class="progress-step completed w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold">✓</div>
                 <div class="w-12 h-1 bg-emerald-500 rounded"></div>
                 <div class="progress-step active w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold bg-blue-600 text-white">2</div>
@@ -366,7 +497,7 @@
         <!-- Q&A Screen -->
         <div id="qa-screen" class="hidden max-w-4xl w-full mx-auto fade-in-page py-6">
             <!-- Progress Steps -->
-            <div class="flex items-center justify-center gap-2 mb-8">
+            <div class="progress-steps flex items-center justify-center gap-2 mb-8">
                 <div class="progress-step completed w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold">✓</div>
                 <div class="w-12 h-1 bg-emerald-500 rounded"></div>
                 <div class="progress-step completed w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold">✓</div>
@@ -392,7 +523,12 @@
                 <div class="p-8">
                     <!-- Questions Display -->
                     <div id="qa-questions" class="bg-indigo-50 rounded-xl p-6 border border-indigo-100 mb-6">
-                        <h4 class="font-bold text-indigo-800 mb-4">Questions from the Judges:</h4>
+                        <h4 class="font-bold text-indigo-800 mb-4 flex items-center gap-2">
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            Questions from the Judges:
+                        </h4>
                         <div id="questions-list" class="space-y-3">
                             <!-- Questions populated dynamically -->
                         </div>
@@ -529,15 +665,7 @@
 
     </main>
 
-    <script>
-        // Initialize DarkReader
-        DarkReader.setFetchMethod(window.fetch);
-        DarkReader.enable({
-            brightness: 100,
-            contrast: 90,
-            sepia: 10
-        });
-    </script>
+    <script src="theme.js" defer></script>
     <script src="roleplay.js"></script>
 </body>
 </html>

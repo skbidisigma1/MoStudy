@@ -8,6 +8,13 @@
 const AI_API_ENDPOINT = "/api/ai/chat";
 const AI_MODEL = "moonshotai/kimi-k2-0905";
 
+const SCENARIO_WORD_LIMITS = {
+    easy: 220,
+    normal: 280,
+    hard: 350,
+    impossible: 420
+};
+
 // Timer configurations (in seconds)
 const PLANNING_TIME = 20 * 60; // 20 minutes
 const PRESENTATION_TIME = 7 * 60; // 7 minutes
@@ -197,6 +204,21 @@ let appState = {
     // Speech recognition
     recognition: null,
     isRecording: false,
+    recordingTarget: null,
+
+    // Audio capture (optional)
+    audioStream: null,
+    mediaRecorder: null,
+    audioChunks: [],
+    audioMimeType: null,
+    mainAudioBlob: null,
+    qaAudioBlob: null,
+    mainAudioBase64: null,
+    qaAudioBase64: null,
+    audioProcessingPromise: null,
+
+    // Scenario generation UI
+    generationStatusInterval: null,
     
     // Difficulty and Q&A settings
     difficulty: 'normal', // 'easy', 'normal', 'hard', 'impossible'
@@ -289,7 +311,8 @@ async function selectEvent(event) {
     
     // Reset selection UI
     document.querySelectorAll('.difficulty-card').forEach(el => {
-        el.classList.remove('ring-4', 'ring-offset-2', 'ring-blue-500', 'bg-slate-50');
+        el.classList.remove('ring-4', 'ring-offset-2', 'ring-blue-500', 'bg-slate-50', 'is-selected');
+        el.setAttribute('aria-pressed', 'false');
     });
     const startBtn = document.getElementById('start-scenario-btn');
     if(startBtn) {
@@ -306,12 +329,14 @@ function selectDifficulty(difficulty) {
     
     // Update UI
     document.querySelectorAll('.difficulty-card').forEach(el => {
-        el.classList.remove('ring-4', 'ring-offset-2', 'ring-blue-500', 'bg-slate-50');
+        el.classList.remove('ring-4', 'ring-offset-2', 'ring-blue-500', 'bg-slate-50', 'is-selected');
+        el.setAttribute('aria-pressed', 'false');
     });
     
     const selectedBtn = document.getElementById(`diff-${difficulty}`);
     if (selectedBtn) {
-        selectedBtn.classList.add('ring-4', 'ring-offset-2', 'ring-blue-500', 'bg-slate-50');
+        selectedBtn.classList.add('ring-4', 'ring-offset-2', 'ring-blue-500', 'bg-slate-50', 'is-selected');
+        selectedBtn.setAttribute('aria-pressed', 'true');
     }
 
     // Enable start button
@@ -346,6 +371,7 @@ function goBackEventSelection() {
 async function startScenarioGeneration() {
     // Show generation screen
     showScreen('scenario-generation-screen');
+    startGenerationStatusLoop();
     
     try {
         // Load example role plays
@@ -358,6 +384,7 @@ async function startScenarioGeneration() {
         selectJudges();
         
         // Show planning screen, display scenario, and start the planning timer
+        stopGenerationStatusLoop();
         showScreen('planning-screen');
         displayScenario();
         // Start the 20-minute planning timer automatically
@@ -368,6 +395,7 @@ async function startScenarioGeneration() {
                 generateQAQuestionsBeforePresentation();
         }
     } catch (error) {
+        stopGenerationStatusLoop();
         console.error('Error starting session:', error);
         // Determine error type
         let errorMsg = 'Failed to generate scenario. ';
@@ -458,10 +486,10 @@ async function generateScenario() {
         
         // Difficulty modifiers for scenario generation
         const difficultyGuides = {
-            easy: "Create a scenario that is SIMPLER and more straightforward than the examples. Focus on one main problem with clearer solutions. Include helpful information and realistic constraints. \n\nLENGTH CONSTRAINT: Keep the scenario CONCISE (approx 200-300 words total).",
-            normal: "Create a scenario that is COMPARABLE in complexity to the examples. Include multiple interrelated challenges requiring diverse analysis. \n\nLENGTH CONSTRAINT: Keep the scenario CONCISE and similar in length to the provided examples (approx 300-400 words total).",
-            hard: "Create a scenario that is MORE COMPLEX than the examples. Include multiple conflicting stakeholder interests, ambiguous information, time constraints, and competing priorities. Require sophisticated analysis.",
-            impossible: "Create a scenario that is EXTREMELY COMPLEX and challenging. Include multiple competing stakeholders, significant ambiguity, conflicting regulatory requirements, limited resources, and no clear 'right' solution. This should test the limits of the competitor's knowledge."
+            easy: "Create a SIMPLE, straightforward scenario with ONE clear main problem and ONE secondary constraint. Keep it approachable and focused on core business reasoning. GEOGRAPHIC SCOPE: Use ONLY a U.S.-based company. If international expansion is needed, mention at most ONE country from: Canada, Mexico, or one country in Central/South America. Do NOT list multiple countries.",
+            normal: "Create a MODERATE scenario with ONE main challenge and ONE supporting challenge. Keep the situation realistic and clear, without excessive complexity. GEOGRAPHIC SCOPE: Use a U.S.-based company. If expanding internationally, mention at most ONE or TWO countries from: Canada, Mexico, Brazil, or one Central/South American country. Do NOT list 3+ countries.",
+            hard: "Create a COMPLEX scenario with multiple stakeholder interests, limited resources, and at least one tradeoff. Keep it coherent and solvable. GEOGRAPHIC SCOPE: You may reference up to TWO regions or THREE specific countries maximum. Focus the challenge, not the country list.",
+            impossible: "Create a VERY CHALLENGING scenario with ambiguity and competing priorities. The problem should be hard but still solvable with strong reasoning. GEOGRAPHIC SCOPE: You may reference multiple regions but keep country specifics to THREE maximum. Complexity should come from the problem, not listing countries."
         };
         
         const systemPrompt = `You are an expert FBLA Role Play scenario designer. Your task is to create a NEW, UNIQUE role play scenario for the ${appState.currentEvent.title} event.
@@ -477,28 +505,30 @@ IMPORTANT RULES:
 5. Include specific details that competitors can analyze and address
 6. Output ONLY the scenario content in a clean, readable format
 7. Do NOT include any meta-commentary or explanations
+8. CRITICAL COUNTRY LIMIT: For easy/normal difficulty, use ONE country maximum (preferably U.S. + Canada/Mexico). For hard/impossible, THREE countries maximum. Do NOT list many countries - it makes scenarios confusing.
+9. LENGTH LIMIT: Total length must be under ${SCENARIO_WORD_LIMITS[appState.difficulty]} words.
 
 FORMAT YOUR OUTPUT EXACTLY LIKE THIS:
 
 **ROLE PLAY SITUATION**
 
 **Background Information**
-[2-3 paragraphs describing the company/organization context]
+[2 short paragraphs, 1-2 sentences each describing the company/organization context]
 
 **Scenario**
-[1-2 paragraphs describing the specific challenge or situation]
+[1 short paragraph (2-3 sentences) describing the specific challenge or situation]
 
 **Other Useful Information**
-• [Bullet point 1]
-• [Bullet point 2]
-• [Bullet point 3]
+• [Bullet point 1 - short]
+• [Bullet point 2 - short]
+• [Bullet point 3 - short]
 
 **Requirements**
 Your team must address the following during the presentation:
-• [Requirement 1]
-• [Requirement 2]
-• [Requirement 3]
-• [Requirement 4]`;
+• [Requirement 1 - short]
+• [Requirement 2 - short]
+• [Requirement 3 - short]
+• [Requirement 4 - short]`;
 
         const userPrompt = `Here are example ${appState.currentEvent.title} role plays for reference. Create a completely NEW and DIFFERENT scenario that tests similar skills but with a unique situation appropriate for the ${appState.difficulty} difficulty level:
 
@@ -514,7 +544,7 @@ Now create a brand new, original ${appState.currentEvent.title} role play scenar
         clearInterval(progressInterval);
         progressBar.style.width = '100%';
         
-        appState.generatedScenario = response;
+        appState.generatedScenario = trimScenario(response, SCENARIO_WORD_LIMITS[appState.difficulty]);
 
         // Small delay to let user see 100%
         await new Promise(resolve => setTimeout(resolve, 500));
@@ -526,10 +556,55 @@ Now create a brand new, original ${appState.currentEvent.title} role play scenar
     }
 }
 
+function trimScenario(text, maxWords) {
+    // Don't aggressively trim - scenarios need to be complete
+    // Just return the full text and let AI manage length via prompts
+    if (!text) return text;
+    const wordCount = text.trim().split(/\s+/).length;
+    if (wordCount > maxWords * 1.5) {
+        console.warn(`Scenario is ${wordCount} words, expected around ${maxWords}`);
+    }
+    return text;
+}
+
 function selectJudges() {
     // Randomly select 3 judges from the pool
     const shuffled = [...JUDGE_POOL].sort(() => Math.random() - 0.5);
     appState.selectedJudges = shuffled.slice(0, 3);
+}
+
+function startGenerationStatusLoop() {
+    const statusText = document.getElementById('generation-status');
+    const steps = [
+        "Reviewing event examples",
+        "Drafting the scenario",
+        "Refining constraints",
+        "Balancing difficulty",
+        "Finalizing requirements"
+    ];
+
+    let index = 0;
+    if (statusText) {
+        statusText.textContent = steps[index];
+    }
+
+    if (appState.generationStatusInterval) {
+        clearInterval(appState.generationStatusInterval);
+    }
+
+    appState.generationStatusInterval = setInterval(() => {
+        index = (index + 1) % steps.length;
+        if (statusText) {
+            statusText.textContent = steps[index];
+        }
+    }, 1400);
+}
+
+function stopGenerationStatusLoop() {
+    if (appState.generationStatusInterval) {
+        clearInterval(appState.generationStatusInterval);
+        appState.generationStatusInterval = null;
+    }
 }
 
 // ==================== DISPLAY FUNCTIONS ====================
@@ -787,6 +862,8 @@ function startRecording(target) {
     } catch (e) {
         console.warn('Recognition already started:', e);
     }
+
+    startAudioCapture(target);
 }
 
 function stopRecording() {
@@ -799,6 +876,121 @@ function stopRecording() {
             console.warn('Could not stop recognition:', e);
         }
     }
+
+    stopAudioCapture();
+}
+
+async function ensureAudioStream() {
+    if (appState.audioStream) return appState.audioStream;
+    try {
+        appState.audioStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        return appState.audioStream;
+    } catch (error) {
+        console.warn('Audio capture not available:', error);
+        return null;
+    }
+}
+
+function getSupportedAudioMimeType() {
+    const candidates = ['audio/webm;codecs=opus', 'audio/webm', 'audio/ogg;codecs=opus', 'audio/ogg'];
+    for (const type of candidates) {
+        if (MediaRecorder.isTypeSupported(type)) {
+            return type;
+        }
+    }
+    return '';
+}
+
+async function startAudioCapture(target) {
+    if (!('MediaRecorder' in window)) return;
+
+    const stream = await ensureAudioStream();
+    if (!stream) return;
+
+    appState.audioChunks = [];
+    const mimeType = getSupportedAudioMimeType();
+    appState.audioMimeType = mimeType || null;
+
+    try {
+        appState.mediaRecorder = mimeType ? new MediaRecorder(stream, { mimeType }) : new MediaRecorder(stream);
+    } catch (error) {
+        console.warn('MediaRecorder init failed:', error);
+        appState.mediaRecorder = null;
+        return;
+    }
+
+    appState.mediaRecorder.ondataavailable = (event) => {
+        if (event.data && event.data.size > 0) {
+            appState.audioChunks.push(event.data);
+        }
+    };
+
+    appState.audioProcessingPromise = new Promise((resolve) => {
+        appState.mediaRecorder.onstop = async () => {
+            if (!appState.audioChunks.length) {
+                resolve();
+                return;
+            }
+            const blob = new Blob(appState.audioChunks, { type: appState.audioMimeType || 'audio/webm' });
+            const base64 = await blobToBase64(blob);
+
+            if (target === 'main') {
+                appState.mainAudioBlob = blob;
+                appState.mainAudioBase64 = base64;
+            } else if (target === 'qa') {
+                appState.qaAudioBlob = blob;
+                appState.qaAudioBase64 = base64;
+            }
+            resolve();
+        };
+    });
+
+    try {
+        appState.mediaRecorder.start();
+    } catch (error) {
+        console.warn('MediaRecorder start failed:', error);
+    }
+}
+
+function stopAudioCapture() {
+    if (appState.mediaRecorder && appState.mediaRecorder.state === 'recording') {
+        try {
+            appState.mediaRecorder.stop();
+        } catch (error) {
+            console.warn('MediaRecorder stop failed:', error);
+        }
+    }
+}
+
+function blobToBase64(blob) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            const result = reader.result;
+            if (typeof result === 'string') {
+                const base64 = result.split(',')[1] || '';
+                resolve(base64);
+            } else {
+                resolve('');
+            }
+        };
+        reader.onerror = reject;
+        reader.readAsDataURL(blob);
+    });
+}
+
+function getAudioPayload() {
+    // Temporarily disabled to avoid PayloadTooLargeError
+    // Audio capture still runs but is not sent to API
+    return null;
+    
+    // Original code kept for future re-enabling:
+    // if (!appState.mainAudioBase64 && !appState.qaAudioBase64) return null;
+    // return {
+    //     mimeType: appState.audioMimeType || 'audio/webm',
+    //     main: appState.mainAudioBase64,
+    //     qa: appState.qaAudioBase64
+    // };
 }
 
 function updateTranscript(finalText, interimText) {
@@ -866,6 +1058,8 @@ function endMainPresentation() {
     } else {
         // Q&A timing is "before", questions already generated, go directly to Q&A
         showScreen('qa-screen');
+        // Make sure questions are displayed
+        displayQAQuestions();
         startQAReadDelay();
     }
 }
@@ -887,7 +1081,7 @@ DIFFICULTY LEVEL: ${appState.difficulty.toUpperCase()}
 ${difficultyModifiers[appState.difficulty]}
 
 CRITICAL RULES:
-1. Generate exactly 2-3 follow-up questions based on the scenario
+1. Generate exactly 2 follow-up questions based on the scenario
 2. Questions should test understanding of the business situation and encourage deep analysis
 3. Output ONLY a JSON array of questions, nothing else
 
@@ -924,6 +1118,9 @@ Generate probing follow-up questions at the ${appState.difficulty} difficulty le
         }
         
         appState.qaQuestions = questions;
+        console.log('Generated Q&A questions:', appState.qaQuestions);
+        // Display questions immediately so they're ready when Q&A screen shows
+        displayQAQuestions();
         
     } catch (error) {
         console.error('Error generating pre-presentation Q&A questions:', error);
@@ -932,6 +1129,8 @@ Generate probing follow-up questions at the ${appState.difficulty} difficulty le
             "What is the main challenge you need to address?",
             "How would your solution benefit the company or organization?"
         ];
+        console.log('Using fallback Q&A questions:', appState.qaQuestions);
+        displayQAQuestions();
     }
 }
 
@@ -965,7 +1164,7 @@ ${difficultyModifiers[appState.difficulty]}
 
 CRITICAL RULES:
 1. Provide feedback in the third person. Never introduce yourself.
-2. Generate exactly 2-3 follow-up questions based on the presentation
+2. Generate exactly 2 follow-up questions based on the presentation
 3. Questions should probe deeper into the presented solutions
 4. Output ONLY a JSON array of questions, nothing else
 
@@ -1063,9 +1262,17 @@ function startQARecording() {
     startQATimer();
 }
 
-function endQARecording() {
+async function endQARecording() {
     clearInterval(appState.currentTimer);
     stopRecording();
+
+    if (appState.audioProcessingPromise) {
+        try {
+            await appState.audioProcessingPromise;
+        } catch (error) {
+            console.warn('Audio processing failed:', error);
+        }
+    }
     
     // Move to judging
     startJudging();
@@ -1112,54 +1319,74 @@ async function runJudgeEvaluation(judge, index) {
         // Difficulty-based evaluation modifiers
         const difficultyEvaluationGuides = {
             easy: `DIFFICULTY MODIFIER: EASY
-This is a relatively straightforward scenario at the easy difficulty level. While you should still be thorough:
-- Be encouraging but honest about performance
-- Focus on foundational competencies
-- Award points for basic correct reasoning
-- Scores can reasonably range from 30-100, with many 70+ scores
-- Still maintain realistic standards - early mistakes matter`,
+    This is a straightforward scenario. Be supportive while still honest:
+    - Focus on foundational competencies and clear reasoning
+    - Reward coherent structure and feasible steps
+    - Scores can reasonably range from 45-100, with many 70+ scores
+    - Penalize major gaps, but do not over-punish minor issues`,
             
             normal: `DIFFICULTY MODIFIER: NORMAL
-This is a standard complexity scenario. Evaluate using normal FBLA competition standards:
-- Be rigorous and fair
-- Award points based on thorough analysis and execution
-- Scores can reasonably range from 20-95, with average around 60-70
-- Expect both strengths and significant areas for improvement`,
+    This is a standard scenario. Evaluate using realistic FBLA standards:
+    - Be fair and balanced
+    - Reward depth of analysis, not keyword density
+    - Scores can reasonably range from 35-95, with average around 65-75`,
             
             hard: `DIFFICULTY MODIFIER: HARD
-This is a significantly more complex scenario. Increase your expectations:
-- Be substantially more critical of analysis depth
-- Require more sophisticated solutions
-- Penalize surface-level thinking
-- Scores typically range from 15-85, with average around 45-60
-- Most competitors will struggle with at least one component`,
+    This is a complex scenario. Increase expectations but stay fair:
+    - Reward tradeoff analysis and implementation detail
+    - Penalize vague or generic plans
+    - Scores typically range from 25-90, with average around 55-70`,
             
             impossible: `DIFFICULTY MODIFIER: IMPOSSIBLE
-This is an extremely difficult scenario designed to challenge top competitors:
-- Be very demanding in your evaluation
-- Expect and accept incomplete solutions
-- Look for any signs of sophisticated reasoning
-- Award points sparingly for truly excellent analysis
-- Scores typically range from 10-75, with average around 35-50
-- Finding no clear solution is expected and acceptable at this level`
+    This is a very challenging scenario. Be demanding but realistic:
+    - Look for sophisticated reasoning and prioritization
+    - Allow partial credit for strong frameworks even if incomplete
+    - Scores typically range from 20-85, with average around 45-60`
         };
         
-        const systemPrompt = `You are ${judge.name}, ${judge.title}. ${judge.background}. Your evaluation style: ${judge.style}.
+        // Create unique judge voice based on their personality
+        const judgeVoices = {
+            'Dr. Margaret Chen': 'You speak thoughtfully and academically. You appreciate when students show they understand underlying business theory. You often reference real-world examples in your feedback.',
+            'Marcus Williams': 'You are direct and business-focused. You cut to the chase and want practical, actionable plans. You appreciate confidence but dislike fluff.',
+            'Dr. Yuki Tanaka': 'You are warm but perceptive. You pay close attention to how students handle cultural nuances and relationship dynamics. You give encouraging feedback even when critical.',
+            'Robert Martinez': 'You are precise and detail-oriented. You notice when students miss important considerations. Your feedback is methodical and structured.',
+            'Sarah O\'Brien': 'You are enthusiastic and entrepreneurial. You love creative solutions and bold thinking. You encourage students to think bigger while being realistic.',
+            'Dr. Kwame Asante': 'You focus on data and evidence. You appreciate when students back up their claims. You ask probing questions about assumptions.',
+            'Jennifer Park': 'You are practical and operations-minded. You want to know HOW things will actually work. You value realistic timelines and resource planning.',
+            'David Thompson': 'You are supportive but honest as an educator. You understand students are learning. You balance encouragement with specific areas for growth.',
+            'Dr. Aisha Patel': 'You think strategically about positioning and competitive advantage. You appreciate when students consider the bigger picture.',
+            'Michael Chang': 'You are blunt and results-focused. You want to see potential for success. You give direct feedback without sugarcoating.'
+        };
+        
+        const judgeVoice = judgeVoices[judge.name] || 'You give balanced, constructive feedback.';
+        
+        const systemPrompt = `You are ${judge.name}, ${judge.title}. ${judge.background}.
+
+YOUR PERSONALITY: ${judgeVoice}
 
 ${difficultyEvaluationGuides[appState.difficulty]}
 
-CRITICAL RULES - YOU MUST FOLLOW THESE EXACTLY:
-1. Provide ALL feedback in the THIRD PERSON. Never say "I", "As a judge", "As ${judge.name}", or introduce yourself.
-2. Write feedback as if writing a professional score report about "the participant" or "the presenter"
-3. MANDATORY QUALITY CHECK: If the transcript is under 50 words, irrelevant, nonsensical, or describes delegating the task to someone else, you MUST assign a failing score (below 20%) for professionalism and overall performance.
-4. Be realistic but critical - vary your scores based on actual performance quality
-5. If no identifiable strengths exist, write "strengthHighlight": "No clear strengths demonstrated" or similar
-6. Output ONLY valid JSON matching the schema below
+YOUR TASK: Evaluate this FBLA role play presentation and provide HUMAN, HELPFUL feedback.
 
-RUBRIC CATEGORIES AND POINT RANGES:
+RULES:
+1. Write in FIRST PERSON as ${judge.name}. Say "I noticed..." or "I was impressed by..." or "I think you could improve..."
+2. Be SPECIFIC - reference exact things from the presentation, not generic advice
+3. Be HUMAN - vary your tone, show personality, give real reactions
+4. Each category feedback should mention something SPECIFIC the student said or did (or didn't do)
+5. Your overall feedback should feel like a real mentor talking to a student
+6. Actionable tips should be CONCRETE things they can practice, not vague platitudes
+
+SCORING GUIDE:
+- 85-100: Exceptional - professional quality, would impress real business executives
+- 70-84: Strong - solid understanding, good presentation, minor gaps
+- 55-69: Developing - shows potential but needs more depth or clarity
+- 40-54: Needs Work - major gaps in understanding or presentation
+- Below 40: Significant Issues - did not address the scenario adequately
+
+RUBRIC:
 ${FBLA_RUBRIC.categories.map(c => `- ${c.name}: 0-${c.maxPoints} points`).join('\n')}
 
-OUTPUT THIS EXACT JSON SCHEMA:
+OUTPUT VALID JSON:
 {
     "scores": {
         "understanding": <0-10>,
@@ -1170,19 +1397,21 @@ OUTPUT THIS EXACT JSON SCHEMA:
         "delivery": <0-10>,
         "questions": <0-10>
     },
-    "total": <sum of all scores>,
+    "total": <sum of scores>,
     "categoryFeedback": {
-        "understanding": "<1-2 sentence feedback - critical analysis>",
-        "alternatives": "<1-2 sentence feedback - critical analysis>",
-        "solution": "<1-2 sentence feedback - critical analysis>",
-        "knowledge": "<1-2 sentence feedback - critical analysis>",
-        "organization": "<1-2 sentence feedback - critical analysis>",
-        "delivery": "<1-2 sentence feedback - critical analysis>",
-        "questions": "<1-2 sentence feedback - critical analysis>"
+        "understanding": "<your specific feedback as ${judge.name}>",
+        "alternatives": "<your specific feedback>",
+        "solution": "<your specific feedback>",
+        "knowledge": "<your specific feedback>",
+        "organization": "<your specific feedback>",
+        "delivery": "<your specific feedback>",
+        "questions": "<your specific feedback>"
     },
-    "overallFeedback": "<2-3 sentence overall assessment - realistic and critical>",
-    "strengthHighlight": "<one key strength, or 'No clear strengths demonstrated' if applicable>",
-    "improvementArea": "<one area needing most improvement - be specific>"
+    "overallFeedback": "<2-3 sentences as ${judge.name} giving overall impression and encouragement>",
+    "strengthHighlight": "<one specific thing they did well>",
+    "improvementArea": "<one specific thing to work on>",
+    "personalizedFeedback": "<a personal note from ${judge.name} about their potential>",
+    "actionableTips": ["<specific practice suggestion 1>", "<specific practice suggestion 2>", "<specific practice suggestion 3>"]
 }`;
 
         const userPrompt = `SCENARIO PRESENTED (Difficulty: ${appState.difficulty.toUpperCase()}):
@@ -1195,12 +1424,14 @@ Q&A RESPONSE TRANSCRIPT (1 minute):
 Questions asked: ${appState.qaQuestions.join(' | ')}
 Response: ${appState.qaTranscript || "(No response recorded - this should impact the questions score)"}
 
+If presentation audio is provided, treat it as the authoritative response and use the transcript as backup only.
+
 Evaluate this ${appState.currentEvent.title} role play performance using the official FBLA rubric at the ${appState.difficulty} difficulty level. Remember to write in third person, be critical and realistic, and never identify yourself.`;
 
         const response = await callAI([
             { role: "system", content: systemPrompt },
             { role: "user", content: userPrompt }
-        ], true);
+        ], true, { audio: getAudioPayload() });
         
         // Parse the response
         let evaluation;
@@ -1258,7 +1489,13 @@ Evaluate this ${appState.currentEvent.title} role play performance using the off
                 },
                 overallFeedback: "The evaluation encountered an error. Please try again for a complete assessment.",
                 strengthHighlight: "Unable to determine",
-                improvementArea: "Unable to determine"
+                improvementArea: "Unable to determine",
+                personalizedFeedback: "No personalized feedback available due to an evaluation error.",
+                actionableTips: [
+                    "Retry evaluation for detailed feedback.",
+                    "Provide a clearer structure in your response.",
+                    "Address each requirement directly."
+                ]
             },
             error: true
         };
@@ -1325,6 +1562,12 @@ function displayJudgingResults() {
                         </svg>
                         <span class="text-slate-600">${escapeHtml(result.evaluation.improvementArea || 'N/A')}</span>
                     </div>
+                    <div class="flex items-start gap-2">
+                        <svg class="w-4 h-4 text-blue-500 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01" />
+                        </svg>
+                        <span class="text-slate-600">${escapeHtml(result.evaluation.personalizedFeedback || 'Personalized feedback unavailable.')}</span>
+                    </div>
                 </div>
             </div>
         `;
@@ -1360,6 +1603,11 @@ function showJudgeSheet(index) {
         <div class="mb-6">
             <h4 class="font-bold text-slate-800 mb-2">Overall Assessment</h4>
             <p class="text-slate-600">${escapeHtml(evaluation.overallFeedback || 'No overall feedback available.')}</p>
+        </div>
+
+        <div class="mb-6">
+            <h4 class="font-bold text-slate-800 mb-2">Personalized Feedback</h4>
+            <p class="text-slate-600">${escapeHtml(evaluation.personalizedFeedback || 'No personalized feedback available.')}</p>
         </div>
         
         <div class="overflow-x-auto">
@@ -1404,6 +1652,15 @@ function showJudgeSheet(index) {
                 </tfoot>
             </table>
         </div>
+
+        <div class="mt-6 bg-slate-50 rounded-xl p-4">
+            <h4 class="font-bold text-slate-800 mb-2">Actionable Tips</h4>
+            <ul class="list-disc list-inside text-slate-600 text-sm space-y-1">
+                ${(evaluation.actionableTips || ["Refine your plan with clear steps.", "Explain tradeoffs and risks.", "Connect recommendations to the scenario details."]).map(tip => `
+                    <li>${escapeHtml(tip)}</li>
+                `).join('')}
+            </ul>
+        </div>
     `;
 }
 
@@ -1426,7 +1683,20 @@ function startNewSession() {
         qaTimeLeft: QA_TIME,
         currentTimer: null,
         recognition: appState.recognition, // Keep recognition instance
-        isRecording: false
+        isRecording: false,
+        recordingTarget: null,
+        audioStream: appState.audioStream,
+        mediaRecorder: null,
+        audioChunks: [],
+        audioMimeType: null,
+        mainAudioBlob: null,
+        qaAudioBlob: null,
+        mainAudioBase64: null,
+        qaAudioBase64: null,
+        audioProcessingPromise: null,
+        generationStatusInterval: null,
+        difficulty: 'normal',
+        qaTiming: 'before'
     };
     
     // Hide session timer
@@ -1439,11 +1709,17 @@ function startNewSession() {
 
 // ==================== UTILITY FUNCTIONS ====================
 
-async function callAI(messages, expectJson = false) {
+async function callAI(messages, expectJson = false, options = {}) {
     const requestBody = {
         messages: messages,
-        temperature: expectJson ? 0 : 0.7
+        temperature: expectJson ? 0.1 : 0.7,
+        model: AI_MODEL
     };
+
+    // Audio disabled for now to avoid payload issues
+    // if (options.audio) {
+    //     requestBody.audio = options.audio;
+    // }
     
     const maxRetries = 3;
     let lastError;

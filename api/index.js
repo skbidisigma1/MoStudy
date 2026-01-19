@@ -4,7 +4,8 @@ const admin = require('firebase-admin');
 
 const app = express();
 
-app.use(express.json());
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
 const jwtCheck = auth({
   audience: 'https://mostudy.org/api',
@@ -49,7 +50,7 @@ const getFirestore = () => {
 // Public endpoint for AI chat (no auth required)
 app.post('/api/ai/chat', async (req, res) => {
   try {
-    const { messages, temperature = 0.7 } = req.body;
+    const { messages, temperature = 0.7, model, enableThinking = true, audio } = req.body;
     
     if (!messages || !Array.isArray(messages)) {
       return res.status(400).json({ error: 'Invalid request: messages array required' });
@@ -61,26 +62,34 @@ app.post('/api/ai/chat', async (req, res) => {
       return res.status(500).json({ error: 'AI service not configured: missing API key' });
     }
 
-    console.log('Calling OpenRouter AI with model: moonshotai/kimi-k2-0905');
+    // Use the model from client or fallback to a reliable model
+    const selectedModel = model || 'moonshotai/kimi-k2-0905';
+
+    console.log('Calling OpenRouter AI with model:', selectedModel);
 
     // Use direct HTTP call to OpenRouter API
     const requestBody = {
-      model: 'moonshotai/kimi-k2-0905',
+      model: selectedModel,
       messages: messages,
       temperature: temperature,
       stream: false
     };
 
-    const fetchResponse = await fetch('https://ai.hackclub.com/proxy/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`
-      },
-      body: JSON.stringify(requestBody)
-    });
+    const makeRequest = async (body) => {
+      const fetchResponse = await fetch('https://ai.hackclub.com/proxy/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${apiKey}`
+        },
+        body: JSON.stringify(body)
+      });
 
-    const responseData = await fetchResponse.json();
+      const responseData = await fetchResponse.json();
+      return { fetchResponse, responseData };
+    };
+
+    let { fetchResponse, responseData } = await makeRequest(requestBody);
 
     if (!fetchResponse.ok) {
       console.error('OpenRouter API error:', {

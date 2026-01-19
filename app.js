@@ -1,11 +1,3 @@
-// Initialize DarkReader
-DarkReader.setFetchMethod(window.fetch);
-DarkReader.enable({
-    brightness: 100,
-    contrast: 90,
-    sepia: 10
-});
-
 // --- CATALOG ---
 const catalog = [
     {
@@ -391,7 +383,6 @@ function showStartError(message) {
 
 async function startQuiz() {
     const configCountVal = document.getElementById('config-question-count')?.value || "100";
-    const configAIVal = parseInt(document.getElementById('config-ai-questions')?.value || "0");
 
     if (!currentTest || questionsSource.length === 0) {
         showStartError("Select a test before starting the exam.");
@@ -408,18 +399,6 @@ async function startQuiz() {
 
     try {
         let pool = [...questionsSource];
-
-        if (configAIVal > 0) {
-            try {
-                const count = Math.min(Math.max(1, configAIVal), 20);
-                const aiQuestions = await fetchAIQuestions(currentTest.title, count);
-                if (aiQuestions && aiQuestions.length > 0) {
-                    pool = [...aiQuestions, ...pool];
-                }
-            } catch (e) {
-                console.error("AI Fetch Error", e);
-            }
-        }
 
         const shuffled = pool.sort(() => Math.random() - 0.5);
         
@@ -1391,70 +1370,5 @@ function playTimerAlert() {
         oscillator.stop(audioCtx.currentTime + 0.5);
     } catch (e) {
         console.error("Failed to play timer alert sound:", e);
-    }
-}
-
-// ==================== AI FUNCTIONS ====================
-
-const AI_API_ENDPOINT = "/api/ai/chat";
-
-async function callAI(messages, expectJson = false) {
-    const requestBody = {
-        messages: messages,
-        temperature: expectJson ? 0 : 0.7
-    };
-    
-    try {
-        const response = await fetch(AI_API_ENDPOINT, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(requestBody)
-        });
-        
-        if (!response.ok) {
-            throw new Error(`AI Request failed: ${response.status}`);
-        }
-        
-        const data = await response.json();
-        return data.content || data.message || "";
-    } catch (error) {
-        console.error("AI Call failed:", error);
-        throw error;
-    }
-}
-
-async function fetchAIQuestions(topic, count) {
-    const prompt = `Generate ${count} multiple-choice questions for an FBLA (Future Business Leaders of America) objective test on the topic: "${topic}".
-
-For each question:
-1. Provide the question text.
-2. Provide 4 options (A, B, C, D).
-3. Identify the correct answer index (0-3).
-4. Assign a specific sub-category/topic.
-
-Output purely a valid JSON array of objects.
-Format:
-[
-  {
-    "text": "Question text?",
-    "options": ["Op1", "Op2", "Op3", "Op4"],
-    "correct": 0,
-    "category": "Sub-topic"
-  }
-]
-Do not utilize markdown formatting or code blocks. Return ONLY the raw JSON string.`;
-
-    try {
-        const response = await callAI([ // eslint-disable-next-line
-            { role: "system", content: "You are an expert test question generator. Output valid JSON only." },
-            { role: "user", content: prompt }
-        ], true);
-        
-        // Clean response if it contains markdown code blocks
-        let cleanJson = response.replace(/```json/g, '').replace(/```/g, '').trim();
-        return JSON.parse(cleanJson);
-    } catch (e) {
-        console.error("Error parsing AI questions", e);
-        return [];
     }
 }
