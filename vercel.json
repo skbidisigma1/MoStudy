@@ -3,6 +3,7 @@
     { "source": "/api/(.*)", "destination": "/api/index.js" },
     { "source": "/account", "destination": "/account.html" },
     { "source": "/study", "destination": "/study.html" },
+    { "source": "/roleplay", "destination": "/roleplay.html" },
     { "source": "/", "destination": "/index.html" }
   ],
   "outputDirectory": "."

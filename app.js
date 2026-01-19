@@ -718,16 +718,15 @@ async function generateAIReview() {
 
     const postToAI = async (messages) => {
         const requestBody = {
-            model: "moonshotai/kimi-k2-0905",
-            temperature: 0,
-            messages
+            messages,
+            temperature: 0
         };
 
         // Retry with exponential backoff on 429s
-        const maxRetries = 4;
+        const maxRetries = 3;
         let response;
         for (let attempt = 0; attempt <= maxRetries; attempt++) {
-            response = await fetch("https://ai-proxy.elinelson992.workers.dev", {
+            response = await fetch("/api/ai/chat", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(requestBody)

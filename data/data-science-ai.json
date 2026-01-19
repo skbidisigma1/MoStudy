@@ -1,106 +1,2153 @@
 {
-  "id": "fbla-datascience-ai-2025-2026",
-  "title": "Data Science & AI",
-  "description": "FBLA Objective Test covering data analysis, machine learning, AI fundamentals, and data literacy.",
+  "id": "fbla-datascience-ai-2025-2026-expanded",
+  "title": "Data Science & AI Comprehensive Bank",
+  "description": "Expanded 150-question bank for FBLA Objective Test preparation.",
   "timeLimitSeconds": 3000,
   "questions": [
-    {"category": "Statistics", "text": "Which measure of central tendency is most affected by extreme values?", "options": ["Mean", "Median", "Mode", "Range"], "correct": 0},
-    {"category": "Probability", "text": "The probability of two independent events both occurring is found by:", "options": ["Adding their probabilities", "Multiplying their probabilities", "Subtracting their probabilities", "Dividing their probabilities"], "correct": 1},
-    {"category": "Statistics", "text": "A normal distribution is defined by its:", "options": ["Mean and mode", "Mean and standard deviation", "Median and range", "Variance and mode"], "correct": 1},
-    {"category": "Probability", "text": "In probability, the complement of an event A represents:", "options": ["The event happening twice", "The event not occurring", "The event occurring first", "The event occurring with another event"], "correct": 1},
-    {"category": "Statistics", "text": "The standard deviation measures:", "options": ["How centered the data is around the mean", "The spread of data values from the mean", "The probability of an event occurring", "The relationship between two variables"], "correct": 1},
-    {"category": "Probability", "text": "If the probability of rain is 0.3, what is the probability it will NOT rain?", "options": ["0.3", "0.5", "0.7", "0.9"], "correct": 2},
-    {"category": "Statistics", "text": "Which of the following is a continuous random variable?", "options": ["Number of books on a shelf", "Height of students in a class", "Number of defective products", "Count of website visits"], "correct": 1},
-    {"category": "Statistics", "text": "In statistics, a p-value is used to:", "options": ["Determine if a result is statistically significant", "Measure the average of a data set", "Calculate the mean difference", "Determine probability of independence"], "correct": 0},
-    {"category": "AI/ML", "text": "In AI, overfitting occurs when:", "options": ["The model is too simple", "The model learns noise instead of patterns", "The model is under-trained", "The dataset is too small"], "correct": 1},
-    {"category": "Statistics", "text": "Which measure is best for comparing the spread of two datasets with different units?", "options": ["Standard deviation", "Coefficient of variation", "Mean", "Median"], "correct": 1},
-    {"category": "Statistics", "text": "A correlation coefficient of -0.85 suggests:", "options": ["A strong positive relationship", "A weak negative relationship", "A strong negative relationship", "No relationship"], "correct": 2},
-    {"category": "Data Analysis", "text": "Which is NOT a step in the data analysis process?", "options": ["Data collection", "Data cleaning", "Model deployment", "Data visualization"], "correct": 2},
-    {"category": "ML Evaluation", "text": "The confusion matrix is used to evaluate:", "options": ["Regression models", "Classification models", "Clustering algorithms", "Data cleaning methods"], "correct": 1},
-    {"category": "Visualization", "text": "A histogram is most useful for:", "options": ["Showing frequency distribution of data", "Comparing two datasets", "Showing relationships between variables", "Plotting real-time changes"], "correct": 0},
-    {"category": "ML Evaluation", "text": "Which metric is most appropriate for measuring model accuracy in imbalanced datasets?", "options": ["Accuracy", "Precision and recall", "Mean absolute error", "Root mean square error"], "correct": 1},
-    {"category": "Data Processing", "text": "Data normalization is performed to:", "options": ["Remove duplicate data", "Scale features to a similar range", "Convert categorical data to numerical data", "Remove outliers"], "correct": 1},
-    {"category": "Tools", "text": "Which programming language is most widely used for AI and data science?", "options": ["Java", "Python", "C++", "Ruby"], "correct": 1},
-    {"category": "Tools", "text": "SQL is primarily used for:", "options": ["Managing and querying relational databases", "Creating machine learning models", "Designing websites", "Running operating systems"], "correct": 0},
-    {"category": "Tools", "text": "Which Python library is best known for data visualization?", "options": ["NumPy", "Matplotlib", "Pandas", "TensorFlow"], "correct": 1},
-    {"category": "Tools", "text": "TensorFlow is primarily used for:", "options": ["Database management", "Deep learning model development", "Data cleaning", "Statistical tests"], "correct": 1},
-    {"category": "Tools", "text": "Which tool is best suited for interactive data analysis and visualization in a browser?", "options": ["Jupyter Notebook", "Apache Hadoop", "GitHub", "Tableau Server"], "correct": 0},
-    {"category": "AI Basics", "text": "Artificial Intelligence is best defined as:", "options": ["Computers mimicking human intelligence tasks", "Computers storing large amounts of data", "Faster internet processing", "Automated backups"], "correct": 0},
-    {"category": "AI Basics", "text": "Which is an example of narrow AI?", "options": ["Self-driving car software", "General AI with human-like reasoning", "An AI that can perform all intellectual tasks", "Human brain emulation"], "correct": 0},
-    {"category": "AI Basics", "text": "Turing Test is designed to:", "options": ["Measure AI speed", "Evaluate if a machine exhibits human-like intelligence", "Test internet bandwidth", "Measure algorithm efficiency"], "correct": 1},
-    {"category": "AI Basics", "text": "Which branch of AI focuses on enabling machines to interpret visual information?", "options": ["Robotics", "Computer vision", "Natural language processing", "Neural networks"], "correct": 1},
-    {"category": "AI Basics", "text": "Which is NOT a goal of AI?", "options": ["Learning", "Reasoning", "Forgetting", "Problem-solving"], "correct": 2},
-    {"category": "Machine Learning", "text": "Supervised learning requires:", "options": ["Labeled training data", "Unlabeled data", "Data clustering", "No data"], "correct": 0},
-    {"category": "Machine Learning", "text": "In machine learning, a feature is:", "options": ["An input variable used for prediction", "The predicted output", "A hidden layer", "A training algorithm"], "correct": 0},
-    {"category": "Machine Learning", "text": "Which algorithm is used for classification tasks?", "options": ["Linear regression", "Decision trees", "K-means clustering", "Apriori algorithm"], "correct": 1},
-    {"category": "Machine Learning", "text": "Unsupervised learning is typically used for:", "options": ["Predicting stock prices", "Grouping similar items without labels", "Predicting house prices", "Fraud detection"], "correct": 1},
-    {"category": "Machine Learning", "text": "Overfitting in machine learning can be reduced by:", "options": ["Increasing the number of features", "Regularization techniques", "Using a smaller training dataset", "Ignoring validation data"], "correct": 1},
-    {"category": "Knowledge Rep", "text": "Knowledge representation in AI refers to:", "options": ["Storing knowledge in a form that computers can process", "Visualizing data", "Creating animations", "Encoding passwords"], "correct": 0},
-    {"category": "Perception", "text": "Which is an example of an AI perception system?", "options": ["Image recognition software", "SQL database", "CPU processing unit", "Data warehouse"], "correct": 0},
-    {"category": "Expert Systems", "text": "An expert system uses:", "options": ["Human expertise to make decisions", "Predefined rules and reasoning to solve problems", "Only statistical models", "Random guesswork"], "correct": 1},
-    {"category": "Knowledge Rep", "text": "Semantic networks are used to:", "options": ["Represent relationships between concepts", "Encrypt data", "Build neural networks", "Store images"], "correct": 0},
-    {"category": "Reasoning", "text": "Which reasoning approach draws conclusions from general principles to specific cases?", "options": ["Inductive reasoning", "Deductive reasoning", "Abductive reasoning", "Predictive reasoning"], "correct": 1},
-    {"category": "Ethics", "text": "Which is an example of bias in AI?", "options": ["Algorithmic decisions favoring one demographic group unfairly", "An AI predicting stock prices", "An AI with low accuracy", "Slow training times"], "correct": 0},
-    {"category": "Privacy", "text": "GDPR primarily focuses on:", "options": ["Cybersecurity hardware installation", "Data privacy and protection in the EU", "Machine learning algorithms", "Software development standards"], "correct": 1},
-    {"category": "Ethics", "text": "Which principle ensures individuals know how their data will be used?", "options": ["Transparency", "Confidentiality", "Availability", "Integrity"], "correct": 0},
-    {"category": "Ethics", "text": "Ethical AI aims to:", "options": ["Maximize profits", "Make decisions aligned with societal values", "Avoid legal compliance", "Reduce computing costs"], "correct": 1},
-    {"category": "Ethics", "text": "Which is NOT a best practice for ethical AI?", "options": ["Inclusive training datasets", "Regular bias audits", "Hiding algorithm decision-making", "Clear accountability"], "correct": 2},
-    {"category": "Data Literacy", "text": "Data literacy is best defined as:", "options": ["The ability to read, work with, analyze, and communicate data", "Writing computer programs", "Building neural networks", "Encrypting data"], "correct": 0},
-    {"category": "Data Types", "text": "Structured data is:", "options": ["Organized in a fixed format, like databases", "Unorganized text and images", "Only numbers", "Encrypted data"], "correct": 0},
-    {"category": "Data Types", "text": "Which is an example of qualitative data?", "options": ["Temperature readings", "Customer satisfaction ratings in words", "Age of participants", "Monthly revenue"], "correct": 1},
-    {"category": "Databases", "text": "A primary key in a database:", "options": ["Uniquely identifies a record", "Encrypts the database", "Links two databases", "Stores large files"], "correct": 0},
-    {"category": "Data Lifecycle", "text": "Which is NOT a step in the data lifecycle?", "options": ["Data collection", "Data storage", "Data destruction", "Data advertising"], "correct": 3},
-    {"category": "Data Types", "text": "Which term refers to data that arrives in real-time streams?", "options": ["Batch data", "Streaming data", "Historical data", "Stale data"], "correct": 1},
-    {"category": "Data Processing", "text": "Data cleaning aims to:", "options": ["Remove or correct inaccurate data", "Increase dataset size", "Hide data from users", "Encrypt sensitive information"], "correct": 0},
-    {"category": "Data Concepts", "text": "Metadata is:", "options": ["Data about data", "A type of AI algorithm", "A database query", "An encryption standard"], "correct": 0},
-    {"category": "Data Types", "text": "Which is an example of unstructured data?", "options": ["Customer emails", "Spreadsheet with sales figures", "SQL database entries", "Inventory list"], "correct": 0},
-    {"category": "Statistics", "text": "The median is defined as:", "options": ["The most frequent value", "The middle value when data is ordered", "The average of all values", "The range of values"], "correct": 1},
-    {"category": "Statistics", "text": "The mode is:", "options": ["The average value", "The middle value", "The most frequently occurring value", "The range"], "correct": 2},
-    {"category": "Statistics", "text": "Variance measures:", "options": ["Central tendency", "Spread of data from the mean", "Data frequency", "Sample size"], "correct": 1},
-    {"category": "Statistics", "text": "A box plot displays:", "options": ["Only the mean", "Distribution through quartiles", "Correlation between variables", "Time series data"], "correct": 1},
-    {"category": "Statistics", "text": "Which chart is best for showing proportions of a whole?", "options": ["Line chart", "Pie chart", "Scatter plot", "Histogram"], "correct": 1},
-    {"category": "Probability", "text": "Bayes' theorem is used for:", "options": ["Calculating mean", "Updating probabilities based on new evidence", "Finding the mode", "Linear regression"], "correct": 1},
-    {"category": "Statistics", "text": "A scatter plot is used to:", "options": ["Show frequency distribution", "Display relationship between two variables", "Show data over time", "Compare categories"], "correct": 1},
-    {"category": "Statistics", "text": "R-squared measures:", "options": ["Data spread", "Proportion of variance explained by a model", "Central tendency", "Probability"], "correct": 1},
-    {"category": "Machine Learning", "text": "Cross-validation is used to:", "options": ["Increase model complexity", "Assess model performance on unseen data", "Clean data", "Visualize results"], "correct": 1},
-    {"category": "Machine Learning", "text": "A training dataset is used to:", "options": ["Test the final model", "Build and train the model", "Validate hyperparameters", "Deploy the model"], "correct": 1},
-    {"category": "Machine Learning", "text": "A test dataset is used to:", "options": ["Train the model", "Tune hyperparameters", "Evaluate final model performance", "Clean data"], "correct": 2},
-    {"category": "Machine Learning", "text": "Gradient descent is:", "options": ["A visualization technique", "An optimization algorithm to minimize loss", "A data cleaning method", "A type of neural network"], "correct": 1},
-    {"category": "Machine Learning", "text": "A neural network consists of:", "options": ["Only input layer", "Layers of interconnected nodes", "Single neurons only", "No hidden layers"], "correct": 1},
-    {"category": "Deep Learning", "text": "Deep learning differs from machine learning because:", "options": ["It uses fewer layers", "It uses multiple hidden layers in neural networks", "It doesn't require data", "It's always faster"], "correct": 1},
-    {"category": "Deep Learning", "text": "Convolutional Neural Networks (CNNs) are best for:", "options": ["Text processing", "Image recognition", "Time series only", "Audio processing only"], "correct": 1},
-    {"category": "Deep Learning", "text": "Recurrent Neural Networks (RNNs) are designed for:", "options": ["Static images", "Sequential data like text or time series", "Tabular data only", "Random data"], "correct": 1},
-    {"category": "NLP", "text": "Natural Language Processing (NLP) enables:", "options": ["Image recognition", "Machines to understand human language", "Database queries only", "Hardware acceleration"], "correct": 1},
-    {"category": "NLP", "text": "Sentiment analysis is used to:", "options": ["Translate languages", "Determine the emotional tone of text", "Generate images", "Optimize databases"], "correct": 1},
-    {"category": "Tools", "text": "Pandas library in Python is used for:", "options": ["Deep learning", "Data manipulation and analysis", "Web development", "System administration"], "correct": 1},
-    {"category": "Tools", "text": "NumPy is primarily used for:", "options": ["Data visualization", "Numerical computing with arrays", "Web scraping", "Database management"], "correct": 1},
-    {"category": "Tools", "text": "Scikit-learn provides:", "options": ["Deep learning tools only", "Machine learning algorithms and tools", "Database connectivity", "Web frameworks"], "correct": 1},
-    {"category": "Tools", "text": "Apache Spark is used for:", "options": ["Small dataset processing", "Big data processing and analytics", "Word processing", "Email management"], "correct": 1},
-    {"category": "Big Data", "text": "Big Data is characterized by:", "options": ["Small size", "Volume, velocity, variety", "Single format", "Manual processing"], "correct": 1},
-    {"category": "Big Data", "text": "Hadoop is a framework for:", "options": ["Small-scale processing", "Distributed storage and processing of big data", "Real-time only", "Single machine processing"], "correct": 1},
-    {"category": "Data Warehousing", "text": "A data warehouse is used for:", "options": ["Transactional processing", "Analytical processing and reporting", "Real-time operations", "Small datasets only"], "correct": 1},
-    {"category": "Data Mining", "text": "Data mining involves:", "options": ["Physical extraction of minerals", "Discovering patterns in large datasets", "Deleting data", "Compressing files"], "correct": 1},
-    {"category": "Clustering", "text": "K-means clustering:", "options": ["Requires labeled data", "Groups data into k clusters based on similarity", "Is a supervised algorithm", "Works with classification"], "correct": 1},
-    {"category": "Classification", "text": "Logistic regression is used for:", "options": ["Continuous output prediction", "Binary classification problems", "Clustering", "Dimensionality reduction"], "correct": 1},
-    {"category": "Regression", "text": "Linear regression predicts:", "options": ["Categories", "Continuous numeric values", "Clusters", "Text"], "correct": 1},
-    {"category": "ML Evaluation", "text": "Precision measures:", "options": ["All correct predictions", "Correct positive predictions out of all positive predictions", "Correct predictions out of all actual positives", "Model speed"], "correct": 1},
-    {"category": "ML Evaluation", "text": "Recall measures:", "options": ["Correct positive predictions out of all actual positives", "Correct predictions out of all predictions", "Model complexity", "Training time"], "correct": 0},
-    {"category": "ML Evaluation", "text": "F1 score is:", "options": ["Mean of precision and recall", "Harmonic mean of precision and recall", "Sum of accuracy and precision", "Model speed metric"], "correct": 1},
-    {"category": "Feature Engineering", "text": "Feature engineering involves:", "options": ["Building hardware", "Creating and selecting input variables for models", "Deploying models", "Database management"], "correct": 1},
-    {"category": "Feature Engineering", "text": "One-hot encoding is used to:", "options": ["Compress data", "Convert categorical variables to numerical format", "Remove outliers", "Normalize data"], "correct": 1},
-    {"category": "Dimensionality", "text": "PCA (Principal Component Analysis) is used for:", "options": ["Increasing dimensions", "Reducing data dimensionality while preserving variance", "Classification", "Clustering only"], "correct": 1},
-    {"category": "Ethics", "text": "Explainable AI (XAI) focuses on:", "options": ["Faster processing", "Making AI decisions understandable to humans", "Reducing costs", "Eliminating models"], "correct": 1},
-    {"category": "Ethics", "text": "Algorithmic fairness ensures:", "options": ["Maximum profit", "Unbiased treatment across different groups", "Faster algorithms", "Reduced accuracy"], "correct": 1},
-    {"category": "Privacy", "text": "Data anonymization:", "options": ["Makes data more identifiable", "Removes identifying information to protect privacy", "Increases data size", "Slows processing"], "correct": 1},
-    {"category": "Privacy", "text": "Differential privacy:", "options": ["Eliminates all data", "Adds noise to protect individual privacy while maintaining utility", "Removes all security", "Makes data public"], "correct": 1},
-    {"category": "AI Applications", "text": "Recommendation systems:", "options": ["Delete user data", "Suggest items based on user behavior and preferences", "Require manual input only", "Don't use machine learning"], "correct": 1},
-    {"category": "AI Applications", "text": "Fraud detection systems use AI to:", "options": ["Approve all transactions", "Identify suspicious patterns and activities", "Slow down processing", "Replace banks"], "correct": 1},
-    {"category": "AI Applications", "text": "Chatbots use:", "options": ["Only scripted responses", "NLP to understand and respond to users", "No AI technology", "Only voice input"], "correct": 1},
-    {"category": "AI Applications", "text": "Autonomous vehicles rely on:", "options": ["Only GPS", "Computer vision, sensors, and AI", "Human drivers only", "No technology"], "correct": 1},
-    {"category": "Databases", "text": "A relational database organizes data into:", "options": ["Unstructured documents", "Tables with rows and columns", "Binary files", "Images only"], "correct": 1},
-    {"category": "Databases", "text": "NoSQL databases are best for:", "options": ["Only structured data", "Flexible, unstructured or semi-structured data", "Small datasets only", "Transactional processing only"], "correct": 1},
-    {"category": "Data Processing", "text": "ETL stands for:", "options": ["Extract, Transform, Load", "Enter, Test, Leave", "Evaluate, Train, Learn", "Export, Transfer, Link"], "correct": 0},
-    {"category": "Visualization", "text": "A heat map is used to:", "options": ["Show geographic locations", "Display data intensity through color", "Plot time series", "Show proportions"], "correct": 1},
-    {"category": "Visualization", "text": "Dashboards are used to:", "options": ["Store raw data", "Display key metrics and visualizations in one view", "Write code", "Train models"], "correct": 1}
+    {
+      "category": "Probability and Statistics Foundations",
+      "text": "Which property of the mean makes it unique compared to the median in a skewed distribution?",
+      "options": [
+        "It is always the exact middle value of the dataset",
+        "It minimizes the sum of squared deviations of values",
+        "It is unaffected by extremely high or low outliers",
+        "It represents the most frequent value in the set"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Probability and Statistics Foundations",
+      "text": "In a standard normal distribution, what percentage of data falls within two standard deviations of the mean?",
+      "options": [
+        "Approximately 68 percent of the total data",
+        "Approximately 95 percent of the total data",
+        "Approximately 99 percent of the total data",
+        "Approximately 50 percent of the total data"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Probability and Statistics Foundations",
+      "text": "Two events are considered mutually exclusive if which of the following conditions is true?",
+      "options": [
+        "The occurrence of one event changes the other",
+        "Both events cannot occur at the same time",
+        "The probability of both events is exactly one",
+        "One event must happen for the other to start"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Probability and Statistics Foundations",
+      "text": "What does a Z-score of -1.5 indicate about a specific data point in a distribution?",
+      "options": [
+        "The value is 1.5 units above the mean",
+        "The value is 1.5 standard deviations below the mean",
+        "The value has a 1.5 percent chance of occurring",
+        "The value is exactly 1.5 times the median"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Probability and Statistics Foundations",
+      "text": "Which statistical test is most appropriate for comparing the means of more than two groups?",
+      "options": [
+        "The standard Independent Samples t-test",
+        "The Analysis of Variance (ANOVA) test",
+        "The Pearson correlation coefficient test",
+        "The simple linear regression analysis"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Probability and Statistics Foundations",
+      "text": "What is the primary difference between a population parameter and a sample statistic?",
+      "options": [
+        "The parameter is estimated, the statistic is fixed",
+        "The parameter describes the whole, the statistic a part",
+        "The parameter is always larger than the statistic",
+        "The parameter is qualitative, the statistic is numeric"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Probability and Statistics Foundations",
+      "text": "In hypothesis testing, a Type I error occurs when a researcher takes which action?",
+      "options": [
+        "Fails to reject a null hypothesis that is false",
+        "Rejects a null hypothesis that is actually true",
+        "Accepts an alternative hypothesis that is false",
+        "Sets the significance level at a value above 0.5"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Probability and Statistics Foundations",
+      "text": "The Central Limit Theorem states that as sample size increases, the sampling distribution of the mean:",
+      "options": [
+        "Becomes more skewed toward the outliers",
+        "Approaches a normal distribution shape",
+        "Has a larger standard deviation than the population",
+        "Matches the exact shape of the original population"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Probability and Statistics Foundations",
+      "text": "Which of the following describes the 'Law of Large Numbers' in probability theory?",
+      "options": [
+        "Large samples will always have a mean of zero",
+        "Sample means converge to the population mean",
+        "Probability increases as the sample size grows",
+        "Small samples are more accurate than large ones"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Probability and Statistics Foundations",
+      "text": "A correlation coefficient of -0.85 between two variables suggests which relationship?",
+      "options": [
+        "A weak positive linear relationship",
+        "A strong negative linear relationship",
+        "A moderate positive linear relationship",
+        "No discernable linear relationship exists"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Probability and Statistics Foundations",
+      "text": "What is the result of multiplying the probability of two independent events?",
+      "options": [
+        "The probability of either event occurring",
+        "The probability of both events occurring",
+        "The probability of neither event occurring",
+        "The average probability of the two events"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Probability and Statistics Foundations",
+      "text": "Which measure of dispersion is calculated by taking the square root of the variance?",
+      "options": [
+        "The absolute range of the dataset",
+        "The standard deviation of the set",
+        "The interquartile range of the data",
+        "The mean absolute deviation of the set"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Probability and Statistics Foundations",
+      "text": "In a box plot, the 'box' itself represents which portion of the data distribution?",
+      "options": [
+        "The range between the minimum and maximum",
+        "The middle 50 percent of the data (IQR)",
+        "The values within one standard deviation",
+        "The total frequency of all categorical data"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Probability and Statistics Foundations",
+      "text": "When using a 95% confidence interval, what does the '95%' specifically represent?",
+      "options": [
+        "95 percent of all data points fall in the interval",
+        "The probability that the true parameter is included",
+        "The margin of error relative to the sample size",
+        "The percentage of samples that will match the mean"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Probability and Statistics Foundations",
+      "text": "Which distribution is characterized by having only two possible outcomes for each trial?",
+      "options": [
+        "The Poisson distribution for counts",
+        "The Binomial distribution for trials",
+        "The Normal distribution for variables",
+        "The Uniform distribution for chances"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Probability and Statistics Foundations",
+      "text": "If a dataset has a mean of 50 and a median of 30, the distribution is most likely:",
+      "options": [
+        "Perfectly symmetrical like a bell curve",
+        "Positively skewed toward higher values",
+        "Negatively skewed toward lower values",
+        "Uniformly distributed across the range"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Probability and Statistics Foundations",
+      "text": "What is the probability of rolling a 3 or a 4 on a single fair six-sided die?",
+      "options": [
+        "One-sixth (approximately 16.7 percent)",
+        "One-third (approximately 33.3 percent)",
+        "One-half (exactly 50.0 percent)",
+        "Two-thirds (approximately 66.7 percent)"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Probability and Statistics Foundations",
+      "text": "Which type of variable is 'Temperature measured in degrees Celsius' classified as?",
+      "options": [
+        "Nominal or strictly categorical data",
+        "Interval or continuous numeric data",
+        "Ordinal or ranked qualitative data",
+        "Binary or strictly boolean data"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Probability and Statistics Foundations",
+      "text": "The 'Mode' of a dataset is defined as which of the following values?",
+      "options": [
+        "The arithmetic average of all numbers",
+        "The value that appears most frequently",
+        "The middle point when data is ordered",
+        "The difference between high and low"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Probability and Statistics Foundations",
+      "text": "What is the primary purpose of a scatter plot in statistical analysis?",
+      "options": [
+        "To show the distribution of a single variable",
+        "To visualize the relationship between two variables",
+        "To identify the most frequent category in a set",
+        "To calculate the exact mean of a population"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Probability and Statistics Foundations",
+      "text": "Which concept describes the likelihood of an event given that another event has already occurred?",
+      "options": [
+        "Joint probability of independent sets",
+        "Conditional probability of related events",
+        "Marginal probability of single variables",
+        "Subjective probability of random trials"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Probability and Statistics Foundations",
+      "text": "In a right-skewed distribution, how do the mean, median, and mode typically relate?",
+      "options": [
+        "The mean is less than the median",
+        "The mean is greater than the median",
+        "The mean and median are exactly equal",
+        "The mode is greater than the mean"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Probability and Statistics Foundations",
+      "text": "What is the term for a subset of individuals chosen from a larger population for study?",
+      "options": [
+        "The parameter group of the study",
+        "The sample taken for analysis",
+        "The census of the entire population",
+        "The strata of the statistical group"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Analysis and Statistics for AI",
+      "text": "Which technique is commonly used to reduce the dimensionality of a dataset in AI projects?",
+      "options": [
+        "Simple Linear Regression Analysis",
+        "Principal Component Analysis (PCA)",
+        "Standard Gradient Descent Method",
+        "K-Nearest Neighbors Classification"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Analysis and Statistics for AI",
+      "text": "Why is 'Feature Scaling' important for algorithms like K-Nearest Neighbors?",
+      "options": [
+        "It increases the total number of features",
+        "It prevents larger units from dominating distance",
+        "It removes all outliers from the dataset",
+        "It converts text data into binary format"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Analysis and Statistics for AI",
+      "text": "In the context of AI, what does 'Data Normalization' typically involve?",
+      "options": [
+        "Deleting all duplicate rows in a database",
+        "Rescaling numeric values to a [0,1] range",
+        "Converting all categorical data to integers",
+        "Adding random noise to improve privacy"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Analysis and Statistics for AI",
+      "text": "What is the purpose of using a 'Confusion Matrix' in model evaluation?",
+      "options": [
+        "To calculate the total training time of a model",
+        "To visualize performance on classification tasks",
+        "To determine the hardware requirements for AI",
+        "To generate synthetic data for testing purposes"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Analysis and Statistics for AI",
+      "text": "Which metric is calculated as the ratio of true positives to the sum of true and false positives?",
+      "options": [
+        "The Recall or sensitivity of the model",
+        "The Precision or exactness of the model",
+        "The Accuracy or overall correctness rate",
+        "The F1-Score or harmonic mean of results"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Analysis and Statistics for AI",
+      "text": "What is 'Overfitting' in the context of machine learning model training?",
+      "options": [
+        "The model performs poorly on training data",
+        "The model performs too well on training data only",
+        "The model takes too much memory to process",
+        "The model uses too many categorical variables"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Analysis and Statistics for AI",
+      "text": "Which validation technique involves splitting data into 'k' subsets for repeated testing?",
+      "options": [
+        "Simple Random Sampling validation",
+        "K-Fold Cross-Validation technique",
+        "Bootstrapping with replacement method",
+        "Leave-One-Out stratified validation"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Analysis and Statistics for AI",
+      "text": "The 'Bias-Variance Tradeoff' refers to the tension between which two model properties?",
+      "options": [
+        "Training speed and deployment latency",
+        "Under-fitting and over-fitting tendencies",
+        "Data volume and computational complexity",
+        "Linear logic and non-linear outputs"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Analysis and Statistics for AI",
+      "text": "Which of these is a common strategy for handling missing values in a dataset?",
+      "options": [
+        "Always deleting every row with a null",
+        "Imputing values with the mean or median",
+        "Ignoring the column in the final report",
+        "Adding a zero to every empty text field"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Analysis and Statistics for AI",
+      "text": "What does a 'Residual' represent in a regression model analysis?",
+      "options": [
+        "The sum of all predicted target values",
+        "The difference between observed and predicted",
+        "The total variance explained by the model",
+        "The coefficient of the independent variable"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Analysis and Statistics for AI",
+      "text": "Which visualization is best for detecting outliers in a continuous variable?",
+      "options": [
+        "A standard categorical bar chart",
+        "A box plot with extended whiskers",
+        "A pie chart showing proportions",
+        "A line graph of temporal changes"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Analysis and Statistics for AI",
+      "text": "What is the primary function of 'One-Hot Encoding' in data preparation?",
+      "options": [
+        "Reducing the memory usage of large integers",
+        "Converting categories into binary vectors",
+        "Removing duplicates from a SQL database",
+        "Encrypting sensitive data for Al models"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Analysis and Statistics for AI",
+      "text": "In an AI context, what does the term 'Ground Truth' typically refer to?",
+      "options": [
+        "The hardware specifications of the server",
+        "The actual known labels for the test data",
+        "The mathematical proof of an algorithm",
+        "The legal requirements for data storage"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Analysis and Statistics for AI",
+      "text": "Which metric would be most useful for evaluating a model where false negatives are very costly?",
+      "options": [
+        "The Precision of the model's predictions",
+        "The Recall or sensitivity of the model",
+        "The total number of true negative results",
+        "The training time per epoch of the model"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Analysis and Statistics for AI",
+      "text": "What is the goal of 'Hyperparameter Tuning' in machine learning?",
+      "options": [
+        "To clean the raw input data automatically",
+        "To find the best settings for the algorithm",
+        "To increase the speed of the GPU processing",
+        "To decrease the size of the training dataset"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Analysis and Statistics for AI",
+      "text": "What is 'Regularization' used for in model development?",
+      "options": [
+        "Increasing the complexity of neural layers",
+        "Preventing overfitting by penalizing weights",
+        "Decreasing the time needed for data loading",
+        "Improving the resolution of input images"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Analysis and Statistics for AI",
+      "text": "Which type of analysis focuses on determining the impact of changing input variables on the output?",
+      "options": [
+        "Descriptive statistical summary",
+        "Sensitivity analysis of variables",
+        "Exploratory data visualization",
+        "Historical trend documentation"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Analysis and Statistics for AI",
+      "text": "In a dataset with high 'Collinearity', what is occurring between variables?",
+      "options": [
+        "Variables have no relationship at all",
+        "Independent variables are highly correlated",
+        "The target variable is strictly binary",
+        "All data points are exactly the same"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Analysis and Statistics for AI",
+      "text": "What does 'Data Augmentation' involve in computer vision tasks?",
+      "options": [
+        "Deleting blurry images from the training set",
+        "Creating variations of images by rotating them",
+        "Labeling images using an automated script",
+        "Storing images in a compressed cloud drive"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Analysis and Statistics for AI",
+      "text": "Which of the following is a symptom of 'Underfitting'?",
+      "options": [
+        "High accuracy on training but low on test",
+        "Low accuracy on both training and test data",
+        "The model takes too long to reach a solution",
+        "The model is too complex for the hardware"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Analysis and Statistics for AI",
+      "text": "What is the primary benefit of 'Standardizing' data (Mean=0, SD=1)?",
+      "options": [
+        "It makes the data easier for humans to read",
+        "It ensures features share a common scale",
+        "It reduces the size of the overall dataset",
+        "It converts continuous data into categories"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Analysis and Statistics for AI",
+      "text": "A ROC Curve (Receiver Operating Characteristic) plots which two values?",
+      "options": [
+        "Precision versus Recall metrics",
+        "True Positive Rate versus False Positive Rate",
+        "Training Loss versus Validation Loss",
+        "Accuracy versus Computational Complexity"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Analysis and Statistics for AI",
+      "text": "Which term describes the process of selecting the most relevant features for a model?",
+      "options": [
+        "Feature Engineering and design",
+        "Feature Selection and pruning",
+        "Feature Extraction and creation",
+        "Feature Transformation and scaling"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Tools for Data and AI",
+      "text": "Which Python library is the standard for performing numeric calculations and array operations?",
+      "options": [
+        "Matplotlib for visualization",
+        "NumPy for numerical computing",
+        "BeautifulSoup for web scraping",
+        "Flask for web development"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Tools for Data and AI",
+      "text": "What is the primary use of the 'Pandas' library in a Data Science workflow?",
+      "options": [
+        "Creating high-level neural network layers",
+        "Manipulating structured data via DataFrames",
+        "Writing scripts to control hardware robots",
+        "Managing cloud-based database connections"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Tools for Data and AI",
+      "text": "Which environment is most popular for creating and sharing live code and visualizations?",
+      "options": [
+        "Command Prompt or Terminal",
+        "Jupyter Notebook environment",
+        "Microsoft Word processor",
+        "Standard Windows Notepad"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Tools for Data and AI",
+      "text": "In SQL, which command is used to combine rows from two or more tables based on a related column?",
+      "options": [
+        "The GROUP BY command",
+        "The JOIN command",
+        "The UPDATE command",
+        "The SELECT command"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Tools for Data and AI",
+      "text": "Which tool is primarily used for 'Big Data' processing across distributed clusters?",
+      "options": [
+        "SQLite for local files",
+        "Apache Spark framework",
+        "Microsoft Excel software",
+        "Python Standard Library"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Tools for Data and AI",
+      "text": "What is 'Scikit-Learn' specifically designed for in the Python ecosystem?",
+      "options": [
+        "Deep Learning with large neural networks",
+        "Standard machine learning and data mining",
+        "Building interactive web dashboards",
+        "Automating tasks in the operating system"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Tools for Data and AI",
+      "text": "Which SQL clause is used to filter results after an aggregation has been performed?",
+      "options": [
+        "The WHERE clause",
+        "The HAVING clause",
+        "The FROM clause",
+        "The ORDER BY clause"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Tools for Data and AI",
+      "text": "What is the main advantage of using 'Cloud Computing' (e.g., AWS, Azure) for AI training?",
+      "options": [
+        "It eliminates the need for any internet",
+        "Scalable access to powerful GPU resources",
+        "It is always cheaper than local hardware",
+        "It guarantees that models will be biased"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Tools for Data and AI",
+      "text": "Which library is most commonly used for creating static, interactive, and animated visualizations in Python?",
+      "options": [
+        "The Pytest testing framework",
+        "The Matplotlib plotting library",
+        "The Django backend framework",
+        "The Requests HTTP library"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Tools for Data and AI",
+      "text": "What is the purpose of 'GitHub' in a data science or software development project?",
+      "options": [
+        "To host and version control code files",
+        "To perform complex statistical tests",
+        "To clean data using a drag-and-drop UI",
+        "To calculate the mean of large datasets"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Tools for Data and AI",
+      "text": "Which tool is used to automate the deployment of applications inside lightweight containers?",
+      "options": [
+        "The Excel PowerPivot tool",
+        "The Docker platform",
+        "The SQL Server Studio",
+        "The RStudio environment"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Tools for Data and AI",
+      "text": "In a relational database, what is a 'Primary Key' used for?",
+      "options": [
+        "To encrypt the data in a column",
+        "To uniquely identify each record",
+        "To sort data in descending order",
+        "To connect to an external server"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Tools for Data and AI",
+      "text": "Which framework is developed by Google for high-performance numerical computation and deep learning?",
+      "options": [
+        "The PyTorch framework",
+        "The TensorFlow library",
+        "The Keras high-level API",
+        "The Scipy scientific tool"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Tools for Data and AI",
+      "text": "What does a 'NoSQL' database typically prioritize over a traditional SQL database?",
+      "options": [
+        "Strict adherence to fixed schemas",
+        "Scalability and flexible data models",
+        "Complex multi-table join operations",
+        "Small-scale local storage only"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Tools for Data and AI",
+      "text": "Which command in Python is used to install third-party packages from the Python Package Index (PyPI)?",
+      "options": [
+        "The 'install' command",
+        "The 'pip' command",
+        "The 'get' command",
+        "The 'run' command"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "AI Basics",
+      "text": "Who is often considered the 'Father of Artificial Intelligence' and proposed the 'Turing Test'?",
+      "options": [
+        "Bill Gates of Microsoft",
+        "Alan Turing, the mathematician",
+        "Elon Musk of Tesla/SpaceX",
+        "Steve Jobs of Apple Inc."
+      ],
+      "correct": 1
+    },
+    {
+      "category": "AI Basics",
+      "text": "Which type of AI is designed to perform a single, specific task (like playing chess or facial recognition)?",
+      "options": [
+        "Artificial General Intelligence (AGI)",
+        "Narrow AI or Weak AI",
+        "Artificial Super Intelligence (ASI)",
+        "Self-Awareness AI Systems"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "AI Basics",
+      "text": "What is the 'Turing Test' designed to evaluate in a machine?",
+      "options": [
+        "The mathematical speed of the processor",
+        "The ability to exhibit intelligent behavior",
+        "The memory capacity of the hard drive",
+        "The efficiency of the power consumption"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "AI Basics",
+      "text": "What does 'NLP' stand for in the context of Artificial Intelligence?",
+      "options": [
+        "Natural Linear Programming",
+        "Natural Language Processing",
+        "Network Logic Protocol",
+        "Neural Learning Path"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "AI Basics",
+      "text": "In AI, what is a 'Neural Network' modeled after?",
+      "options": [
+        "The structure of a solar system",
+        "The biological human brain",
+        "The layout of a city's traffic",
+        "The design of a modern factory"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "AI Basics",
+      "text": "Which field of AI deals specifically with giving machines the ability to 'see' and interpret visual data?",
+      "options": [
+        "Machine Translation field",
+        "Computer Vision field",
+        "Speech Recognition field",
+        "Recommender Systems field"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "AI Basics",
+      "text": "What is 'Generative AI' primarily used for?",
+      "options": [
+        "Deleting old data from a cloud server",
+        "Creating new content like text or images",
+        "Calculating the mean of a dataset",
+        "Protecting computers from virus attacks"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "AI Basics",
+      "text": "Which term describes an AI's ability to learn and improve from experience without being explicitly programmed?",
+      "options": [
+        "Hardware acceleration",
+        "Machine Learning",
+        "Database management",
+        "Scripted automation"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "AI Basics",
+      "text": "What is the primary goal of 'Artificial General Intelligence' (AGI)?",
+      "options": [
+        "To beat humans at a specific board game",
+        "To perform any intellectual task a human can",
+        "To replace all human jobs with robots",
+        "To create a perfectly secure firewall"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "AI Basics",
+      "text": "Which of these is a real-world application of AI in the healthcare industry?",
+      "options": [
+        "Printing paper receipts for patients",
+        "Analyzing medical images for early diagnosis",
+        "Cleaning floors in the hospital lobby",
+        "Scheduling vacations for nurses and doctors"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "AI Basics",
+      "text": "What is a 'Chatbot' in the context of AI applications?",
+      "options": [
+        "A robot that walks and talks in person",
+        "A program that simulates human conversation",
+        "A type of computer screen for data entry",
+        "A database that stores user passwords"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "AI Basics",
+      "text": "Which of these is an example of 'Narrow AI'?",
+      "options": [
+        "An AI that can write poetry and code",
+        "An email spam filter algorithm",
+        "A hypothetical sentient computer",
+        "A robot with human-like consciousness"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "AI Basics",
+      "text": "What does 'Expert Systems' refer to in the history of AI?",
+      "options": [
+        "Programs that use rules to solve problems",
+        "The most powerful supercomputers today",
+        "People who are hired to train models",
+        "The hardware used to build robots"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "AI Basics",
+      "text": "Which concept describes the 'black box' problem in AI?",
+      "options": [
+        "The difficulty in explaining AI decisions",
+        "The physical case that holds a computer",
+        "A specific type of encrypted database",
+        "The loss of power during model training"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "AI Basics",
+      "text": "What is an 'Agent' in Artificial Intelligence terminology?",
+      "options": [
+        "A person who sells AI software",
+        "An entity that perceives and acts on environment",
+        "A secret code used to unlock a model",
+        "A government official who regulates AI"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Machine Learning",
+      "text": "In 'Supervised Learning', what is required during the training process?",
+      "options": [
+        "No prior data labels or target values",
+        "A dataset with known input-output pairs",
+        "A human operator to click every button",
+        "A constant connection to a live website"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Machine Learning",
+      "text": "Which machine learning type is used when the model learns through trial and error using rewards?",
+      "options": [
+        "Unsupervised Learning method",
+        "Reinforcement Learning method",
+        "Clustering and Grouping method",
+        "Statistical Association method"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Machine Learning",
+      "text": "What is the main task of 'Unsupervised Learning'?",
+      "options": [
+        "Predicting the exact price of a stock",
+        "Finding hidden patterns in unlabeled data",
+        "Translating text from English to French",
+        "Labeling images as 'cat' or 'dog' correctly"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Machine Learning",
+      "text": "Which algorithm is commonly used for classification by finding the 'nearest' neighbors?",
+      "options": [
+        "The K-Means clustering algorithm",
+        "The K-Nearest Neighbors (KNN) algorithm",
+        "The Linear Regression algorithm",
+        "The Apriori association algorithm"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Machine Learning",
+      "text": "What is 'Clustering' in machine learning used for?",
+      "options": [
+        "Predicting a continuous numeric value",
+        "Grouping similar data points together",
+        "Ordering data points by their importance",
+        "Deleting data points that are too close"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Machine Learning",
+      "text": "Which of these is a typical task for a 'Regression' model?",
+      "options": [
+        "Classifying an email as spam or not spam",
+        "Predicting the temperature for tomorrow",
+        "Identifying human faces in a photograph",
+        "Grouping customers based on their hobbies"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Machine Learning",
+      "text": "What is a 'Decision Tree' in machine learning?",
+      "options": [
+        "A literal plant used to produce oxygen",
+        "A flowchart-like structure for making choices",
+        "A list of all variables in a database",
+        "A type of server rack for AI processing"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Machine Learning",
+      "text": "What does 'Deep Learning' utilize to process complex data?",
+      "options": [
+        "A single layer of linear regression",
+        "Multiple layers of artificial neurons",
+        "Only manual input from expert humans",
+        "A simple list of if-then-else rules"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Machine Learning",
+      "text": "In a neural network, what is the purpose of an 'Activation Function'?",
+      "options": [
+        "To turn off the computer after training",
+        "To introduce non-linearity into the model",
+        "To store the weights in a permanent file",
+        "To increase the speed of data transmission"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Machine Learning",
+      "text": "Which term describes the process of a model learning the training data too well?",
+      "options": [
+        "Under-training the model",
+        "Overfitting the model",
+        "Optimizing the model",
+        "Generalizing the model"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Machine Learning",
+      "text": "What is the 'Cost Function' (or Loss Function) used for in training?",
+      "options": [
+        "To calculate the total price of the project",
+        "To measure the error of the model's prediction",
+        "To count the number of features in a dataset",
+        "To determine the salary of the AI engineers"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Machine Learning",
+      "text": "What is 'Gradient Descent' primarily used for?",
+      "options": [
+        "Visualizing data in three dimensions",
+        "Minimizing the loss function during training",
+        "Encrypting the weights of a neural network",
+        "Downloading data from a remote server"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Machine Learning",
+      "text": "Which of these is an example of a 'Classification' problem?",
+      "options": [
+        "Estimating the future price of a house",
+        "Predicting if a credit card charge is fraud",
+        "Calculating the average height of a group",
+        "Finding the sum of a column in Excel"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Machine Learning",
+      "text": "What is 'Semi-Supervised Learning'?",
+      "options": [
+        "Learning with only half of the features",
+        "Using a small amount of labeled data with much unlabeled data",
+        "Learning only during the daytime hours",
+        "A human and a computer working together"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Machine Learning",
+      "text": "Which algorithm is a collection of many decision trees?",
+      "options": [
+        "The Support Vector Machine",
+        "The Random Forest algorithm",
+        "The Logistic Regression model",
+        "The Principal Component analysis"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Perception, Representation, and Reasoning",
+      "text": "How do AI systems 'perceive' the physical world in robotics?",
+      "options": [
+        "Through feelings and human emotions",
+        "Through sensors like cameras and LiDAR",
+        "By reading books and digital manuals",
+        "By following a strict pre-written script"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Perception, Representation, and Reasoning",
+      "text": "What is 'Knowledge Representation' in the context of AI?",
+      "options": [
+        "How a computer physically stores memory",
+        "How information is structured for an AI to use",
+        "The amount of data a human can memorize",
+        "The process of printing reports on paper"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Perception, Representation, and Reasoning",
+      "text": "Which of these is a method for 'Reasoning' in AI systems?",
+      "options": [
+        "Logical deduction from known premises",
+        "Randomly guessing the next possible step",
+        "Waiting for a human to provide the answer",
+        "Deleting data until a solution is found"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Perception, Representation, and Reasoning",
+      "text": "What is a 'Knowledge Graph' used for in AI?",
+      "options": [
+        "To plot the performance of a CPU",
+        "To represent complex relationships between entities",
+        "To draw a bar chart of sales data",
+        "To track the location of robots in a warehouse"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Perception, Representation, and Reasoning",
+      "text": "What does 'Computer Vision' enable an AI to do?",
+      "options": [
+        "Understand and generate human speech",
+        "Identify and process objects in images",
+        "Calculate large numbers very quickly",
+        "Predict the outcome of a coin toss"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Perception, Representation, and Reasoning",
+      "text": "What is 'Heuristic Search' in AI problem-solving?",
+      "options": [
+        "Searching through every possible option",
+        "Using 'rules of thumb' to find solutions faster",
+        "Asking a user to search on the internet",
+        "A search that never reaches a conclusion"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Perception, Representation, and Reasoning",
+      "text": "Which concept deals with AI making decisions based on 'if-then' logic?",
+      "options": [
+        "Deep learning with neural networks",
+        "Rule-based reasoning systems",
+        "Probabilistic clustering methods",
+        "Generative adversarial networks"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Perception, Representation, and Reasoning",
+      "text": "What is 'Image Segmentation' in computer vision?",
+      "options": [
+        "Compressing an image into a smaller file",
+        "Dividing an image into multiple meaningful parts",
+        "Changing the color of an image to black and white",
+        "Rotating an image by 90 degrees clockwise"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Perception, Representation, and Reasoning",
+      "text": "In AI, what is a 'Semantic Network'?",
+      "options": [
+        "A high-speed fiber optic internet connection",
+        "A graphic representation of knowledge and logic",
+        "A group of social media users talking online",
+        "The internal wiring of a modern supercomputer"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Perception, Representation, and Reasoning",
+      "text": "What does 'OCR' stand for in the context of data perception?",
+      "options": [
+        "Online Computer Resource",
+        "Optical Character Recognition",
+        "Open Code Repository",
+        "Optimal Cluster Range"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Perception, Representation, and Reasoning",
+      "text": "Which method is used for an AI to find the best path in a game or map?",
+      "options": [
+        "The A* (A-Star) search algorithm",
+        "The Linear Regression analysis",
+        "The K-Means clustering technique",
+        "The Standard Deviation calculation"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Perception, Representation, and Reasoning",
+      "text": "What is 'Probabilistic Reasoning' in AI?",
+      "options": [
+        "Reasoning when all facts are 100% certain",
+        "Reasoning that accounts for uncertainty and chance",
+        "Reasoning that only uses prime numbers",
+        "Reasoning that always gives the same answer"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Perception, Representation, and Reasoning",
+      "text": "What is 'Feature Extraction' in perception tasks?",
+      "options": [
+        "Deleting the most important data from a set",
+        "Identifying key characteristics from raw input",
+        "Adding new features that were never there",
+        "Naming the variables in a Python script"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Perception, Representation, and Reasoning",
+      "text": "What is the 'Frame Problem' in Artificial Intelligence?",
+      "options": [
+        "The cost of building a metal case for a robot",
+        "The difficulty of representing changes in a world",
+        "The time it takes to refresh a computer monitor",
+        "The way images are cropped in a vision system"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Perception, Representation, and Reasoning",
+      "text": "What is 'Speech-to-Text' technology an example of?",
+      "options": [
+        "A reasoning system for math problems",
+        "A perception system for audio data",
+        "A storage system for large text files",
+        "A security system for bank accounts"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Privacy and Ethics",
+      "text": "What is 'Algorithmic Bias' in AI systems?",
+      "options": [
+        "The speed at which an algorithm runs",
+        "Unfair outcomes caused by the training data",
+        "The cost of developing a new AI model",
+        "The type of programming language used"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Privacy and Ethics",
+      "text": "Which regulation governs data privacy and protection in the European Union?",
+      "options": [
+        "The HIPAA regulation",
+        "The GDPR regulation",
+        "The FERPA regulation",
+        "The COPPA regulation"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Privacy and Ethics",
+      "text": "What is 'Explainable AI' (XAI)?",
+      "options": [
+        "AI that can speak multiple human languages",
+        "AI designed so humans can understand its logic",
+        "AI that is free for everyone to use online",
+        "AI that can write its own documentation"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Privacy and Ethics",
+      "text": "Which concept describes the ethical issue of AI replacing human workers?",
+      "options": [
+        "Data persistence issues",
+        "Job displacement and automation",
+        "Algorithmic complexity problems",
+        "Hardware sustainability concerns"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Privacy and Ethics",
+      "text": "What is 'Deepfake' technology?",
+      "options": [
+        "A very secure way to store user passwords",
+        "AI-generated media that replaces a person's likeness",
+        "A type of model that only works on deep data",
+        "A method for finding fake accounts on social media"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Privacy and Ethics",
+      "text": "In AI ethics, what does 'Transparency' refer to?",
+      "options": [
+        "Being able to see the internal hardware",
+        "Being open about how an AI system functions",
+        "Making the AI interface clear and see-through",
+        "Publishing the names of all the programmers"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Privacy and Ethics",
+      "text": "What is a 'Hallucination' in Large Language Models (LLMs)?",
+      "options": [
+        "When the AI stops responding to prompts",
+        "When the AI generates false or illogical info",
+        "When the computer starts to overheat",
+        "When the user forgets their login password"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Privacy and Ethics",
+      "text": "What is 'Differential Privacy' used for?",
+      "options": [
+        "Making AI models run significantly faster",
+        "Sharing data insights without revealing individuals",
+        "Comparing two different privacy policies",
+        "Restricting AI access to only certain countries"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Privacy and Ethics",
+      "text": "Which of these is an example of an AI safety concern?",
+      "options": [
+        "The AI using too much electrical power",
+        "The AI making decisions that harm humans",
+        "The AI having a very boring personality",
+        "The AI being unable to play video games"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Privacy and Ethics",
+      "text": "What does 'Informed Consent' mean in data collection?",
+      "options": [
+        "Users agree to data use after being told the risks",
+        "The computer automatically clicks 'Accept' for users",
+        "Users are forced to give data to use a service",
+        "A user finds out their data was used after the fact"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Privacy and Ethics",
+      "text": "Which ethical principle suggests AI should benefit humanity and do no harm?",
+      "options": [
+        "The principle of Profitability",
+        "The principle of Beneficence",
+        "The principle of Complexity",
+        "The principle of Scalability"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Privacy and Ethics",
+      "text": "What is the 'Social Credit System' often cited as a concern for in AI?",
+      "options": [
+        "Increasing the speed of credit card processing",
+        "Mass surveillance and loss of individual freedom",
+        "Improving the accuracy of weather forecasts",
+        "Providing more storage for social media photos"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Privacy and Ethics",
+      "text": "What is 'Data Sovereignty'?",
+      "options": [
+        "The idea that data is subject to laws of its country",
+        "The total amount of data a king or queen owns",
+        "A type of AI that can rule a small nation",
+        "The ability to move data between different clouds"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Privacy and Ethics",
+      "text": "Which of these is a risk of 'Autonomous Weapons'?",
+      "options": [
+        "They might run out of battery mid-flight",
+        "They could make lethal decisions without human input",
+        "They are too expensive for most countries to buy",
+        "They require too much internet bandwidth to work"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Privacy and Ethics",
+      "text": "What is 'Anonymization' in data processing?",
+      "options": [
+        "Adding a user's full name to every record",
+        "Removing identifying information from a dataset",
+        "Enciphering data so only one person can see it",
+        "Selling data to a third-party marketing firm"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Literacy and Foundations",
+      "text": "What is the primary difference between 'Structured' and 'Unstructured' data?",
+      "options": [
+        "Structured data is always larger than unstructured",
+        "Structured data follows a predefined data model",
+        "Unstructured data can only be stored on paper",
+        "Structured data is only used by AI researchers"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Literacy and Foundations",
+      "text": "Which of the following is an example of 'Categorical' (qualitative) data?",
+      "options": [
+        "A person's height in centimeters",
+        "The color of a car (Red, Blue, Green)",
+        "The price of a gallon of gasoline",
+        "The number of students in a classroom"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Literacy and Foundations",
+      "text": "What does the 'Data Wrangling' (or Munging) stage of a project involve?",
+      "options": [
+        "Presenting final results to a group of executives",
+        "Cleaning and transforming raw data for analysis",
+        "Buying more hard drives to store the information",
+        "Hiring new data scientists to join the company"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Literacy and Foundations",
+      "text": "Which number system uses only the digits 0 and 1?",
+      "options": [
+        "The Decimal system",
+        "The Binary system",
+        "The Hexadecimal system",
+        "The Octal system"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Literacy and Foundations",
+      "text": "In the data science process, which step typically follows 'Data Collection'?",
+      "options": [
+        "Deploying the model to the public",
+        "Data Cleaning and exploration",
+        "Writing the final project report",
+        "Archiving the data for ten years"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Literacy and Foundations",
+      "text": "What is 'Metadata' often described as?",
+      "options": [
+        "Data that has been deleted by mistake",
+        "Data that provides information about other data",
+        "Data that is extremely large and complex",
+        "Data that is encrypted for high security"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Literacy and Foundations",
+      "text": "Which of these is a common source of 'Big Data'?",
+      "options": [
+        "A single handwritten diary from 1950",
+        "Social media feeds and sensor networks",
+        "A small local library's card catalog",
+        "A student's personal grocery list"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Literacy and Foundations",
+      "text": "What is 'Data Ethics'?",
+      "options": [
+        "The speed at which data is transferred online",
+        "The moral principles of data use and collection",
+        "A type of programming for data scientists",
+        "The cost of buying data from a provider"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Literacy and Foundations",
+      "text": "Convert the decimal number 10 into binary format.",
+      "options": [
+        "1001",
+        "1010",
+        "1100",
+        "1111"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Literacy and Foundations",
+      "text": "What is 'Quantitative Data'?",
+      "options": [
+        "Data that describes qualities or characteristics",
+        "Data that can be measured and expressed in numbers",
+        "Data that is only found in scientific journals",
+        "Data that cannot be stored on a computer"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Literacy and Foundations",
+      "text": "What is the 'Data Life Cycle'?",
+      "options": [
+        "The time it takes to download a large file",
+        "The stages data goes through from creation to deletion",
+        "The battery life of a data storage device",
+        "The number of years a data scientist works"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Literacy and Foundations",
+      "text": "Which of the following is an example of 'Semi-Structured' data?",
+      "options": [
+        "A standard SQL database table",
+        "A JSON or XML file with tags",
+        "A printed book in a library",
+        "A voice recording of a meeting"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Literacy and Foundations",
+      "text": "What is a 'Data Warehouse' used for?",
+      "options": [
+        "To physically store thousands of hard drives",
+        "To centrally store integrated data for reporting",
+        "To manufacture new computer components",
+        "To house the offices of a data science team"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Literacy and Foundations",
+      "text": "In data science, what is 'Data Provenance'?",
+      "options": [
+        "The total cost of a data project",
+        "The record of the origin and history of data",
+        "The speed of the database connection",
+        "The language used to write the model"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Literacy and Foundations",
+      "text": "What does 'Big Data' typically involve (the 3 Vs)?",
+      "options": [
+        "Value, Virtual, and Visual",
+        "Volume, Velocity, and Variety",
+        "Valid, Verified, and Vested",
+        "View, Voice, and Version"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Literacy and Foundations",
+      "text": "Which character is often used as a 'Delimiter' in a CSV file?",
+      "options": [
+        "A semicolon (;)",
+        "A comma (,)",
+        "A hashtag (#)",
+        "A dollar sign ($)"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Literacy and Foundations",
+      "text": "What is the purpose of 'Exploratory Data Analysis' (EDA)?",
+      "options": [
+        "To summarize the main characteristics of a dataset",
+        "To encrypt data for safe passage over the web",
+        "To delete old files and save space on the drive",
+        "To build the final production-ready AI model"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Data Literacy and Foundations",
+      "text": "What is 'Data Literacy'?",
+      "options": [
+        "Being able to write a novel about computers",
+        "The ability to read, work with, and analyze data",
+        "Knowing how to build a computer from parts",
+        "Having a high speed internet connection at home"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Literacy and Foundations",
+      "text": "Which type of data is 'Gender' or 'Eye Color'?",
+      "options": [
+        "Continuous numeric data",
+        "Nominal categorical data",
+        "Ratio numeric data",
+        "Discrete numeric data"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Literacy and Foundations",
+      "text": "What is the binary representation of the decimal number 5?",
+      "options": [
+        "011",
+        "101",
+        "110",
+        "111"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Literacy and Foundations",
+      "text": "Which of these is a 'Primary' data source?",
+      "options": [
+        "A report written by another company",
+        "Original data collected through a survey",
+        "An article found in a general magazine",
+        "A Wikipedia page about a specific topic"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Literacy and Foundations",
+      "text": "What is 'Synthetic Data'?",
+      "options": [
+        "Data that has been stolen by hackers",
+        "Data that is artificially generated by a model",
+        "Data that is only stored in a liquid format",
+        "Data that is 100% accurate at all times"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Literacy and Foundations",
+      "text": "In a spreadsheet, what does a 'Row' typically represent?",
+      "options": [
+        "A single variable or feature",
+        "A single record or observation",
+        "The title of the entire document",
+        "The sum of all the numbers included"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Literacy and Foundations",
+      "text": "What is 'Data Governance'?",
+      "options": [
+        "The political leaders of a tech company",
+        "The management of data availability and security",
+        "A type of government-funded AI project",
+        "The way a computer controls its hardware"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Literacy and Foundations",
+      "text": "Which of these is a risk of 'Poor Data Quality'?",
+      "options": [
+        "The computer will run out of storage space",
+        "Incorrect conclusions and bad business decisions",
+        "The internet will become slower for everyone",
+        "The data scientist will get a promotion"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Literacy and Foundations",
+      "text": "What is 'Ordinal' data?",
+      "options": [
+        "Data that has no specific order at all",
+        "Data that has a natural, meaningful rank",
+        "Data that is measured with decimal points",
+        "Data that is represented only by pictures"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Literacy and Foundations",
+      "text": "In the hexadecimal system, what does the letter 'A' represent?",
+      "options": [
+        "The number 1",
+        "The number 10",
+        "The number 100",
+        "The number 0"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Literacy and Foundations",
+      "text": "What is 'Data Profiling'?",
+      "options": [
+        "Examining data to understand its structure",
+        "Taking a photo of a data scientist for a badge",
+        "Creating a fake identity using stolen data",
+        "The speed at which data is uploaded to a site"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Data Literacy and Foundations",
+      "text": "What is 'Data Migration'?",
+      "options": [
+        "Deleting data that is no longer useful",
+        "Moving data from one system to another",
+        "Protecting data from external hackers",
+        "Translating data into another language"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Probability and Statistics Foundations",
+      "text": "Which value describes the middle point of a distribution where 50% of values are above and 50% are below?",
+      "options": [
+        "The arithmetic mean of the set",
+        "The median value of the set",
+        "The mode or frequency of the set",
+        "The variance or spread of the set"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Probability and Statistics Foundations",
+      "text": "If the probability of event A is 0.4 and event B is 0.5, and they are independent, what is P(A and B)?",
+      "options": [
+        "0.90 (Addition Rule)",
+        "0.20 (Multiplication Rule)",
+        "0.10 (Subtraction Rule)",
+        "0.45 (Average Rule)"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Probability and Statistics Foundations",
+      "text": "The 'Standard Error' measures which of the following properties?",
+      "options": [
+        "The error in the calculation of the median",
+        "The variability of the sample mean",
+        "The total range of the original population",
+        "The probability of making a random mistake"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Analysis and Statistics for AI",
+      "text": "Which evaluation metric is the harmonic mean of Precision and Recall?",
+      "options": [
+        "The overall Accuracy rate",
+        "The F1-Score of the model",
+        "The Root Mean Squared Error",
+        "The Mean Absolute Deviation"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Analysis and Statistics for AI",
+      "text": "In a 'Linear Regression' model, the 'Intercept' represents which of the following?",
+      "options": [
+        "The slope of the line across the graph",
+        "The value of Y when X is equal to zero",
+        "The total sum of squared errors in prediction",
+        "The point where the model stops training"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Tools for Data and AI",
+      "text": "Which library would you use in Python if you wanted to scrape data from a webpage?",
+      "options": [
+        "The Pandas library",
+        "The BeautifulSoup library",
+        "The Scikit-Learn library",
+        "The Matplotlib library"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "AI Basics",
+      "text": "Which AI pioneer developed the 'Perceptron', an early form of a neural network?",
+      "options": [
+        "Frank Rosenblatt, the psychologist",
+        "Geoffrey Hinton, the computer scientist",
+        "Yann LeCun, the AI researcher",
+        "Andrew Ng, the professor"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Machine Learning",
+      "text": "What is 'Transfer Learning' in machine learning?",
+      "options": [
+        "Moving data from a laptop to a cloud server",
+        "Using a pre-trained model on a new task",
+        "Learning a task only once and then forgetting it",
+        "Hiring a human to teach the model manually"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Perception, Representation, and Reasoning",
+      "text": "What is 'Ontology' in the context of Knowledge Representation?",
+      "options": [
+        "The study of how computers are manufactured",
+        "A formal way to represent categories and relations",
+        "A specific type of high-speed processor",
+        "The process of cleaning a hard drive"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Privacy and Ethics",
+      "text": "Which of these is a potential privacy risk of using AI with social media data?",
+      "options": [
+        "The AI might post too many photos",
+        "The AI might de-anonymize private individuals",
+        "The AI might crash the social media site",
+        "The AI might change the user's password"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Literacy and Foundations",
+      "text": "What is 'Data Virtualization'?",
+      "options": [
+        "Using VR goggles to look at a spreadsheet",
+        "Retrieving data without knowing its technical details",
+        "Deleting physical data and keeping digital only",
+        "A type of AI that generates 3D images"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Literacy and Foundations",
+      "text": "What is 'Data Persistence'?",
+      "options": [
+        "The data being difficult to clean and fix",
+        "Data that continues to exist after a process ends",
+        "A data scientist who refuses to give up on a problem",
+        "The speed at which data is written to a disk"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Probability and Statistics Foundations",
+      "text": "Which of the following describes a 'Null Hypothesis'?",
+      "options": [
+        "A statement that there is a significant effect",
+        "A statement that there is no effect or relationship",
+        "The hypothesis that the researcher wants to prove",
+        "A hypothesis that uses only prime numbers"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Analysis and Statistics for AI",
+      "text": "What is the 'Mean Squared Error' (MSE) primarily used to evaluate?",
+      "options": [
+        "The performance of a classification model",
+        "The performance of a regression model",
+        "The total memory used by the computer",
+        "The number of features in the dataset"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Tools for Data and AI",
+      "text": "Which language is most used for statistical analysis and is a rival to Python in data science?",
+      "options": [
+        "The Java programming language",
+        "The R programming language",
+        "The C++ programming language",
+        "The HTML markup language"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "AI Basics",
+      "text": "What is 'Weak AI'?",
+      "options": [
+        "AI that is not very good at its job",
+        "AI that is focused on a specific narrow task",
+        "AI that runs on old computer hardware",
+        "AI that has a low accuracy rate"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Machine Learning",
+      "text": "What is 'Reinforcement Learning' most similar to in biological terms?",
+      "options": [
+        "A student reading a textbook for an exam",
+        "A dog being trained with treats and rewards",
+        "A person looking at a map to find a city",
+        "A group of friends talking about a movie"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Perception, Representation, and Reasoning",
+      "text": "Which of these is a part of 'Natural Language Understanding' (NLU)?",
+      "options": [
+        "Calculating the frequency of words in a book",
+        "Determining the intent and meaning of a sentence",
+        "Converting a text file into a PDF document",
+        "Storing millions of words in a large database"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Privacy and Ethics",
+      "text": "What is 'Data Minimization' in AI ethics?",
+      "options": [
+        "Collecting only the data that is strictly necessary",
+        "Compressing data to save space on the drive",
+        "Deleting half of the data to make models faster",
+        "Using small fonts to display data to users"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Data Literacy and Foundations",
+      "text": "What is the decimal equivalent of the binary number 111?",
+      "options": [
+        "The number 3",
+        "The number 7",
+        "The number 11",
+        "The number 1"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Literacy and Foundations",
+      "text": "Which of these is 'Metadata' for a digital photograph?",
+      "options": [
+        "The colors shown in the actual image",
+        "The date and time the photo was taken",
+        "The person who is standing in the photo",
+        "The beauty of the scenery in the photo"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Analysis and Statistics for AI",
+      "text": "In model evaluation, what is 'Sensitivity' the same as?",
+      "options": [
+        "The Precision of the model",
+        "The Recall of the model",
+        "The Accuracy of the model",
+        "The Specificity of the model"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Tools for Data and AI",
+      "text": "What is 'SQL' an acronym for?",
+      "options": [
+        "Simple Query Language",
+        "Structured Query Language",
+        "Standard Quantum Logic",
+        "System Quality List"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "AI Basics",
+      "text": "Which of these is a common use for 'AI in Finance'?",
+      "options": [
+        "Writing novels about famous bankers",
+        "Detecting fraudulent credit card transactions",
+        "Printing physical money at the bank",
+        "Cleaning the floors of the local vault"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Machine Learning",
+      "text": "What is an 'Epoch' in machine learning training?",
+      "options": [
+        "A specific time period in history",
+        "One full pass over the entire training dataset",
+        "The moment a model is finally deployed",
+        "A type of hardware used for AI"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Perception, Representation, and Reasoning",
+      "text": "What is 'Forward Chaining' in an expert system?",
+      "options": [
+        "Starting with facts to reach a conclusion",
+        "Starting with a goal and working backwards",
+        "Deleting facts until only one is left",
+        "Moving data to a faster server"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Privacy and Ethics",
+      "text": "What is 'Algorithmic Accountability'?",
+      "options": [
+        "The cost of running an algorithm on the cloud",
+        "Holding developers responsible for AI impacts",
+        "Counting the number of lines in a script",
+        "The speed at which an algorithm makes a choice"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Literacy and Foundations",
+      "text": "Which data type would be used to store 'True/False' values?",
+      "options": [
+        "The Integer data type",
+        "The Boolean data type",
+        "The String data type",
+        "The Float data type"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Literacy and Foundations",
+      "text": "What is 'Data Silo'?",
+      "options": [
+        "A large tower used to store physical hard drives",
+        "Isolated data that is not shared with other groups",
+        "A very secure way to backup important files",
+        "A type of database that only stores agricultural data"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Analysis and Statistics for AI",
+      "text": "In a confusion matrix, what is a 'False Positive'?",
+      "options": [
+        "Predicting 'No' when the actual answer is 'No'",
+        "Predicting 'Yes' when the actual answer is 'No'",
+        "Predicting 'No' when the actual answer is 'Yes'",
+        "Predicting 'Yes' when the actual answer is 'Yes'"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Tools for Data and AI",
+      "text": "Which cloud provider offers the 'Azure Machine Learning' service?",
+      "options": [
+        "The Amazon company (AWS)",
+        "The Microsoft company",
+        "The Google company (GCP)",
+        "The Oracle company"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "AI Basics",
+      "text": "Which term describes an AI that can understand and learn any intellectual task?",
+      "options": [
+        "Specific AI",
+        "General AI (AGI)",
+        "Narrow AI",
+        "Embedded AI"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Machine Learning",
+      "text": "What is 'Feature Engineering'?",
+      "options": [
+        "Building the physical hardware for an AI",
+        "Creating new features from raw data to help models",
+        "Hiring engineers to write the AI code",
+        "Deleting features that use too much memory"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Perception, Representation, and Reasoning",
+      "text": "What is 'LiDAR' often used for in autonomous vehicles?",
+      "options": [
+        "Playing music for the passengers",
+        "Measuring distances using laser light pulses",
+        "Connecting the car to the local WiFi",
+        "Calculating the fuel efficiency of the engine"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Privacy and Ethics",
+      "text": "What is 'Turing's Curse' often a metaphor for in AI ethics?",
+      "options": [
+        "The high cost of electricity for AI",
+        "The fear of machines becoming too human-like",
+        "A bug in the original AI programming",
+        "The lack of memory in early computers"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Literacy and Foundations",
+      "text": "What is the primary goal of 'Data Cleaning'?",
+      "options": [
+        "To make the data look pretty for a presentation",
+        "To fix errors and inconsistencies in the data",
+        "To delete all the data and start over",
+        "To move data to a newer, cleaner server"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Literacy and Foundations",
+      "text": "What does 'SQL' stand for?",
+      "options": [
+        "Simple Query Language",
+        "Structured Query Language",
+        "Standard Query Language",
+        "Sequential Query Language"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Analysis and Statistics for AI",
+      "text": "Which metric is best for evaluating a model when classes are very imbalanced?",
+      "options": [
+        "The overall accuracy of the model",
+        "The Area Under the Precision-Recall Curve",
+        "The total number of predictions made",
+        "The training time per data point"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Tools for Data and AI",
+      "text": "In Python, which keyword is used to load a library like NumPy?",
+      "options": [
+        "The 'get' keyword",
+        "The 'import' keyword",
+        "The 'load' keyword",
+        "The 'use' keyword"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "AI Basics",
+      "text": "Which of these is a major component of 'Natural Language Processing'?",
+      "options": [
+        "Parsing sentences for grammatical structure",
+        "Calculating the heat generated by a CPU",
+        "Drawing 3D models of human buildings",
+        "Monitoring the battery life of a laptop"
+      ],
+      "correct": 0
+    },
+    {
+      "category": "Machine Learning",
+      "text": "What is the 'K' in K-Means clustering?",
+      "options": [
+        "The number of features in the data",
+        "The number of clusters to be created",
+        "The weight of the most important feature",
+        "The speed of the algorithm in Kilobytes"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Perception, Representation, and Reasoning",
+      "text": "What is 'Symbolic AI'?",
+      "options": [
+        "AI that uses pictures instead of words",
+        "AI based on high-level human-readable symbols",
+        "AI that is only used in marketing logos",
+        "AI that does not use any math at all"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Privacy and Ethics",
+      "text": "Which of these is a concern regarding 'AI and Surveillance'?",
+      "options": [
+        "The AI might take blurry photos of people",
+        "The constant monitoring of citizens' actions",
+        "The AI using too much space on a hard drive",
+        "The AI being unable to see in the dark"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Literacy and Foundations",
+      "text": "What is a 'Bit'?",
+      "options": [
+        "A large amount of data stored on a disk",
+        "The smallest unit of data in a computer (0 or 1)",
+        "A type of computer program for statistics",
+        "A piece of hardware used to connect to WiFi"
+      ],
+      "correct": 1
+    },
+    {
+      "category": "Data Literacy and Foundations",
+      "text": "Which of these is a 'Secondary' data source?",
+      "options": [
+        "An interview you conducted personally",
+        "A government census database used by others",
+        "An experiment you ran in a science lab",
+        "A survey you sent to your own classmates"
+      ],
+      "correct": 1
+    }
   ]
 }

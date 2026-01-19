@@ -1380,3 +1380,116 @@ button, a, input[type="button"], input[type="submit"] {
     height: 0.75rem;
   }
 }
+
+/* ===== ROLE PLAY SPECIFIC STYLES ===== */
+
+.roleplay-timer {
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Mono', 'Droid Sans Mono', monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.note-card {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border: 2px solid #f59e0b;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+.recording-indicator {
+  animation: pulse-recording 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-recording {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.scenario-card {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border-left: 4px solid #3b82f6;
+}
+
+.judge-card {
+  transition: all 0.3s ease;
+}
+
+.judge-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.rubric-row {
+  transition: background-color 0.2s ease;
+}
+
+.rubric-row:hover {
+  background-color: #f8fafc;
+}
+
+.progress-step {
+  transition: all 0.3s ease;
+}
+
+.progress-step.active {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.progress-step.completed {
+  background-color: #10b981;
+  color: white;
+}
+
+.transcript-area {
+  font-family: 'Inter', system-ui, sans-serif;
+  line-height: 1.7;
+}
+
+/* Timer warning states */
+.timer-warning {
+  background-color: #fef3c7 !important;
+  color: #92400e !important;
+  border-color: #f59e0b !important;
+}
+
+.timer-critical {
+  background-color: #fee2e2 !important;
+  color: #991b1b !important;
+  border-color: #ef4444 !important;
+  animation: pulse-recording 1s ease-in-out infinite;
+}
+
+/* Role play prose styling */
+.prose-slate strong {
+  font-weight: 700;
+}
+
+.prose-slate ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+}
+
+.prose-slate li {
+  margin-bottom: 0.5rem;
+}
+
+/* Mobile responsive for role play */
+@media (max-width: 640px) {
+  .roleplay-timer {
+    font-size: 1.5rem;
+  }
+  
+  .note-card textarea {
+    font-size: 14px;
+  }
+  
+  .judge-card {
+    padding: 1rem;
+  }
+  
+  .progress-step {
+    width: 1.75rem;
+    height: 1.75rem;
+    font-size: 0.75rem;
+  }
+}
+
