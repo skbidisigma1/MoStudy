@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-  /* MoBank-inspired Color Palette */
+  /* MoBank-inspired Color Palette    so fire */
   --color-primary: #0066cc;
   --color-primary-dark: #004c99;
   --color-secondary: #00b894;
@@ -26,6 +26,60 @@ body {
   background-color: var(--color-bg);
   color: var(--color-text);
   transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===== APP LAYOUT HELPERS ===== */
+.app-body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-main);
+}
+
+.app-header {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.brand-pill {
+  background-color: var(--color-white);
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+}
+
+.header-title {
+  font-family: var(--font-heading);
+}
+
+.theme-toggle {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.header-ghost-btn {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.header-timer {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.header-timer-strong {
+  background-color: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.app-main {
+  background-color: var(--color-bg);
+}
+
+#progress-bar {
+  width: 1%;
+}
+
+.generation-progress {
+  width: 0%;
+  transition: width 0.5s ease;
 }
 
 /* ===== KEYFRAME ANIMATIONS ===== */
@@ -300,6 +354,261 @@ header, .bg-white, [style*="background-color: var(--color-bg)"] {
     padding: 0.75rem 1rem;
     font-size: 0.875rem;
   }
+}
+
+/* ===== ROLE PLAY SCENARIO GENERATION UI ===== */
+.scenario-generation-shell {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  background: radial-gradient(circle at top, rgba(59, 130, 246, 0.12), transparent 55%),
+              radial-gradient(circle at bottom, rgba(99, 102, 241, 0.16), transparent 60%);
+}
+
+.scenario-orb {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border-radius: 999px;
+  filter: blur(0px);
+  opacity: 0.35;
+  animation: floatOrb 6s ease-in-out infinite;
+}
+
+.scenario-orb.orb-one {
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.35), transparent 70%);
+  top: -40px;
+  right: -20px;
+}
+
+.scenario-orb.orb-two {
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.35), transparent 70%);
+  bottom: -50px;
+  left: -30px;
+  animation-delay: 1.5s;
+}
+
+@keyframes floatOrb {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+.generation-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(59, 130, 246, 0.1);
+  color: #2563eb;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.generation-shimmer {
+  background: linear-gradient(90deg, rgba(59,130,246,0.15), rgba(99,102,241,0.35), rgba(59,130,246,0.15));
+  background-size: 200% 100%;
+  animation: shimmer 2.2s ease-in-out infinite;
+}
+
+.difficulty-card {
+  position: relative;
+}
+
+.difficulty-card.is-selected {
+  border-color: #2563eb !important;
+  box-shadow: 0 12px 25px rgba(37, 99, 235, 0.25);
+  background: linear-gradient(180deg, #eff6ff 0%, #ffffff 70%);
+  transform: translateY(-2px);
+}
+
+.difficulty-card.is-selected::after {
+  content: "Selected";
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: #2563eb;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  box-shadow: 0 6px 12px rgba(37, 99, 235, 0.25);
+}
+
+@media (max-width: 640px) {
+  header nav {
+    gap: 0.75rem;
+    margin-left: 0.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.25rem;
+  }
+
+  .progress-steps {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .progress-step {
+    width: 1.75rem;
+    height: 1.75rem;
+    font-size: 0.75rem;
+  }
+
+  #planning-screen,
+  #recording-screen,
+  #qa-screen,
+  #results-screen {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
+  #scenario-content {
+    max-height: 280px;
+  }
+
+  #planning-screen .p-6,
+  #recording-screen .p-8,
+  #qa-screen .p-8 {
+    padding: 1rem !important;
+  }
+
+  .roleplay-timer {
+    font-size: 1.75rem;
+  }
+}
+
+/* ===== ERROR MODAL ===== */
+.error-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.error-modal {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 450px;
+  text-align: center;
+  box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15);
+}
+
+.error-modal-icon {
+  width: 3rem;
+  height: 3rem;
+  background: #fee2e2;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  color: #dc2626;
+}
+
+.error-modal-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+
+.error-modal-message {
+  color: #6b7280;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.error-modal-button {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+/* ===== REVALIDATION BANNER ===== */
+.revalidation-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.revalidation-banner.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.revalidation-banner.hiding {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.revalidation-banner-content {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  margin-top: 0.5rem;
+  background: rgba(59, 130, 246, 0.95);
+  color: white;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(8px);
+}
+
+.revalidation-spinner {
+  width: 1rem;
+  height: 1rem;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Dark mode banner */
+[data-darkreader-scheme="dark"] .revalidation-banner-content,
+.dark .revalidation-banner-content {
+  background: rgba(59, 130, 246, 0.9);
+}
+
+/* ===== STALE DATA INDICATOR ===== */
+.stale-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  background: rgba(251, 191, 36, 0.1);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  border-radius: 4px;
+  font-size: 0.75rem;
+  color: #92400e;
+}
+
+[data-darkreader-scheme="dark"] .stale-indicator,
+.dark .stale-indicator {
+  background: rgba(251, 191, 36, 0.15);
+  color: #fbbf24;
 }
 
 /* Dark mode review screen */

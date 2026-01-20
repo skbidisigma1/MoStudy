@@ -8,13 +8,13 @@
     <script src="https://cdn.jsdelivr.net/npm/darkreader@4.9.92/darkreader.min.js"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="h-screen flex flex-col overflow-hidden" style="background-color: var(--color-bg); color: var(--color-text); font-family: var(--font-main);">
+<body class="app-body h-screen flex flex-col overflow-hidden">
 
     <!-- Header -->
-    <header class="text-white p-3 sm:p-4 shadow-lg flex justify-between items-center z-10 shrink-0 gap-2 sm:gap-4" style="background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%); border-bottom: 1px solid var(--color-border);">
+    <header class="app-header text-white p-3 sm:p-4 shadow-lg flex justify-between items-center z-10 shrink-0 gap-2 sm:gap-4">
         <div class="flex items-center gap-2 sm:gap-3 min-w-0">
-            <div class="font-extrabold px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-xs sm:text-sm tracking-wide" style="background-color: var(--color-white); color: var(--color-primary); font-family: var(--font-heading);">MoStudy</div>
-            <h1 class="font-semibold text-sm sm:text-lg tracking-tight hidden sm:block truncate" style="font-family: var(--font-heading);">Practice Exams</h1>
+            <div class="brand-pill font-extrabold px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-xs sm:text-sm tracking-wide">MoStudy</div>
+            <h1 class="header-title font-semibold text-sm sm:text-lg tracking-tight hidden sm:block truncate">Practice Exams</h1>
             
             <nav class="flex items-center gap-5 sm:gap-8 ml-4 sm:ml-8">
                 <a href="/" class="text-white hover:opacity-80 transition font-bold text-xs sm:text-sm flex items-center py-1 sm:py-1.5">
@@ -32,20 +32,20 @@
             </nav>
         </div>
         <div class="flex items-center gap-2 sm:gap-4">
-            <button id="theme-toggle" class="inline-flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-xs sm:text-sm font-semibold text-white/95 border border-white/30 hover:bg-white/15 transition" style="background-color: rgba(255,255,255,0.12);">
+            <button id="theme-toggle" class="theme-toggle inline-flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-xs sm:text-sm font-semibold text-white/95 border border-white/30 hover:bg-white/15 transition">
                 <span data-theme-icon>🌙</span>
                 <span data-theme-label class="hidden sm:inline">Dark</span>
             </button>
-            <button id="review-nav-btn" onclick="showReviewScreen()" class="hidden sm:flex text-xs sm:text-sm text-white px-2 sm:px-4 py-1.5 rounded-lg border transition backdrop-blur-sm items-center gap-2" style="background-color: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3);">
+            <button id="review-nav-btn" data-action="show-review" class="header-ghost-btn hidden sm:flex text-xs sm:text-sm text-white px-2 sm:px-4 py-1.5 rounded-lg border transition backdrop-blur-sm items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
                 <span class="hidden sm:inline">View Grid</span>
             </button>
-            <div id="timer-display" class="hidden font-mono text-sm sm:text-lg font-bold text-white px-2 sm:px-4 py-1 rounded-lg min-w-[60px] sm:min-w-[80px] text-center flex-shrink-0" style="background-color: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3);">50:00</div>
+            <div id="timer-display" class="header-timer hidden font-mono text-sm sm:text-lg font-bold text-white px-2 sm:px-4 py-1 rounded-lg min-w-[60px] sm:min-w-[80px] text-center flex-shrink-0">50:00</div>
         </div>
     </header>
 
     <!-- Main Content Area -->
-    <main class="flex-grow relative overflow-y-auto p-4 flex flex-col items-center justify-center scroll-smooth text-center" style="background-color: var(--color-bg);">
+    <main class="app-main flex-grow relative overflow-y-auto p-4 flex flex-col items-center justify-center scroll-smooth text-center">
         
         <div class="max-w-3xl w-full mx-auto py-12 px-6 fade-in-page">
             <h2 class="text-4xl sm:text-5xl font-extrabold text-slate-800 tracking-tight mb-6">

@@ -20,7 +20,10 @@ const configureClient = async () => {
     auth0Client = await auth0.createAuth0Client({
         domain: config.domain,
         clientId: config.clientId,
+        // Cookies would be ideal, but Auth0 SPA SDK uses browser storage. Keep localStorage fallback.
         cacheLocation: 'localstorage',
+        useRefreshTokens: true,
+        useRefreshTokensFallback: true,
         authorizationParams: {
             audience: config.audience,
             redirect_uri: window.location.origin + "/account"
@@ -197,6 +200,11 @@ const login = async () => {
 };
 
 const logout = () => {
+    // Clear user cache on logout
+    if (typeof MoStudyCache !== 'undefined' && MoStudyCache.clearUserCache) {
+        MoStudyCache.clearUserCache();
+    }
+    
     auth0Client.logout({
         logoutParams: {
             returnTo: window.location.origin + "/account"

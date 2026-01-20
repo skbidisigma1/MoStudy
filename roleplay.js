@@ -226,6 +226,64 @@ let appState = {
     qaTiming: 'before' // 'before' or 'after'
 };
 
+// ==================== AUTH HELPER ====================
+
+/**
+ * Get auth token for API requests.
+ * Returns null if not authenticated.
+ */
+async function getAuthToken() {
+    try {
+        // auth0Client is defined in auth.js, loaded before roleplay.js
+        if (typeof auth0Client !== 'undefined' && auth0Client) {
+            return await auth0Client.getTokenSilently();
+        }
+    } catch (e) {
+        console.warn('Failed to get auth token:', e);
+    }
+    return null;
+}
+
+/**
+ * Save roleplay report to Firestore via the backend API.
+ * Updates the local cache with the returned data.
+ */
+async function saveRoleplayReport(totalScore, judgeResults) {
+    // Only save if cache helper is available
+    if (typeof MoStudyCache === 'undefined') {
+        console.warn('Cache helper not available, skipping roleplay report save');
+        return;
+    }
+
+    try {
+        // Build category scores from judge evaluations
+        const categoryScores = {};
+        const scoreKeys = ['understanding', 'alternatives', 'solution', 'knowledge', 'organization', 'delivery', 'questions'];
+        
+        scoreKeys.forEach(key => {
+            const scores = judgeResults
+                .map(r => r.evaluation?.scores?.[key] || 0)
+                .filter(s => s > 0);
+            if (scores.length > 0) {
+                categoryScores[key] = Math.round(scores.reduce((a, b) => a + b, 0) / scores.length);
+            }
+        });
+
+        const reportData = {
+            event: appState.currentEvent?.title || 'Unknown',
+            difficulty: appState.difficulty || 'normal',
+            judgeScore: totalScore,
+            categoryScores
+        };
+
+        await MoStudyCache.saveReportAndUpdateCache(getAuthToken, 'roleplay', reportData);
+        console.log('Roleplay report saved successfully');
+    } catch (error) {
+        console.error('Failed to save roleplay report:', error);
+        // Non-blocking - user can still see results
+    }
+}
+
 // ==================== EVENT CATALOG ====================
 
 // Dynamic event manifest - easily extensible
@@ -258,6 +316,64 @@ document.addEventListener('DOMContentLoaded', () => {
 function initializeApp() {
     loadEventCatalog();
     initializeSpeechRecognition();
+    bindRoleplayActions();
+    bindRoleplayInputs();
+}
+
+function bindRoleplayActions() {
+    document.addEventListener('click', (event) => {
+        const actionTarget = event.target.closest('[data-action]');
+        if (!actionTarget) return;
+
+        const action = actionTarget.dataset.action;
+        switch (action) {
+            case 'select-difficulty':
+                selectDifficulty(actionTarget.dataset.difficulty);
+                break;
+            case 'start-scenario':
+                confirmRoleplayConfig();
+                break;
+            case 'back-event-selection':
+                goBackEventSelection();
+                break;
+            case 'start-presentation':
+                startPresentation();
+                break;
+            case 'end-presentation':
+                endMainPresentation();
+                break;
+            case 'end-qa':
+                endQARecording();
+                break;
+            case 'show-judge-sheet': {
+                const index = Number(actionTarget.dataset.judgeIndex);
+                if (Number.isInteger(index)) showJudgeSheet(index);
+                break;
+            }
+            case 'start-new-session':
+                startNewSession();
+                break;
+            case 'return-home':
+                window.location.href = '/';
+                break;
+            default:
+                break;
+        }
+    });
+}
+
+function bindRoleplayInputs() {
+    const qaTimingInputs = document.querySelectorAll('input[name="qa-timing"]');
+    qaTimingInputs.forEach((input) => {
+        input.addEventListener('change', (event) => {
+            setQATiming(event.target.value);
+        });
+    });
+
+    const noteInput = document.getElementById('note-card-input');
+    if (noteInput) {
+        noteInput.addEventListener('input', updateCharCount);
+    }
 }
 
 function loadEventCatalog() {
@@ -400,7 +516,9 @@ async function startScenarioGeneration() {
         console.error('Error starting session:', error);
         // Determine error type
         let errorMsg = 'Failed to generate scenario. ';
-        if (error.message.includes('AI service')) {
+        if (error.message.toLowerCase().includes('sign in')) {
+            errorMsg = 'Sign in is required to use AI roleplay features. Please sign in from the Account page.';
+        } else if (error.message.includes('AI service')) {
             errorMsg += 'The AI service is currently unavailable. Please try again in a moment.';
         } else if (error.message.includes('403') || error.message.includes('Preflight')) {
             errorMsg += 'Connection error with AI service. Please check your network or try again later.';
@@ -419,22 +537,42 @@ async function startScenarioGeneration() {
 }
 
 function showErrorNotification(message) {
-    const errorHtml = `
-        <div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 1000;" onclick="this.remove();">
-            <div style="background: white; border-radius: 12px; padding: 2rem; max-width: 450px; text-align: center; box-shadow: 0 20px 25px rgba(0,0,0,0.15);">
-                <div style="width: 3rem; height: 3rem; background: #fee2e2; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: #dc2626;">
-                    <svg xmlns="http://www.w3.org/2000/svg" style="width: 1.5rem; height: 1.5rem;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
-                </div>
-                <h3 style="font-size: 1.25rem; font-weight: bold; color: #1f2937; margin-bottom: 0.5rem;">Unable to Start Session</h3>
-                <p style="color: #6b7280; margin-bottom: 1.5rem; font-size: 0.95rem; line-height: 1.5;">${escapeHtml(message)}</p>
-                <button onclick="this.closest('[style*=position]').remove();" style="background: #3b82f6; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 0.95rem;">
-                    Dismiss
-                </button>
-            </div>
-        </div>
+    const overlay = document.createElement('div');
+    overlay.className = 'error-overlay';
+
+    const modal = document.createElement('div');
+    modal.className = 'error-modal';
+    modal.addEventListener('click', (event) => event.stopPropagation());
+
+    const iconWrap = document.createElement('div');
+    iconWrap.className = 'error-modal-icon';
+    iconWrap.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+        </svg>
     `;
-    
-    document.body.insertAdjacentHTML('beforeend', errorHtml);
+
+    const title = document.createElement('h3');
+    title.className = 'error-modal-title';
+    title.textContent = 'Unable to Start Session';
+
+    const messageEl = document.createElement('p');
+    messageEl.className = 'error-modal-message';
+    messageEl.textContent = message;
+
+    const dismissBtn = document.createElement('button');
+    dismissBtn.className = 'error-modal-button';
+    dismissBtn.textContent = 'Dismiss';
+    dismissBtn.addEventListener('click', () => overlay.remove());
+
+    modal.appendChild(iconWrap);
+    modal.appendChild(title);
+    modal.appendChild(messageEl);
+    modal.appendChild(dismissBtn);
+    overlay.appendChild(modal);
+
+    overlay.addEventListener('click', () => overlay.remove());
+    document.body.appendChild(overlay);
 }
 
 async function loadEventExamples(event) {
@@ -1468,6 +1606,9 @@ function displayJudgingResults() {
     
     document.getElementById('total-score').textContent = totalScore;
     
+    // Save roleplay report to backend (fire and forget)
+    saveRoleplayReport(totalScore, validResults);
+    
     // Render judge cards
     const judgeCardsContainer = document.getElementById('judge-cards');
     judgeCardsContainer.innerHTML = appState.judgeResults.map((result, i) => {
@@ -1684,6 +1825,9 @@ async function callAI(messages, expectJson = false, options = {}) {
             }
             
             if (!response.ok) {
+                if (response.status === 401 || response.status === 403) {
+                    throw new Error('Sign in required to use AI features.');
+                }
                 const errorData = await response.json().catch(() => ({}));
                 throw new Error(`API error (${response.status}): ${errorData.error || response.statusText}`);
             }
