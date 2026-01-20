@@ -1054,7 +1054,7 @@ function renderAISummaryPanel() {
             </div>
             <div>
                 <h4 class="font-bold text-slate-800">Performance Analysis</h4>
-                <p class="text-slate-500 text-sm">Powered by Kimi</p>
+                <p class="text-slate-500 text-sm">Powered by GPT-5.1</p>
             </div>
         </div>
 

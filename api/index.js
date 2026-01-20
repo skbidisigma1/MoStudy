@@ -62,10 +62,10 @@ app.post('/api/ai/chat', async (req, res) => {
       return res.status(500).json({ error: 'AI service not configured: missing API key' });
     }
 
-    // Use the model from client or fallback to a reliable model
-    const selectedModel = model || 'moonshotai/kimi-k2-0905';
+    // Use the model from client or fallback to GPT-5.1
+    const selectedModel = model || 'openai/gpt-5.1';
 
-    console.log('Calling OpenRouter AI with model:', selectedModel);
+    console.log('🤖 Calling OpenRouter AI with model:', selectedModel, '| Temperature:', temperature);
 
     // Use direct HTTP call to OpenRouter API
     const requestBody = {

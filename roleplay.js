@@ -6,7 +6,8 @@
 // ==================== CONFIGURATION ====================
 
 const AI_API_ENDPOINT = "/api/ai/chat";
-const AI_MODEL = "moonshotai/kimi-k2-0905";
+// Updated to GPT-5.1 for better conversational flow (Judges) and reasoning (Scenarios)
+const AI_MODEL = "openai/gpt-5.1"; 
 
 const SCENARIO_WORD_LIMITS = {
     easy: 220,
@@ -484,57 +485,31 @@ async function generateScenario() {
         const shuffled = [...appState.eventExamples].sort(() => Math.random() - 0.5);
         const selectedExamples = shuffled.slice(0, Math.min(3, shuffled.length));
         
-        // Difficulty modifiers for scenario generation
+        // REPLACED: Positive constraints that guide the AI instead of confusing it
         const difficultyGuides = {
-            easy: "Create a SIMPLE, straightforward scenario with ONE clear main problem and ONE secondary constraint. Keep it approachable and focused on core business reasoning. GEOGRAPHIC SCOPE: Use ONLY a U.S.-based company. If international expansion is needed, mention at most ONE country from: Canada, Mexico, or one country in Central/South America. Do NOT list multiple countries.",
-            normal: "Create a MODERATE scenario with ONE main challenge and ONE supporting challenge. Keep the situation realistic and clear, without excessive complexity. GEOGRAPHIC SCOPE: Use a U.S.-based company. If expanding internationally, mention at most ONE or TWO countries from: Canada, Mexico, Brazil, or one Central/South American country. Do NOT list 3+ countries.",
-            hard: "Create a COMPLEX scenario with multiple stakeholder interests, limited resources, and at least one tradeoff. Keep it coherent and solvable. GEOGRAPHIC SCOPE: You may reference up to TWO regions or THREE specific countries maximum. Focus the challenge, not the country list.",
-            impossible: "Create a VERY CHALLENGING scenario with ambiguity and competing priorities. The problem should be hard but still solvable with strong reasoning. GEOGRAPHIC SCOPE: You may reference multiple regions but keep country specifics to THREE maximum. Complexity should come from the problem, not listing countries."
+            easy: "SCOPE: Focus on a small local business with a single, clear operational problem (e.g., staffing, inventory, or basic customer service). RISK: Low financial stakes.",
+            normal: "SCOPE: Focus on a regional manager dealing with a tactical tradeoff between two good options. RISK: Moderate budget implications.",
+            hard: "SCOPE: Focus on a national executive facing a PR crisis or complex merger. RISK: High stakes with ethical or legal complications.",
+            impossible: "SCOPE: Focus on a multinational CEO during a market collapse or hostile takeover. RISK: Company survival is at stake with conflicting regulatory requirements."
         };
         
-        const systemPrompt = `You are an expert FBLA Role Play scenario designer. Your task is to create a NEW, UNIQUE role play scenario for the ${appState.currentEvent.title} event.
+        const systemPrompt = `You are an expert FBLA Role Play scenario designer.
+TARGET EVENT: ${appState.currentEvent.title}
+DIFFICULTY: ${appState.difficulty.toUpperCase()}
+GUIDE: ${difficultyGuides[appState.difficulty]}
 
-DIFFICULTY LEVEL: ${appState.difficulty.toUpperCase()}
-${difficultyGuides[appState.difficulty]}
+INSTRUCTIONS:
+1. Create a realistic business scenario.
+2. GEOGRAPHY: Unless the event specifically requires international trade, set the scenario entirely within the United States to reduce complexity.
+3. STRUCTURE: You must output headers exactly as: **Background Information**, **Scenario**, **Other Useful Information**, **Requirements**.
+4. LENGTH: Keep the total output concise (approx ${SCENARIO_WORD_LIMITS[appState.difficulty]} words).
+5. REQUIREMENTS: Provide exactly 3 bullet points in the Requirements section that the student must address.`;
 
-IMPORTANT RULES:
-1. Create a completely NEW scenario - do not copy the examples
-2. The scenario must be realistic and professionally challenging
-3. Include: Background Information, Scenario, Other Useful Information, and Requirements sections
-4. Make the scenario appropriately complex for high school competitors at the ${appState.difficulty} difficulty level
-5. Include specific details that competitors can analyze and address
-6. Output ONLY the scenario content in a clean, readable format
-7. Do NOT include any meta-commentary or explanations
-8. CRITICAL COUNTRY LIMIT: For easy/normal difficulty, use ONE country maximum (preferably U.S. + Canada/Mexico). For hard/impossible, THREE countries maximum. Do NOT list many countries - it makes scenarios confusing.
-9. LENGTH LIMIT: Total length must be under ${SCENARIO_WORD_LIMITS[appState.difficulty]} words.
+        const userPrompt = `Create a NEW scenario. Do not copy the examples. 
+Reference Examples:
+${selectedExamples.map((ex, i) => `--- EX ${i + 1} ---\n${ex.substring(0, 150)}...`).join('\n')}
 
-FORMAT YOUR OUTPUT EXACTLY LIKE THIS:
-
-**ROLE PLAY SITUATION**
-
-**Background Information**
-[2 short paragraphs, 1-2 sentences each describing the company/organization context]
-
-**Scenario**
-[1 short paragraph (2-3 sentences) describing the specific challenge or situation]
-
-**Other Useful Information**
-• [Bullet point 1 - short]
-• [Bullet point 2 - short]
-• [Bullet point 3 - short]
-
-**Requirements**
-Your team must address the following during the presentation:
-• [Requirement 1 - short]
-• [Requirement 2 - short]
-• [Requirement 3 - short]
-• [Requirement 4 - short]`;
-
-        const userPrompt = `Here are example ${appState.currentEvent.title} role plays for reference. Create a completely NEW and DIFFERENT scenario that tests similar skills but with a unique situation appropriate for the ${appState.difficulty} difficulty level:
-
-${selectedExamples.map((ex, i) => `--- EXAMPLE ${i + 1} ---\n${ex}\n`).join('\n')}
-
-Now create a brand new, original ${appState.currentEvent.title} role play scenario at the ${appState.difficulty} difficulty level.`;
+Generate the scenario now.`;
 
         const response = await callAI([
             { role: "system", content: systemPrompt },
@@ -544,7 +519,8 @@ Now create a brand new, original ${appState.currentEvent.title} role play scenar
         clearInterval(progressInterval);
         progressBar.style.width = '100%';
         
-        appState.generatedScenario = trimScenario(response, SCENARIO_WORD_LIMITS[appState.difficulty]);
+        // Removed the "trimScenario" function call which was chopping off the ends of valid scenarios
+        appState.generatedScenario = response;
 
         // Small delay to let user see 100%
         await new Promise(resolve => setTimeout(resolve, 500));
@@ -1316,134 +1292,100 @@ async function runJudgeEvaluation(judge, index) {
     const judgeProgressItems = document.querySelectorAll('#judge-progress > div');
     
     try {
-        // Difficulty-based evaluation modifiers
-        const difficultyEvaluationGuides = {
-            easy: `DIFFICULTY MODIFIER: EASY
-    This is a straightforward scenario. Be supportive while still honest:
-    - Focus on foundational competencies and clear reasoning
-    - Reward coherent structure and feasible steps
-    - Scores can reasonably range from 45-100, with many 70+ scores
-    - Penalize major gaps, but do not over-punish minor issues`,
-            
-            normal: `DIFFICULTY MODIFIER: NORMAL
-    This is a standard scenario. Evaluate using realistic FBLA standards:
-    - Be fair and balanced
-    - Reward depth of analysis, not keyword density
-    - Scores can reasonably range from 35-95, with average around 65-75`,
-            
-            hard: `DIFFICULTY MODIFIER: HARD
-    This is a complex scenario. Increase expectations but stay fair:
-    - Reward tradeoff analysis and implementation detail
-    - Penalize vague or generic plans
-    - Scores typically range from 25-90, with average around 55-70`,
-            
-            impossible: `DIFFICULTY MODIFIER: IMPOSSIBLE
-    This is a very challenging scenario. Be demanding but realistic:
-    - Look for sophisticated reasoning and prioritization
-    - Allow partial credit for strong frameworks even if incomplete
-    - Scores typically range from 20-85, with average around 45-60`
-        };
-        
-        // Create unique judge voice based on their personality
+        // SAFETY NET: Check if transcript exists before asking AI
+        const transcript = (appState.mainTranscript || "").trim();
+        const isTranscriptEmpty = transcript.length < 50;
+
+        if (isTranscriptEmpty) {
+            console.warn(`Judge ${index+1} skipped: No audio transcript detected.`);
+            // Return a "Technical Error" card instead of a bad score
+            appState.judgeResults[index] = {
+                judge: judge,
+                evaluation: {
+                    scores: { understanding: 0, alternatives: 0, solution: 0, knowledge: 0, organization: 0, delivery: 0, questions: 0 },
+                    total: 0,
+                    categoryFeedback: {},
+                    overallFeedback: "No audio was detected for your presentation. This usually happens if the microphone permission was denied or the browser didn't capture the speech text.",
+                    strengthHighlight: "N/A",
+                    improvementArea: "Microphone Setup",
+                    personalizedFeedback: "I couldn't hear your presentation. Please check your microphone settings and try again.",
+                    actionableTips: ["Check browser microphone permissions", "Try a different browser", "Speak clearly into the mic"]
+                },
+                error: true
+            };
+            // Update UI to show error color
+            if (judgeProgressItems[index]) {
+                judgeProgressItems[index].innerHTML = `
+                    <svg class="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
+                    </svg>
+                    <span class="text-sm text-gray-500">Audio Missing</span>
+                `;
+            }
+            return;
+        }
+
+        // ... Existing difficulty/persona logic ...
         const judgeVoices = {
-            'Dr. Margaret Chen': 'You speak thoughtfully and academically. You appreciate when students show they understand underlying business theory. You often reference real-world examples in your feedback.',
-            'Marcus Williams': 'You are direct and business-focused. You cut to the chase and want practical, actionable plans. You appreciate confidence but dislike fluff.',
-            'Dr. Yuki Tanaka': 'You are warm but perceptive. You pay close attention to how students handle cultural nuances and relationship dynamics. You give encouraging feedback even when critical.',
-            'Robert Martinez': 'You are precise and detail-oriented. You notice when students miss important considerations. Your feedback is methodical and structured.',
-            'Sarah O\'Brien': 'You are enthusiastic and entrepreneurial. You love creative solutions and bold thinking. You encourage students to think bigger while being realistic.',
-            'Dr. Kwame Asante': 'You focus on data and evidence. You appreciate when students back up their claims. You ask probing questions about assumptions.',
-            'Jennifer Park': 'You are practical and operations-minded. You want to know HOW things will actually work. You value realistic timelines and resource planning.',
-            'David Thompson': 'You are supportive but honest as an educator. You understand students are learning. You balance encouragement with specific areas for growth.',
-            'Dr. Aisha Patel': 'You think strategically about positioning and competitive advantage. You appreciate when students consider the bigger picture.',
-            'Michael Chang': 'You are blunt and results-focused. You want to see potential for success. You give direct feedback without sugarcoating.'
+            'Dr. Margaret Chen': 'You are analytical. Focus on theory.',
+            'Marcus Williams': 'You are direct. Focus on ROI and action.',
+            'Dr. Yuki Tanaka': 'You are diplomatic. Focus on cultural nuance.',
+            'Robert Martinez': 'You are precise. Focus on regulations.',
+            'Sarah O\'Brien': 'You are creative. Focus on innovation.',
+            'Dr. Kwame Asante': 'You are data-driven. Focus on economics.',
+            'Jennifer Park': 'You are operational. Focus on logistics.',
+            'David Thompson': 'You are an educator. Focus on student growth.',
+            'Dr. Aisha Patel': 'You are strategic. Focus on branding.',
+            'Michael Chang': 'You are a VC. Focus on scalability.'
         };
         
         const judgeVoice = judgeVoices[judge.name] || 'You give balanced, constructive feedback.';
         
-        const systemPrompt = `You are ${judge.name}, ${judge.title}. ${judge.background}.
+        const systemPrompt = `You are ${judge.name}, ${judge.title}. 
+PERSONALITY: ${judgeVoice}
+TASK: Judge an FBLA role play.
 
-YOUR PERSONALITY: ${judgeVoice}
+RUBRIC (Max 100):
+- Understanding (10)
+- Alternatives (20)
+- Solution (20)
+- Knowledge (20)
+- Organization (10)
+- Delivery (10)
+- Questions (10)
 
-${difficultyEvaluationGuides[appState.difficulty]}
-
-YOUR TASK: Evaluate this FBLA role play presentation and provide HUMAN, HELPFUL feedback.
-
-RULES:
-1. Write in FIRST PERSON as ${judge.name}. Say "I noticed..." or "I was impressed by..." or "I think you could improve..."
-2. Be SPECIFIC - reference exact things from the presentation, not generic advice
-3. Be HUMAN - vary your tone, show personality, give real reactions
-4. Each category feedback should mention something SPECIFIC the student said or did (or didn't do)
-5. Your overall feedback should feel like a real mentor talking to a student
-6. Actionable tips should be CONCRETE things they can practice, not vague platitudes
-
-SCORING GUIDE:
-- 85-100: Exceptional - professional quality, would impress real business executives
-- 70-84: Strong - solid understanding, good presentation, minor gaps
-- 55-69: Developing - shows potential but needs more depth or clarity
-- 40-54: Needs Work - major gaps in understanding or presentation
-- Below 40: Significant Issues - did not address the scenario adequately
-
-RUBRIC:
-${FBLA_RUBRIC.categories.map(c => `- ${c.name}: 0-${c.maxPoints} points`).join('\n')}
-
-OUTPUT VALID JSON:
+OUTPUT JSON:
 {
-    "scores": {
-        "understanding": <0-10>,
-        "alternatives": <0-20>,
-        "solution": <0-20>,
-        "knowledge": <0-20>,
-        "organization": <0-10>,
-        "delivery": <0-10>,
-        "questions": <0-10>
-    },
-    "total": <sum of scores>,
-    "categoryFeedback": {
-        "understanding": "<your specific feedback as ${judge.name}>",
-        "alternatives": "<your specific feedback>",
-        "solution": "<your specific feedback>",
-        "knowledge": "<your specific feedback>",
-        "organization": "<your specific feedback>",
-        "delivery": "<your specific feedback>",
-        "questions": "<your specific feedback>"
-    },
-    "overallFeedback": "<2-3 sentences as ${judge.name} giving overall impression and encouragement>",
-    "strengthHighlight": "<one specific thing they did well>",
-    "improvementArea": "<one specific thing to work on>",
-    "personalizedFeedback": "<a personal note from ${judge.name} about their potential>",
-    "actionableTips": ["<specific practice suggestion 1>", "<specific practice suggestion 2>", "<specific practice suggestion 3>"]
+    "scores": { "understanding": 0, "alternatives": 0, "solution": 0, "knowledge": 0, "organization": 0, "delivery": 0, "questions": 0 },
+    "total": 0,
+    "categoryFeedback": { "understanding": "...", "alternatives": "...", "solution": "...", "knowledge": "...", "organization": "...", "delivery": "...", "questions": "..." },
+    "overallFeedback": "2 sentences.",
+    "strengthHighlight": "1 phrase",
+    "improvementArea": "1 phrase",
+    "personalizedFeedback": "1 sentence as ${judge.name}",
+    "actionableTips": ["Tip 1", "Tip 2"]
 }`;
 
-        const userPrompt = `SCENARIO PRESENTED (Difficulty: ${appState.difficulty.toUpperCase()}):
-${appState.generatedScenario}
+        const userPrompt = `SCENARIO: ${appState.generatedScenario.substring(0, 500)}...
+        
+TRANSCRIPT: "${transcript}"
 
-MAIN PRESENTATION TRANSCRIPT (7 minutes):
-${appState.mainTranscript || "(No verbal response recorded - this should significantly impact scores)"}
+Q&A: ${JSON.stringify(appState.qaQuestions)}
+Q&A RESPONSE: "${appState.qaTranscript}"
 
-Q&A RESPONSE TRANSCRIPT (1 minute):
-Questions asked: ${appState.qaQuestions.join(' | ')}
-Response: ${appState.qaTranscript || "(No response recorded - this should impact the questions score)"}
-
-If presentation audio is provided, treat it as the authoritative response and use the transcript as backup only.
-
-Evaluate this ${appState.currentEvent.title} role play performance using the official FBLA rubric at the ${appState.difficulty} difficulty level. Remember to write in third person, be critical and realistic, and never identify yourself.`;
+Evaluate this as ${judge.name}. Be critical but fair.`;
 
         const response = await callAI([
             { role: "system", content: systemPrompt },
             { role: "user", content: userPrompt }
-        ], true, { audio: getAudioPayload() });
-        
-        // Parse the response
-        let evaluation;
-        try {
-            evaluation = JSON.parse(response);
-        } catch {
-            const match = response.match(/\{[\s\S]*\}/);
-            if (match) {
-                evaluation = JSON.parse(match[0]);
-            } else {
-                throw new Error('Could not parse judge response');
-            }
+        ], true); // true = expects JSON
+
+        // Parse response
+        let evaluation = JSON.parse(response);
+
+        // Safety check for total calculation
+        if (!evaluation.total) {
+            evaluation.total = Object.values(evaluation.scores).reduce((a, b) => a + b, 0);
         }
         
         appState.judgeResults[index] = {
@@ -1712,14 +1654,14 @@ function startNewSession() {
 async function callAI(messages, expectJson = false, options = {}) {
     const requestBody = {
         messages: messages,
-        temperature: expectJson ? 0.1 : 0.7,
-        model: AI_MODEL
+        // CHANGED: Increased temperature for JSON. 
+        // 0.6 allows personality (for judges) while still adhering to structure.
+        // 0.1 was making them too robotic.
+        temperature: expectJson ? 0.6 : 0.8, 
+        model: AI_MODEL,
+        // Add JSON mode if supported by the provider, otherwise the temperature balance helps
+        response_format: expectJson ? { type: "json_object" } : undefined
     };
-
-    // Audio disabled for now to avoid payload issues
-    // if (options.audio) {
-    //     requestBody.audio = options.audio;
-    // }
     
     const maxRetries = 3;
     let lastError;
